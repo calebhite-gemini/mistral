@@ -302,7 +302,7 @@ export default function MarketsTable() {
     <>
     <div className="bg-[#18181b] border border-[#27272a] rounded-sm overflow-hidden">
       {/* Header */}
-      <div className="bg-[#09090b] border-b border-[#27272a] grid grid-cols-[180px_140px_100px_100px_100px_100px_100px_1fr_50px] items-center">
+      <div className="bg-[#09090b] border-b border-[#27272a] grid grid-cols-[1fr_140px_100px_100px_100px_100px_100px_130px_50px] items-center">
         <div className="px-6 py-[18px]">
           <span className="text-[#64748b] text-[10px] font-mono font-bold tracking-[1px] uppercase">Matchup</span>
         </div>
@@ -334,7 +334,7 @@ export default function MarketsTable() {
       {markets.map((market, idx) => (
         <div
           key={idx}
-          className={`grid grid-cols-[180px_140px_100px_100px_100px_100px_100px_1fr_50px] items-center py-4 hover:bg-[#27272a]/30 transition-colors ${
+          className={`grid grid-cols-[1fr_140px_100px_100px_100px_100px_100px_130px_50px] items-center py-4 hover:bg-[#27272a]/30 transition-colors ${
             idx > 0 ? "border-t border-[#27272a]" : ""
           }`}
         >
