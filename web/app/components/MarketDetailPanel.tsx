@@ -174,7 +174,7 @@ export default function MarketDetailPanel({ market, onClose, isOpen, loading }: 
                 </div>
 
                 <div className="flex flex-col">
-                  {market.drivers.map((driver, idx) => (
+                  {(market.drivers ?? []).map((driver, idx) => (
                     <div
                       key={idx}
                       className={`py-4 ${idx > 0 ? "border-t border-[#27272a]" : ""}`}

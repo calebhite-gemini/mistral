@@ -7,12 +7,14 @@ import httpx
 
 from app.services.kalshi_auth import build_auth_headers
 
-BASE_URL = "https://api.elections.kalshi.com/trade-api/v2"
+import os
+BASE_URL = os.environ.get("KALSHI_BASE_URL", "https://api.elections.kalshi.com/trade-api/v2")
 _API_PREFIX = "/trade-api/v2"
 
 
-async def kalshi_get(path: str, params: dict | None = None) -> dict:
-    headers = build_auth_headers("GET", f"{_API_PREFIX}{path}")
+async def kalshi_get(path: str, params: dict | None = None, authenticated: bool = False) -> dict:
+    # Market data endpoints are publicly accessible; only portfolio routes need auth
+    headers = build_auth_headers("GET", f"{_API_PREFIX}{path}") if authenticated else {}
     async with httpx.AsyncClient() as client:
         resp = await client.get(
             f"{BASE_URL}{path}",

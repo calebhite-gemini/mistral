@@ -12,6 +12,7 @@ router = APIRouter(prefix="/orders", tags=["orders"])
 class PlaceOrderRequest(BaseModel):
     ticker: str
     side: Literal["yes", "no"]
+    action: Literal["buy", "sell"] = "buy"
     type: Literal["limit", "market"]
     count: int = Field(ge=1, description="Number of contracts")
     yes_price: int | None = Field(None, ge=1, le=99, description="Limit price in cents (1-99). Required for limit orders.")
@@ -22,6 +23,7 @@ async def place_order(body: PlaceOrderRequest):
     payload: dict = {
         "ticker": body.ticker,
         "side": body.side,
+        "action": body.action,
         "type": body.type,
         "count": body.count,
     }

@@ -28,6 +28,9 @@ async function fetchAllSportsMarkets(seriesTicker?: string): Promise<KalshiMarke
     if (r.status === "fulfilled") all.push(...(r.value.markets ?? []));
   }
 
+  // Sort by volume descending so highest-volume markets appear first
+  all.sort((a, b) => (b.volume_24h ?? 0) - (a.volume_24h ?? 0));
+
   // Deduplicate by event_ticker — keep first occurrence per game
   const seen = new Set<string>();
   return all.filter((m) => {

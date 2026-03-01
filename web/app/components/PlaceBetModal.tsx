@@ -17,11 +17,13 @@ export default function PlaceBetModal({ ticker, title, lastPrice, onClose }: Pla
   const [side, setSide] = useState<Side>("yes");
   const [orderType, setOrderType] = useState<OrderType>("market");
   const [contracts, setContracts] = useState(1);
-  const [limitPrice, setLimitPrice] = useState(lastPrice || 50);
+  // Demo markets often have last_price=0 (no trades yet); fall back to 50¢
+  const basePrice = lastPrice > 0 ? lastPrice : 50;
+  const [limitPrice, setLimitPrice] = useState(basePrice);
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
-  const price = orderType === "limit" ? limitPrice : (side === "yes" ? lastPrice : 100 - lastPrice);
+  const price = orderType === "limit" ? limitPrice : (side === "yes" ? basePrice : 100 - basePrice);
   const totalCost = ((price / 100) * contracts).toFixed(2);
   const maxGain = (((100 - price) / 100) * contracts).toFixed(2);
 
@@ -29,8 +31,11 @@ export default function PlaceBetModal({ ticker, title, lastPrice, onClose }: Pla
     setStatus("loading");
     setErrorMsg("");
     try {
-      const body: Record<string, unknown> = { ticker, side, type: orderType, count: contracts };
-      if (orderType === "limit") body.yes_price = side === "yes" ? limitPrice : 100 - limitPrice;
+      // Demo API requires yes_price for all order types
+      const yesPrice = orderType === "limit"
+        ? (side === "yes" ? limitPrice : 100 - limitPrice)
+        : (side === "yes" ? basePrice : 100 - basePrice);
+      const body: Record<string, unknown> = { ticker, side, type: orderType, count: contracts, yes_price: yesPrice };
       const res = await fetch("/api/orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -196,7 +201,9 @@ export default function PlaceBetModal({ ticker, title, lastPrice, onClose }: Pla
             {/* Order summary */}
             <div className="rounded-sm border p-4 space-y-2" style={{ background: "#18181b", borderColor: "#27272a" }}>
               <div className="flex justify-between text-xs font-mono">
-                <span style={{ color: "#64748b" }}>Price per contract</span>
+                <span style={{ color: "#64748b" }}>
+                  Price per contract{lastPrice === 0 ? " (est.)" : ""}
+                </span>
                 <span className="text-white">{price}¢</span>
               </div>
               <div className="flex justify-between text-xs font-mono">
