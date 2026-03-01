@@ -79,8 +79,10 @@ class TelegramNotifier:
     async def stop(self) -> None:
         """Stop the Telegram bot."""
         if self.application:
-            await self.application.updater.stop()
-            await self.application.stop()
+            if self.application.updater and self.application.updater.running:
+                await self.application.updater.stop()
+            if self.application.running:
+                await self.application.stop()
             await self.application.shutdown()
             logger.info("Telegram bot stopped")
 
