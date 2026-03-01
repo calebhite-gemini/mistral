@@ -33,10 +33,12 @@ def test_config_with_default_values(monkeypatch):
 def test_config_missing_required_telegram_token(monkeypatch):
     """Test configuration fails when telegram token is missing."""
     monkeypatch.setenv("KALSHI_API_KEY", "test_key")
+    monkeypatch.setenv("SUPABASE_URL", "https://test.supabase.co")
+    monkeypatch.setenv("SUPABASE_KEY", "test_key")
     monkeypatch.delenv("TELEGRAM_BOT_TOKEN", raising=False)
 
     with pytest.raises(ValidationError) as exc_info:
-        Settings()
+        Settings(_env_file=None)
 
     assert "telegram_bot_token" in str(exc_info.value)
 
@@ -44,10 +46,12 @@ def test_config_missing_required_telegram_token(monkeypatch):
 def test_config_missing_required_kalshi_key(monkeypatch):
     """Test configuration fails when Kalshi API key is missing."""
     monkeypatch.setenv("TELEGRAM_BOT_TOKEN", "test_token")
+    monkeypatch.setenv("SUPABASE_URL", "https://test.supabase.co")
+    monkeypatch.setenv("SUPABASE_KEY", "test_key")
     monkeypatch.delenv("KALSHI_API_KEY", raising=False)
 
     with pytest.raises(ValidationError) as exc_info:
-        Settings()
+        Settings(_env_file=None)
 
     assert "kalshi_api_key" in str(exc_info.value)
 

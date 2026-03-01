@@ -4,6 +4,7 @@ from datetime import datetime, timezone
 from typing import Any
 from telegram import Bot, Update
 from telegram.ext import Application, CommandHandler, ContextTypes
+from supabase import create_client, Client
 
 from app.config import settings
 
@@ -13,15 +14,52 @@ logger = logging.getLogger(__name__)
 class TelegramNotifier:
     """Telegram bot for sending push notifications."""
 
+    SUBSCRIBERS_TABLE = "telegram_subscribers"
+
     def __init__(self):
         """Initialize the Telegram bot."""
         self.bot_token = settings.telegram_bot_token
         self.bot: Bot | None = None
         self.application: Application | None = None
         self.user_chat_ids: set[int] = set()
+        self.supabase: Client = create_client(settings.supabase_url, settings.supabase_key)
+
+    def _load_subscribers(self) -> None:
+        """Load subscribers from Supabase."""
+        try:
+            result = (
+                self.supabase.table(self.SUBSCRIBERS_TABLE)
+                .select("chat_id")
+                .execute()
+            )
+            self.user_chat_ids = {row["chat_id"] for row in result.data}
+            logger.info(f"Loaded {len(self.user_chat_ids)} subscribers from Supabase")
+        except Exception as e:
+            logger.error(f"Failed to load subscribers from Supabase: {e}")
+
+    def _add_subscriber(self, chat_id: int) -> None:
+        """Add a subscriber to Supabase."""
+        try:
+            self.supabase.table(self.SUBSCRIBERS_TABLE).upsert(
+                {"chat_id": chat_id}, on_conflict="chat_id"
+            ).execute()
+        except Exception as e:
+            logger.error(f"Failed to save subscriber {chat_id} to Supabase: {e}")
+
+    def _remove_subscriber(self, chat_id: int) -> None:
+        """Remove a subscriber from Supabase."""
+        try:
+            self.supabase.table(self.SUBSCRIBERS_TABLE).delete().eq(
+                "chat_id", chat_id
+            ).execute()
+        except Exception as e:
+            logger.error(f"Failed to remove subscriber {chat_id} from Supabase: {e}")
 
     async def start(self) -> None:
         """Start the Telegram bot."""
+        # Load existing subscribers from Supabase
+        self._load_subscribers()
+
         # Build the application
         self.application = Application.builder().token(self.bot_token).build()
 
@@ -137,6 +175,7 @@ class TelegramNotifier:
         if update.effective_chat:
             chat_id = update.effective_chat.id
             self.user_chat_ids.add(chat_id)
+            self._add_subscriber(chat_id)
 
             await update.message.reply_text(
                 "✅ You are now subscribed to notifications!\n\n"
@@ -157,6 +196,7 @@ class TelegramNotifier:
         if update.effective_chat:
             chat_id = update.effective_chat.id
             self.user_chat_ids.discard(chat_id)
+            self._remove_subscriber(chat_id)
 
             await update.message.reply_text(
                 "❌ You have been unsubscribed from notifications."

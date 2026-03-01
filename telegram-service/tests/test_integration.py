@@ -5,6 +5,7 @@ from unittest.mock import AsyncMock, MagicMock, patch
 import asyncio
 
 from app.service import TelegramService
+from app.kalshi_client import KalshiWebSocketClient
 
 
 @pytest.mark.asyncio
@@ -171,3 +172,65 @@ async def test_no_notifications_when_no_subscribers(mock_env):
 
     # No messages should be sent
     mock_bot.send_message.assert_not_called()
+
+
+@pytest.mark.asyncio
+async def test_websocket_message_to_telegram_push_notification(mock_env):
+    """Test full pipeline: raw WebSocket JSON -> Kalshi client -> Telegram push notification."""
+    # Raw WebSocket message as it arrives from Kalshi
+    raw_ws_message = json.dumps({
+        "type": "market_lifecycle_v2",
+        "sid": 13,
+        "msg": {
+            "market_ticker": "INXD-23SEP14-B4487",
+            "event_type": "created",
+            "open_ts": 1694635200,
+            "close_ts": 1694721600,
+            "additional_metadata": {
+                "name": "S&P 500 daily return on Sep 14",
+                "title": "S&P 500 closes up by 0.02% or more",
+                "yes_sub_title": "S&P 500 closes up 0.02%+",
+                "no_sub_title": "S&P 500 closes up <0.02%",
+                "rules_primary": "The S&P 500 index level at 4:00 PM ET...",
+                "rules_secondary": "",
+                "can_close_early": True,
+                "event_ticker": "INXD-23SEP14",
+                "expected_expiration_ts": 1694721600,
+                "strike_type": "greater",
+                "floor_strike": 4487
+            }
+        }
+    })
+
+    # Set up the service with a mock Telegram bot
+    service = TelegramService()
+    mock_bot = MagicMock()
+    mock_bot.send_message = AsyncMock()
+    service.telegram_notifier.bot = mock_bot
+    service.telegram_notifier.user_chat_ids = {12345}
+
+    # Wire the Kalshi client callback to the service handler
+    kalshi_client = service.kalshi_client
+
+    # Feed the raw WebSocket message through the Kalshi client
+    await kalshi_client._handle_message(raw_ws_message)
+
+    # Verify Telegram bot.send_message was called
+    mock_bot.send_message.assert_called_once()
+    call_kwargs = mock_bot.send_message.call_args.kwargs
+    assert call_kwargs["chat_id"] == 12345
+    assert call_kwargs["parse_mode"] == "Markdown"
+
+    # Verify the notification text contains all expected data
+    text = call_kwargs["text"]
+    assert "New Market Created" in text
+    assert "S&P 500 daily return on Sep 14" in text
+    assert "S&P 500 closes up by 0.02% or more" in text
+    assert "S&P 500 closes up 0.02%+" in text
+    assert "S&P 500 closes up <0.02%" in text
+    assert "greater" in text
+    assert "4487" in text
+    assert "INXD-23SEP14-B4487" in text
+    assert "kalshi.com/markets/INXD-23SEP14-B4487" in text
+    assert "Sep 13, 2023" in text  # open_ts formatted
+    assert "Sep 14, 2023" in text  # close_ts formatted

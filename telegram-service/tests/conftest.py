@@ -1,6 +1,6 @@
 """Pytest configuration and fixtures."""
 import pytest
-from unittest.mock import AsyncMock, Mock, MagicMock
+from unittest.mock import AsyncMock, Mock, MagicMock, patch
 import os
 
 
@@ -8,6 +8,8 @@ import os
 os.environ.setdefault("TELEGRAM_BOT_TOKEN", "1234567890:ABCdefGHIjklMNOpqrsTUVwxyz")
 os.environ.setdefault("KALSHI_API_KEY", "test_api_key_12345")
 os.environ.setdefault("KALSHI_WEBSOCKET_URL", "wss://test.kalshi.com/ws/v2")
+os.environ.setdefault("SUPABASE_URL", "https://test.supabase.co")
+os.environ.setdefault("SUPABASE_KEY", "test_supabase_key")
 os.environ.setdefault("LOG_LEVEL", "DEBUG")
 
 
@@ -17,10 +19,12 @@ def setup_test_env():
     os.environ["TELEGRAM_BOT_TOKEN"] = "1234567890:ABCdefGHIjklMNOpqrsTUVwxyz"
     os.environ["KALSHI_API_KEY"] = "test_api_key_12345"
     os.environ["KALSHI_WEBSOCKET_URL"] = "wss://test.kalshi.com/ws/v2"
+    os.environ["SUPABASE_URL"] = "https://test.supabase.co"
+    os.environ["SUPABASE_KEY"] = "test_supabase_key"
     os.environ["LOG_LEVEL"] = "DEBUG"
     yield
     # Cleanup after tests
-    for key in ["TELEGRAM_BOT_TOKEN", "KALSHI_API_KEY", "KALSHI_WEBSOCKET_URL", "LOG_LEVEL"]:
+    for key in ["TELEGRAM_BOT_TOKEN", "KALSHI_API_KEY", "KALSHI_WEBSOCKET_URL", "SUPABASE_URL", "SUPABASE_KEY", "LOG_LEVEL"]:
         os.environ.pop(key, None)
 
 
@@ -30,7 +34,24 @@ def mock_env(monkeypatch):
     monkeypatch.setenv("TELEGRAM_BOT_TOKEN", "1234567890:ABCdefGHIjklMNOpqrsTUVwxyz")
     monkeypatch.setenv("KALSHI_API_KEY", "test_api_key_12345")
     monkeypatch.setenv("KALSHI_WEBSOCKET_URL", "wss://test.kalshi.com/ws/v2")
+    monkeypatch.setenv("SUPABASE_URL", "https://test.supabase.co")
+    monkeypatch.setenv("SUPABASE_KEY", "test_supabase_key")
     monkeypatch.setenv("LOG_LEVEL", "DEBUG")
+
+
+@pytest.fixture(autouse=True)
+def mock_supabase():
+    """Mock Supabase client for all tests."""
+    mock_client = MagicMock()
+    # Mock table().select().execute() chain for _load_subscribers
+    mock_client.table.return_value.select.return_value.execute.return_value.data = []
+    # Mock table().upsert().execute() chain for _add_subscriber
+    mock_client.table.return_value.upsert.return_value.execute.return_value = None
+    # Mock table().delete().eq().execute() chain for _remove_subscriber
+    mock_client.table.return_value.delete.return_value.eq.return_value.execute.return_value = None
+
+    with patch("app.telegram_bot.create_client", return_value=mock_client):
+        yield mock_client
 
 
 @pytest.fixture
