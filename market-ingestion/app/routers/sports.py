@@ -35,9 +35,13 @@ async def get_sports_series_tickers(
 async def get_sports_event_tickers(
     status: str | None = Query(None, description="open, closed, or settled"),
     tags: str | None = Query(None, description="Filter series by tags (e.g. Basketball, Soccer)"),
+    series_tickers: list[str] | None = Query(None, description="Filter by specific series tickers"),
 ):
-    series_data = await list_series(category="Sports", tags=tags)
-    series_list = series_data.get("series", [])
+    if series_tickers:
+        series_list = [{"ticker": t} for t in series_tickers]
+    else:
+        series_data = await list_series(category="Sports", tags=tags)
+        series_list = series_data.get("series", [])
 
     if not series_list:
         return {"event_tickers": []}
@@ -48,12 +52,15 @@ async def get_sports_event_tickers(
             status=status,
             series_ticker=s["ticker"],
         )
+        for e in result.get("events", []):
+            e["series_ticker"] = s["ticker"]
         all_events.extend(result.get("events", []))
         await asyncio.sleep(PAGE_DELAY_SECONDS)
 
     return {
         "event_tickers": [
             {
+                "series_ticker": e["series_ticker"],
                 "event_ticker": e["event_ticker"],
                 "event_description": e.get("title", ""),
             }

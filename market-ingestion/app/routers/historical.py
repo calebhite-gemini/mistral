@@ -7,7 +7,7 @@ import httpx
 router = APIRouter(prefix="/historical", tags=["historical"])
 
 KALSHI_BASE_URL = "https://api.elections.kalshi.com/trade-api/v2"
-PAGE_DELAY_SECONDS = 5
+PAGE_DELAY_SECONDS = 1
 
 
 @router.get("/cutoff")

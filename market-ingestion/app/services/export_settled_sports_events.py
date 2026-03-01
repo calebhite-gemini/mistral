@@ -9,11 +9,16 @@ load_dotenv()
 from app.routers.sports import get_sports_event_tickers  # noqa: E402
 
 
-SPORTS_TAGS = ["Basketball","Football"]
+SERIES_TICKERS = [
+    "KXNBAGAME",
+    "KXNFLGAME",
+    "KXNCAAFGAME",
+    "KXNCAAMBGAME",
+]
 
 
 async def main():
-    data = await get_sports_event_tickers(status="settled", tags=",".join(SPORTS_TAGS))
+    data = await get_sports_event_tickers(status="settled", series_tickers=SERIES_TICKERS)
     timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
     filename = f"settled_sports_events_{timestamp}.json"
 
