@@ -1,18 +1,19 @@
 "use client";
 
-import { useState } from "react";
-
 const sports = ["All Sports", "Football", "Basketball", "Soccer", "UFC"];
 
-export default function SportFilters() {
-  const [active, setActive] = useState("All Sports");
+interface SportFiltersProps {
+  active: string;
+  onSelect: (sport: string) => void;
+}
 
+export default function SportFilters({ active, onSelect }: SportFiltersProps) {
   return (
     <div className="flex items-center gap-2">
       {sports.map((sport) => (
         <button
           key={sport}
-          onClick={() => setActive(sport)}
+          onClick={() => onSelect(sport)}
           className={`px-4 py-[7px] rounded-sm text-xs tracking-[0.3px] uppercase transition-colors border ${
             active === sport
               ? "bg-[#f1f5f9] border-[#f1f5f9] text-[#09090b] font-bold"

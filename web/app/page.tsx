@@ -1,9 +1,20 @@
 import Sidebar from "./components/Sidebar";
 import StatsCards from "./components/StatsCards";
-import SportFilters from "./components/SportFilters";
-import MarketsTable from "./components/MarketsTable";
+import MarketsView from "./MarketsView";
+import { getKalshiSummary } from "@/lib/api/kalshi";
+import type { MarketSummary } from "@/lib/api/kalshi";
 
-export default function Home() {
+async function fetchStats(): Promise<MarketSummary | null> {
+  try {
+    return await getKalshiSummary();
+  } catch {
+    return null;
+  }
+}
+
+export default async function Home() {
+  const stats = await fetchStats();
+
   return (
     <div className="flex h-screen bg-[#09090b] overflow-hidden">
       <Sidebar />
@@ -13,7 +24,7 @@ export default function Home() {
           <div className="flex items-center gap-4">
             <h1 className="text-white text-lg font-bold tracking-[-0.45px] uppercase">Live Markets</h1>
             <span className="bg-[rgba(16,185,129,0.1)] border border-[rgba(16,185,129,0.2)] text-[#10b981] text-[10px] font-mono px-2.5 py-0.5 rounded-sm">
-              CONNECTED
+              {stats ? "CONNECTED" : "OFFLINE"}
             </span>
           </div>
           <div className="flex items-center gap-4">
@@ -38,9 +49,14 @@ export default function Home() {
 
         {/* Content */}
         <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-6">
-          <StatsCards />
-          <SportFilters />
-          <MarketsTable />
+          <StatsCards
+            volume24h={stats?.volume_24h}
+            activeMarkets={stats?.active_markets}
+            openInterest={stats?.open_interest}
+            sentiment={stats?.sentiment}
+            loading={!stats}
+          />
+          <MarketsView />
         </div>
       </main>
     </div>

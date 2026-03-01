@@ -146,7 +146,7 @@ export const colors = {
     "Purdue Boilermakers": { "primary": "#CEB888", "secondary": "#000000" },
     "Houston Cougars": { "primary": "#C8102E", "secondary": "#FFFFFF" },
     "Tennessee Volunteers": { "primary": "#FF8200", "secondary": "#58595B" },
-[10:11 PM]"Alabama Crimson Tide": { "primary": "#9E1B32", "secondary": "#828A8F" },
+    "Alabama Crimson Tide": { "primary": "#9E1B32", "secondary": "#828A8F" },
     "Baylor Bears": { "primary": "#154734", "secondary": "#FFB81C" },
     "Auburn Tigers": { "primary": "#0C2340", "secondary": "#E87722" },
     "Texas Longhorns": { "primary": "#BF5700", "secondary": "#333F48" },

@@ -35,25 +35,29 @@ export interface MarketDetail {
 interface MarketDetailPanelProps {
   market: MarketDetail | null;
   onClose: () => void;
+  isOpen?: boolean;
+  loading?: boolean;
 }
 
-export default function MarketDetailPanel({ market, onClose }: MarketDetailPanelProps) {
+export default function MarketDetailPanel({ market, onClose, isOpen, loading }: MarketDetailPanelProps) {
+  const open = isOpen ?? !!market;
+
   useEffect(() => {
     function handleEsc(e: KeyboardEvent) {
       if (e.key === "Escape") onClose();
     }
-    if (market) {
+    if (open) {
       document.addEventListener("keydown", handleEsc);
       return () => document.removeEventListener("keydown", handleEsc);
     }
-  }, [market, onClose]);
+  }, [open, onClose]);
 
   return (
     <>
       {/* Backdrop */}
       <div
         className={`fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 ${
-          market ? "opacity-100" : "opacity-0 pointer-events-none"
+          open ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
         onClick={onClose}
       />
@@ -61,10 +65,17 @@ export default function MarketDetailPanel({ market, onClose }: MarketDetailPanel
       {/* Panel */}
       <div
         className={`fixed top-0 right-0 h-full w-[380px] bg-[#0c0c0e] border-l border-[#27272a] z-50 flex flex-col transition-transform duration-300 ease-in-out ${
-          market ? "translate-x-0" : "translate-x-full"
+          open ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        {market && (
+        {loading && !market ? (
+          <div className="flex-1 flex items-center justify-center">
+            <div className="flex flex-col items-center gap-3">
+              <div className="w-6 h-6 border-2 border-[#27272a] border-t-white rounded-full animate-spin" />
+              <span className="text-[#64748b] text-xs font-mono">Loading market...</span>
+            </div>
+          </div>
+        ) : market && (
           <>
             {/* Header */}
             <div className="flex items-center justify-between px-5 py-4 border-b border-[#27272a] shrink-0">
