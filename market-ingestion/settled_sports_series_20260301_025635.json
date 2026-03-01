@@ -1,0 +1,4097 @@
+{
+  "series_tickers": [
+    {
+      "series_ticker": "KXNBAGAME",
+      "series_title": "Professional Basketball Game",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 6086861603
+    },
+    {
+      "series_ticker": "KXNFLGAME",
+      "series_title": "Professional Football Game",
+      "tags": [
+        "Football"
+      ],
+      "volume": 5247129252
+    },
+    {
+      "series_ticker": "KXNCAAFGAME",
+      "series_title": "College Football Game",
+      "tags": [
+        "Football"
+      ],
+      "volume": 4020814717
+    },
+    {
+      "series_ticker": "KXNCAAMBGAME",
+      "series_title": "Men's College Basketball Men's Game",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 3798382998
+    },
+    {
+      "series_ticker": "KXNFLSPREAD",
+      "series_title": "Pro Football Spread",
+      "tags": [
+        "Football"
+      ],
+      "volume": 770498839
+    },
+    {
+      "series_ticker": "KXNBASPREAD",
+      "series_title": "Pro Basketball Spread",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 482410605
+    },
+    {
+      "series_ticker": "KXNBATOTAL",
+      "series_title": "Pro Basketball Total Points",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 465211727
+    },
+    {
+      "series_ticker": "KXNCAAMBSPREAD",
+      "series_title": "Men's College Basketball Spread",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 448797871
+    },
+    {
+      "series_ticker": "KXMARMAD",
+      "series_title": "College Basketball Champion",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 447341534
+    },
+    {
+      "series_ticker": "KXNFLTOTAL",
+      "series_title": "Pro Football Total Points",
+      "tags": [
+        "Football"
+      ],
+      "volume": 409848265
+    },
+    {
+      "series_ticker": "KXNCAAMBTOTAL",
+      "series_title": "Men's College Basketball Total Points",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 408246160
+    },
+    {
+      "series_ticker": "KXSB",
+      "series_title": "Super Bowl",
+      "tags": [
+        "Football"
+      ],
+      "volume": 396466174
+    },
+    {
+      "series_ticker": "KXNCAAWBGAME",
+      "series_title": "College Basketball Women's Game",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 369508929
+    },
+    {
+      "series_ticker": "KXNCAAFSPREAD",
+      "series_title": "College Football Spread",
+      "tags": [
+        "Football"
+      ],
+      "volume": 321299859
+    },
+    {
+      "series_ticker": "KXNCAAFTOTAL",
+      "series_title": "College Football Total Points",
+      "tags": [
+        "Football"
+      ],
+      "volume": 194961164
+    },
+    {
+      "series_ticker": "KXNBA",
+      "series_title": "NBA Championship",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 161908047
+    },
+    {
+      "series_ticker": "KXNCAAF",
+      "series_title": "NCAAF Championship",
+      "tags": [
+        "Football"
+      ],
+      "volume": 143205714
+    },
+    {
+      "series_ticker": "KXNFLANYTD",
+      "series_title": "Pro Football Anytime Touchdown",
+      "tags": [
+        "Football"
+      ],
+      "volume": 128895791
+    },
+    {
+      "series_ticker": "KXFIRSTSUPERBOWLSONG",
+      "series_title": "What will be the first Super Bowl Song played during halfitme?",
+      "tags": [
+        "Football",
+        "Music"
+      ],
+      "volume": 113517455
+    },
+    {
+      "series_ticker": "KXNFLNFCCHAMP",
+      "series_title": "National Football Conference Champion",
+      "tags": [
+        "Football"
+      ],
+      "volume": 109647312
+    },
+    {
+      "series_ticker": "KXNBASERIES",
+      "series_title": "Professional Basketball Series",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 109231391
+    },
+    {
+      "series_ticker": "KXWMARMAD",
+      "series_title": "March Tournament (W)",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 92268548
+    },
+    {
+      "series_ticker": "KXWNBAGAME",
+      "series_title": "Professional Women's Basketball Game",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 85927768
+    },
+    {
+      "series_ticker": "KXNFLAFCCHAMP",
+      "series_title": "American Football Conference Champion",
+      "tags": [
+        "Football"
+      ],
+      "volume": 80213499
+    },
+    {
+      "series_ticker": "KXEUROLEAGUEGAME",
+      "series_title": "Euroleague Game",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 74226166
+    },
+    {
+      "series_ticker": "KXSUPERBOWLAD",
+      "series_title": "Super Bowl ads",
+      "tags": [
+        "Football"
+      ],
+      "volume": 72200453
+    },
+    {
+      "series_ticker": "KXNFLSBMVP",
+      "series_title": "Pro Football Championship MVP",
+      "tags": [
+        "Football"
+      ],
+      "volume": 52221340
+    },
+    {
+      "series_ticker": "KXNFLFIRSTTD",
+      "series_title": "Pro Football First Touchdown",
+      "tags": [
+        "Football"
+      ],
+      "volume": 49680302
+    },
+    {
+      "series_ticker": "KXPERFORMSUPERBOWLB",
+      "series_title": "Who will perform at the Super Bowl",
+      "tags": [
+        "Football"
+      ],
+      "volume": 47345230
+    },
+    {
+      "series_ticker": "KXSBGUESTS",
+      "series_title": "Super Bowl guests",
+      "tags": [
+        "Elon Musk",
+        "Football"
+      ],
+      "volume": 40270790
+    },
+    {
+      "series_ticker": "KXNCAAFPREPACKSGP",
+      "series_title": "MVE NCAAF Pre Pack",
+      "tags": [
+        "Football"
+      ],
+      "volume": 37943771
+    },
+    {
+      "series_ticker": "KXCBAGAME",
+      "series_title": "Chinese Basketball Association Game ",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 32561088
+    },
+    {
+      "series_ticker": "KXNFLMVP",
+      "series_title": "AP Pro Football Regular Season MVP",
+      "tags": [
+        "Football"
+      ],
+      "volume": 30447424
+    },
+    {
+      "series_ticker": "KXNFL2TD",
+      "series_title": "Pro Football Multiple Touchdowns",
+      "tags": [
+        "Football"
+      ],
+      "volume": 30423114
+    },
+    {
+      "series_ticker": "KXNBLGAME",
+      "series_title": "NBL Basketball Game",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 29828728
+    },
+    {
+      "series_ticker": "KXNFLRSHYDS",
+      "series_title": "Pro Football player Rushing Yards",
+      "tags": [
+        "Football"
+      ],
+      "volume": 28158677
+    },
+    {
+      "series_ticker": "KXNBAEAST",
+      "series_title": "NBA Eastern Conference Championship",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 27726997
+    },
+    {
+      "series_ticker": "KXNFLRECYDS",
+      "series_title": "Pro Football player Receiving Yards",
+      "tags": [
+        "Football"
+      ],
+      "volume": 27259670
+    },
+    {
+      "series_ticker": "KXHEISMAN",
+      "series_title": "Heisman Trophy Winner",
+      "tags": [
+        "Football"
+      ],
+      "volume": 26727076
+    },
+    {
+      "series_ticker": "KXNBAWEST",
+      "series_title": "NBA Western Conference Championship",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 25577194
+    },
+    {
+      "series_ticker": "KXTEAMSINSB",
+      "series_title": "Teams in Super Bowl",
+      "tags": [
+        "Football"
+      ],
+      "volume": 23957794
+    },
+    {
+      "series_ticker": "KXNEXTTEAMGIANNIS",
+      "series_title": "Giannis next team",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 23634829
+    },
+    {
+      "series_ticker": "KXNBACUP",
+      "series_title": "Pro Basketball Cup Champion",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 23186778
+    },
+    {
+      "series_ticker": "KXNFLPASSYDS",
+      "series_title": "Pro Football player Passing Yards",
+      "tags": [
+        "Football"
+      ],
+      "volume": 20384038
+    },
+    {
+      "series_ticker": "KXNFLPREPACK",
+      "series_title": "MVE NFL Pre Pack",
+      "tags": [
+        "Football"
+      ],
+      "volume": 19001196
+    },
+    {
+      "series_ticker": "KXNBAPTS",
+      "series_title": "Pro Basketball Player Points",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 16963080
+    },
+    {
+      "series_ticker": "KXMICHCOACH",
+      "series_title": "Michigan Next Coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 16851846
+    },
+    {
+      "series_ticker": "KXEUROCUPGAME",
+      "series_title": "Eurocup Basketball Game",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 16334533
+    },
+    {
+      "series_ticker": "KXNBAALLSTARMVP",
+      "series_title": "NBA All-Star Game MVP",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 15002262
+    },
+    {
+      "series_ticker": "KXKBLGAME",
+      "series_title": "Korea KBL Game",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 14403411
+    },
+    {
+      "series_ticker": "KXNBAFINALSMVP",
+      "series_title": "Finals MVP",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 14398739
+    },
+    {
+      "series_ticker": "KXNBAMVP",
+      "series_title": "Pro Basketball MVP",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 13966546
+    },
+    {
+      "series_ticker": "KXNFLCOTY",
+      "series_title": "AP Pro Football Coach Of The Year",
+      "tags": [
+        "Football"
+      ],
+      "volume": 11378604
+    },
+    {
+      "series_ticker": "KXNEXTNFLCOACH",
+      "series_title": "Next Pro Football Coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 9897720
+    },
+    {
+      "series_ticker": "KXNCAAFPLAYOFF",
+      "series_title": "College Football Playoff Qualifiers",
+      "tags": [
+        "Football"
+      ],
+      "volume": 9588866
+    },
+    {
+      "series_ticker": "KXNFLOROTY",
+      "series_title": "AP Pro Football Offensive Rookie of the Year",
+      "tags": [
+        "Football"
+      ],
+      "volume": 9424353
+    },
+    {
+      "series_ticker": "KXNBAALLSTARGAME",
+      "series_title": "NBA All-Star Game Winner",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 9244037
+    },
+    {
+      "series_ticker": "KXNBA3PTCONTEST",
+      "series_title": "NBA 3-Point Contest Winner",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 8093772
+    },
+    {
+      "series_ticker": "KXJBLEAGUEGAME",
+      "series_title": "Japan B League Game",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 8077237
+    },
+    {
+      "series_ticker": "KXNFL1HWINNER",
+      "series_title": "NFL 1st Half Winner",
+      "tags": [
+        "Football"
+      ],
+      "volume": 7122512
+    },
+    {
+      "series_ticker": "KXFIBAGAME",
+      "series_title": "FIBA Game",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 7018913
+    },
+    {
+      "series_ticker": "KXPSUCOACH",
+      "series_title": "Penn State Next Coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 7011728
+    },
+    {
+      "series_ticker": "KXFIBACHAMPLEAGUEGAME",
+      "series_title": "FIBA Champions League Game",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 6500833
+    },
+    {
+      "series_ticker": "KXNFLPASSTDS",
+      "series_title": "Pro Football player Passing Touchdowns",
+      "tags": [
+        "Football"
+      ],
+      "volume": 6231580
+    },
+    {
+      "series_ticker": "KXSBSETLISTS",
+      "series_title": "Super Bowl setlist",
+      "tags": [
+        "Football"
+      ],
+      "volume": 6164831
+    },
+    {
+      "series_ticker": "KXNFLREC",
+      "series_title": "Pro Football Player Receptions",
+      "tags": [
+        "Football"
+      ],
+      "volume": 5972473
+    },
+    {
+      "series_ticker": "KXNCAAFCS",
+      "series_title": "FCS Football Champion",
+      "tags": [
+        "Football"
+      ],
+      "volume": 5859446
+    },
+    {
+      "series_ticker": "KXNBAREB",
+      "series_title": "Pro Basketball Player Rebounds",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 5349066
+    },
+    {
+      "series_ticker": "KXNFLPLAYOFF",
+      "series_title": "Pro Football Playoff Qualifiers",
+      "tags": [
+        "Football"
+      ],
+      "volume": 4852311
+    },
+    {
+      "series_ticker": "KXNBA3PT",
+      "series_title": "Pro Basketball Player Threes",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 4671343
+    },
+    {
+      "series_ticker": "KXNBASLAMDUNK",
+      "series_title": "NBA Slam Dunk Contest Winner",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 4634594
+    },
+    {
+      "series_ticker": "KXNBAWINS",
+      "series_title": "Pro basketball wins",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 4630031
+    },
+    {
+      "series_ticker": "KXBBLGAME",
+      "series_title": "Bundesliga Basketball Game",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 4522629
+    },
+    {
+      "series_ticker": "KXNCAAFCSGAME",
+      "series_title": "College Football FCS Game",
+      "tags": [
+        "Football"
+      ],
+      "volume": 4416939
+    },
+    {
+      "series_ticker": "KXNFLOPOTY",
+      "series_title": "AP Pro Football Offensive Player Of The Year",
+      "tags": [
+        "Football"
+      ],
+      "volume": 4379437
+    },
+    {
+      "series_ticker": "KXLSUCOACH",
+      "series_title": "LSU Next Coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 4130940
+    },
+    {
+      "series_ticker": "KXNBAAST",
+      "series_title": "Pro Basketball Player Assists",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 4096212
+    },
+    {
+      "series_ticker": "KXNFLTEAMTOTAL",
+      "series_title": "Pro Football Team Total Points",
+      "tags": [
+        "Football"
+      ],
+      "volume": 3869306
+    },
+    {
+      "series_ticker": "KXNFLNFCWEST",
+      "series_title": "National Football Conference West Winner",
+      "tags": [
+        "Football"
+      ],
+      "volume": 3748288
+    },
+    {
+      "series_ticker": "KXNFLAFCNORTH",
+      "series_title": "American Football Conference North Winner",
+      "tags": [
+        "Football"
+      ],
+      "volume": 3512535
+    },
+    {
+      "series_ticker": "KXFLACOACH",
+      "series_title": "Florida Next Coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 3329600
+    },
+    {
+      "series_ticker": "KXNCAAF1HWINNER",
+      "series_title": "College Football 1st Half Winner",
+      "tags": [
+        "Football"
+      ],
+      "volume": 3253337
+    },
+    {
+      "series_ticker": "KXNFLNFCNORTH",
+      "series_title": "National Football Conference North Winner",
+      "tags": [
+        "Football"
+      ],
+      "volume": 3007237
+    },
+    {
+      "series_ticker": "KXNBA2D",
+      "series_title": "Pro Basketball Double Double",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 2951119
+    },
+    {
+      "series_ticker": "KXNBAROY",
+      "series_title": "Pro Basketball Rookie of the Year",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 2821092
+    },
+    {
+      "series_ticker": "KXNCAAFB12",
+      "series_title": "Big 12 Champion",
+      "tags": [
+        "Football"
+      ],
+      "volume": 2730309
+    },
+    {
+      "series_ticker": "KXNCAAFACC",
+      "series_title": "ACC Champion",
+      "tags": [
+        "Football"
+      ],
+      "volume": 2589487
+    },
+    {
+      "series_ticker": "KXNFLAFCWEST",
+      "series_title": "American Football Conference West Winner",
+      "tags": [
+        "Football"
+      ],
+      "volume": 2587013
+    },
+    {
+      "series_ticker": "KXNCAAFSEC",
+      "series_title": "SEC Champion",
+      "tags": [
+        "Football"
+      ],
+      "volume": 2585646
+    },
+    {
+      "series_ticker": "KXNBADPOY",
+      "series_title": "Pro Basketball Defensive Player of the Year",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 2374676
+    },
+    {
+      "series_ticker": "KXAFC",
+      "series_title": "AFC Championship",
+      "tags": [
+        "Football"
+      ],
+      "volume": 2363875
+    },
+    {
+      "series_ticker": "KXNBAPLAYOFF",
+      "series_title": "Pro Basketball Playoff Qualifier",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 2331457
+    },
+    {
+      "series_ticker": "KXNYGCOACH",
+      "series_title": "New York G Next Coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 2325629
+    },
+    {
+      "series_ticker": "KXNBATRADE",
+      "series_title": "NBA Trade",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 2295854
+    },
+    {
+      "series_ticker": "KXNFLNFCEAST",
+      "series_title": "National Football Conference East Winner",
+      "tags": [
+        "Football"
+      ],
+      "volume": 2217056
+    },
+    {
+      "series_ticker": "KXFIBAECUPGAME",
+      "series_title": "FIBA Europe Cup Game",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 2114198
+    },
+    {
+      "series_ticker": "KXWNBA",
+      "series_title": "WNBA Championship",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 2104410
+    },
+    {
+      "series_ticker": "KXNBAMIMP",
+      "series_title": "Pro Basketball Most Improved Player",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 2094183
+    },
+    {
+      "series_ticker": "KXNFLDROTY",
+      "series_title": "AP Pro Football Defensive Rookie of the Year",
+      "tags": [
+        "Football"
+      ],
+      "volume": 2090049
+    },
+    {
+      "series_ticker": "KXNFLMOSTRECYDS",
+      "series_title": "Pro Football Most Receiving Yards",
+      "tags": [
+        "Football"
+      ],
+      "volume": 2088280
+    },
+    {
+      "series_ticker": "KXLNBELITEGAME",
+      "series_title": "LNB Elite Game",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 1966592
+    },
+    {
+      "series_ticker": "KXNFL1QWINNER",
+      "series_title": "Pro Football 1st Quarter Winner",
+      "tags": [
+        "Football"
+      ],
+      "volume": 1959428
+    },
+    {
+      "series_ticker": "KXNBAFINALSEXACT",
+      "series_title": "Pro Basketball Championship Series Score",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 1893606
+    },
+    {
+      "series_ticker": "KXNCAAFPREPACK2ML",
+      "series_title": "MVE NCAAF Pre Pack",
+      "tags": [
+        "Football"
+      ],
+      "volume": 1834901
+    },
+    {
+      "series_ticker": "KXNFLAFCSOUTH",
+      "series_title": "American Football Conference South Winner",
+      "tags": [
+        "Football"
+      ],
+      "volume": 1827720
+    },
+    {
+      "series_ticker": "KXNCAAFB10",
+      "series_title": "Big Ten Champion",
+      "tags": [
+        "Football"
+      ],
+      "volume": 1808485
+    },
+    {
+      "series_ticker": "KXNBA3D",
+      "series_title": "Pro Basketball Triple Double",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 1782198
+    },
+    {
+      "series_ticker": "KXNFLOT",
+      "series_title": "Pro Football Overtime",
+      "tags": [
+        "Football"
+      ],
+      "volume": 1746790
+    },
+    {
+      "series_ticker": "KXNBARISINGSTARS",
+      "series_title": "Pro Basketball Rising Stars Tournament",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 1725213
+    },
+    {
+      "series_ticker": "KXNFLSBMVPPOS",
+      "series_title": "Pro Football Championship MVP Position",
+      "tags": [
+        "Football"
+      ],
+      "volume": 1700047
+    },
+    {
+      "series_ticker": "KXNFLCPOTY",
+      "series_title": "AP Pro Football Comeback Player of the Year",
+      "tags": [
+        "Football"
+      ],
+      "volume": 1696810
+    },
+    {
+      "series_ticker": "KXVTBGAME",
+      "series_title": "VTB United League Game",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 1678276
+    },
+    {
+      "series_ticker": "KXNFLNFCSOUTH",
+      "series_title": "National Football Conference South Winner",
+      "tags": [
+        "Football"
+      ],
+      "volume": 1658038
+    },
+    {
+      "series_ticker": "KXNFC",
+      "series_title": "NFC Championship",
+      "tags": [
+        "Football"
+      ],
+      "volume": 1643143
+    },
+    {
+      "series_ticker": "KXHALFTIMESHOW",
+      "series_title": "HOW LONG WILL THE SUPER BOWL HALFTIME SHOW BE",
+      "tags": [
+        "Football"
+      ],
+      "volume": 1495478
+    },
+    {
+      "series_ticker": "KXNFL1HSPREAD",
+      "series_title": "NFL 1st Half Spread",
+      "tags": [
+        "Football"
+      ],
+      "volume": 1410059
+    },
+    {
+      "series_ticker": "KXNCAAFPREPACK4ML",
+      "series_title": "MVE NCAAF Pre Pack",
+      "tags": [
+        "Football"
+      ],
+      "volume": 1386252
+    },
+    {
+      "series_ticker": "KXMANTISFREETHROW",
+      "series_title": "MANTIS FREE THROWS",
+      "tags": [
+        "Football"
+      ],
+      "volume": 1368790
+    },
+    {
+      "series_ticker": "KXNEXTTEAMNBA",
+      "series_title": "Next NBA Team",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 1368371
+    },
+    {
+      "series_ticker": "KXNFLWINMARGIN",
+      "series_title": "Pro Football Win Margin",
+      "tags": [
+        "Football"
+      ],
+      "volume": 1278991
+    },
+    {
+      "series_ticker": "KXNCAAFPREPACK3ML",
+      "series_title": "MVE NCAAF Pre Pack",
+      "tags": [
+        "Football"
+      ],
+      "volume": 1211250
+    },
+    {
+      "series_ticker": "KXNFLFIRSTTDTIME",
+      "series_title": "Pro Football First Touchdown Time",
+      "tags": [
+        "Football"
+      ],
+      "volume": 1204164
+    },
+    {
+      "series_ticker": "KXNFLAFCEAST",
+      "series_title": "American Football Conference East Winner",
+      "tags": [
+        "Football"
+      ],
+      "volume": 1156394
+    },
+    {
+      "series_ticker": "KXMAKEMARMAD",
+      "series_title": "Make March Madness Tournament",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 1152566
+    },
+    {
+      "series_ticker": "KXBIG10REG",
+      "series_title": "Big Ten Regular Season Champions",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 1099193
+    },
+    {
+      "series_ticker": "KXNBASIXTH",
+      "series_title": "Pro Basketball Sixth Man of the Year",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 1046140
+    },
+    {
+      "series_ticker": "KXNFLNEXTTD",
+      "series_title": "Pro Football Next TD scorer",
+      "tags": [
+        "Football"
+      ],
+      "volume": 1020923
+    },
+    {
+      "series_ticker": "KXNCAAFFINALIST",
+      "series_title": "College Football Finalist",
+      "tags": [
+        "Football"
+      ],
+      "volume": 1019009
+    },
+    {
+      "series_ticker": "KXTENNCOACH",
+      "series_title": "Tennessee Pro Football Team Next Coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 995941
+    },
+    {
+      "series_ticker": "KXNFL1HTOTAL",
+      "series_title": "NFL 1st  Half Total Points",
+      "tags": [
+        "Football"
+      ],
+      "volume": 987305
+    },
+    {
+      "series_ticker": "KXNBACELEBRITYGAME",
+      "series_title": "Pro Basketball All-Star Celebrity Game",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 955456
+    },
+    {
+      "series_ticker": "KXCFPSEED",
+      "series_title": "College Football Playoff Seed",
+      "tags": [
+        "Football"
+      ],
+      "volume": 933224
+    },
+    {
+      "series_ticker": "KXBSLGAME",
+      "series_title": "Turkey BSL Game",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 902961
+    },
+    {
+      "series_ticker": "KXNBAALLSTARS",
+      "series_title": "Pro Basketball All Stars",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 893531
+    },
+    {
+      "series_ticker": "KXNFLMOSTRSHYDS",
+      "series_title": "Pro Football Most Rushing Yards",
+      "tags": [
+        "Football"
+      ],
+      "volume": 865163
+    },
+    {
+      "series_ticker": "KXNBA1HWINNER",
+      "series_title": "Pro Baskeball 1st Half Winner",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 861011
+    },
+    {
+      "series_ticker": "KXNFLNONQBPASS",
+      "series_title": "Pro Football Non-QB Passes",
+      "tags": [
+        "Football"
+      ],
+      "volume": 847714
+    },
+    {
+      "series_ticker": "KXBIG12REG",
+      "series_title": "Big 12 Regular Season Champions",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 847396
+    },
+    {
+      "series_ticker": "KXNBA1HSPREAD",
+      "series_title": "Pro Basketball 1st Half Spread",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 845466
+    },
+    {
+      "series_ticker": "KXMARMADROUND",
+      "series_title": "Reach March Madness Round",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 841533
+    },
+    {
+      "series_ticker": "KXNBACOY",
+      "series_title": "Pro Basketball Coach of the Year",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 837793
+    },
+    {
+      "series_ticker": "KXNFLDPOTY",
+      "series_title": "AP Pro Football Defensive Player Of The Year",
+      "tags": [
+        "Football"
+      ],
+      "volume": 836675
+    },
+    {
+      "series_ticker": "KXNFL1QTOTAL",
+      "series_title": "Pro Football 1st Quarter Total",
+      "tags": [
+        "Football"
+      ],
+      "volume": 829289
+    },
+    {
+      "series_ticker": "KXNBACELEBRITY3PT",
+      "series_title": "NBA Celebrity 3PT Contest",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 773025
+    },
+    {
+      "series_ticker": "KXNFLDSTTD",
+      "series_title": "Pro Football D/ST Touchdown",
+      "tags": [
+        "Football"
+      ],
+      "volume": 754104
+    },
+    {
+      "series_ticker": "KXABAGAME",
+      "series_title": "ABA League Game",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 743102
+    },
+    {
+      "series_ticker": "KXARKCOACH",
+      "series_title": "Arkansas Next Coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 695782
+    },
+    {
+      "series_ticker": "KXNFLDRAFT1",
+      "series_title": "NFL Draft First Pick",
+      "tags": [
+        "Football"
+      ],
+      "volume": 695099
+    },
+    {
+      "series_ticker": "KXACBGAME",
+      "series_title": "Liga ACB Basketball Game",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 682792
+    },
+    {
+      "series_ticker": "KXSECREG",
+      "series_title": "SEC Regular Season Champions",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 661700
+    },
+    {
+      "series_ticker": "KXCOACHOUTOLEMISS",
+      "series_title": "Coach Out Ole Miss",
+      "tags": [
+        "Football"
+      ],
+      "volume": 647207
+    },
+    {
+      "series_ticker": "KXNFLLEADCHANGE",
+      "series_title": "Pro Football Lead Changes",
+      "tags": [
+        "Football"
+      ],
+      "volume": 614315
+    },
+    {
+      "series_ticker": "KXNCAAMB1HSPREAD",
+      "series_title": "Men's College Basketball 1H Spread",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 602071
+    },
+    {
+      "series_ticker": "KXPHILIPRIVERSNFL",
+      "series_title": "Philips Rivers Play This Year",
+      "tags": [
+        "Football"
+      ],
+      "volume": 579024
+    },
+    {
+      "series_ticker": "KXNBA1HTOTAL",
+      "series_title": "NBA 1st Half Total Points",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 564805
+    },
+    {
+      "series_ticker": "KXNFLWINS-DAL",
+      "series_title": "Pro football wins Dallas",
+      "tags": [
+        "Football"
+      ],
+      "volume": 555798
+    },
+    {
+      "series_ticker": "KXNCAAMB1HWINNER",
+      "series_title": "College Basketball 1H Winner",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 548069
+    },
+    {
+      "series_ticker": "KXNFL2HWINNER",
+      "series_title": "NFL 2nd Half Winner",
+      "tags": [
+        "Football"
+      ],
+      "volume": 539808
+    },
+    {
+      "series_ticker": "KXNFCAFCSB",
+      "series_title": "AFC NFC SB",
+      "tags": [
+        "Football"
+      ],
+      "volume": 533541
+    },
+    {
+      "series_ticker": "KXARGLNBGAME",
+      "series_title": "Liga Nacional de Basquetbol Game",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 525431
+    },
+    {
+      "series_ticker": "KXNBASHOOTINGSTARS",
+      "series_title": "Pro Basketball Shooting Stars Contest",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 522546
+    },
+    {
+      "series_ticker": "KXNFL2PTCONV",
+      "series_title": "Pro Football 2-Point Conversions",
+      "tags": [
+        "Football"
+      ],
+      "volume": 518138
+    },
+    {
+      "series_ticker": "KXNFLLARGELEAD",
+      "series_title": "Pro Football Largest Lead",
+      "tags": [
+        "Football"
+      ],
+      "volume": 485938
+    },
+    {
+      "series_ticker": "KXNCAAMBIGTEN",
+      "series_title": "big ten MEN'S BASKETBALL TOURNAMENT",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 484785
+    },
+    {
+      "series_ticker": "KXNFLDRAFT1ST",
+      "series_title": "Make the 1st pick in NFL Draft",
+      "tags": [
+        "Football"
+      ],
+      "volume": 475010
+    },
+    {
+      "series_ticker": "KXNBADRAFT1",
+      "series_title": "NBA Draft First Pick",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 462818
+    },
+    {
+      "series_ticker": "KXNFLCOMEBACK",
+      "series_title": "Pro Football Comeback",
+      "tags": [
+        "Football"
+      ],
+      "volume": 447935
+    },
+    {
+      "series_ticker": "KXBBSERIEAGAME",
+      "series_title": "Italy Serie A Basketball Game",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 436651
+    },
+    {
+      "series_ticker": "KXNCAAMB1HTOTAL",
+      "series_title": "College Basketball 1H Total",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 431837
+    },
+    {
+      "series_ticker": "KXNFLNOSCOREQ",
+      "series_title": "Pro Football Scoreless Quarter",
+      "tags": [
+        "Football"
+      ],
+      "volume": 424456
+    },
+    {
+      "series_ticker": "KXVTCOACH",
+      "series_title": "Virginia Tech Next Coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 422675
+    },
+    {
+      "series_ticker": "KXNFL1QSPREAD",
+      "series_title": "Pro Football 1st Quarter Spread",
+      "tags": [
+        "Football"
+      ],
+      "volume": 418254
+    },
+    {
+      "series_ticker": "KXACCREG",
+      "series_title": "ACC Regular Season Champions",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 413321
+    },
+    {
+      "series_ticker": "KXNFLWINS-CHI",
+      "series_title": "Pro football wins Chicago",
+      "tags": [
+        "Football"
+      ],
+      "volume": 412846
+    },
+    {
+      "series_ticker": "KXNFLDRAFTPICK",
+      "series_title": "NFL Draft Pick",
+      "tags": [
+        "Football"
+      ],
+      "volume": 412568
+    },
+    {
+      "series_ticker": "KXNCAABBIGTEN",
+      "series_title": "Big Ten Men's Basketball Tournament",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 412396
+    },
+    {
+      "series_ticker": "KXNEXTTEAMNFL",
+      "series_title": "Pro Football Player Next Team",
+      "tags": [
+        "Football"
+      ],
+      "volume": 408428
+    },
+    {
+      "series_ticker": "KXNBAALLSTAR",
+      "series_title": "NBA All-Star game",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 404695
+    },
+    {
+      "series_ticker": "KXNFLWINS-BAL",
+      "series_title": "Pro football wins Baltimore",
+      "tags": [
+        "Football"
+      ],
+      "volume": 399248
+    },
+    {
+      "series_ticker": "KXNFLFANTASYMOST",
+      "series_title": "Pro Football Most Fantasy Points",
+      "tags": [
+        "Football"
+      ],
+      "volume": 397732
+    },
+    {
+      "series_ticker": "KXNCAAMSEC",
+      "series_title": "SEC MEN'S BASKETBALL TOURNAMENT",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 392673
+    },
+    {
+      "series_ticker": "KXNFL4QWINNER",
+      "series_title": "Pro Football 4th Quarter Winner",
+      "tags": [
+        "Football"
+      ],
+      "volume": 379027
+    },
+    {
+      "series_ticker": "KXNFLGAMETD",
+      "series_title": "Pro Football Touchdowns",
+      "tags": [
+        "Football"
+      ],
+      "volume": 378945
+    },
+    {
+      "series_ticker": "KXNBASTL",
+      "series_title": "Pro Basketball Player Steals",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 368094
+    },
+    {
+      "series_ticker": "KXNFL4DCONV",
+      "series_title": "Pro Football 4th Down Conversions",
+      "tags": [
+        "Football"
+      ],
+      "volume": 356268
+    },
+    {
+      "series_ticker": "KXNFLHIGHSCOREQ",
+      "series_title": "Pro Football Highest Scoring Quarter",
+      "tags": [
+        "Football"
+      ],
+      "volume": 348538
+    },
+    {
+      "series_ticker": "KXNFLWINS-NYG",
+      "series_title": "Pro football wins New York G",
+      "tags": [
+        "Football"
+      ],
+      "volume": 347440
+    },
+    {
+      "series_ticker": "KXNFL3QWINNER",
+      "series_title": "Pro Football 3rd Quarter Winner",
+      "tags": [
+        "Football"
+      ],
+      "volume": 346631
+    },
+    {
+      "series_ticker": "KXNFLWINS-IND",
+      "series_title": "Pro football wins Indianapolis",
+      "tags": [
+        "Football"
+      ],
+      "volume": 344327
+    },
+    {
+      "series_ticker": "KXNFLWINS-SEA",
+      "series_title": "Pro football wins Seattle",
+      "tags": [
+        "Football"
+      ],
+      "volume": 343399
+    },
+    {
+      "series_ticker": "KXNFLWINS-SF",
+      "series_title": "Pro football wins San Francisco",
+      "tags": [
+        "Football"
+      ],
+      "volume": 336520
+    },
+    {
+      "series_ticker": "KXQUADRUPLEDOUBLE",
+      "series_title": "Quadruple Double",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 332510
+    },
+    {
+      "series_ticker": "KXNCAAMACC",
+      "series_title": "ACC MEN'S BASKETBALL TOURNAMENT",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 332474
+    },
+    {
+      "series_ticker": "KXNFLWINS-MIA",
+      "series_title": "Pro football wins Miami",
+      "tags": [
+        "Football"
+      ],
+      "volume": 331671
+    },
+    {
+      "series_ticker": "KXNFLTRADE",
+      "series_title": "NFL Trade",
+      "tags": [
+        "Football"
+      ],
+      "volume": 326436
+    },
+    {
+      "series_ticker": "KXNCAAMBNAISMITH",
+      "series_title": "Men's College Basketball Naismith",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 319116
+    },
+    {
+      "series_ticker": "KXNFLWINS-CIN",
+      "series_title": "Pro football wins Cincinnati",
+      "tags": [
+        "Football"
+      ],
+      "volume": 314057
+    },
+    {
+      "series_ticker": "KXNBATEAMTOTAL",
+      "series_title": "NBA Team Total",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 306457
+    },
+    {
+      "series_ticker": "KXNFLWINS-NE",
+      "series_title": "Pro football wins New England",
+      "tags": [
+        "Football"
+      ],
+      "volume": 304819
+    },
+    {
+      "series_ticker": "KXLBJRETIRE",
+      "series_title": "LBJ retire",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 304036
+    },
+    {
+      "series_ticker": "KXNFLWINS-KC",
+      "series_title": "Pro football wins Kansas City",
+      "tags": [
+        "Football"
+      ],
+      "volume": 300959
+    },
+    {
+      "series_ticker": "KXNFLWINS-PIT",
+      "series_title": "Pro football wins Pittsburgh",
+      "tags": [
+        "Football"
+      ],
+      "volume": 297094
+    },
+    {
+      "series_ticker": "KXNCAABSEC",
+      "series_title": "SEC Men's Basketball Tournament",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 296418
+    },
+    {
+      "series_ticker": "KXCOACHOUTNFL",
+      "series_title": "NFL Coach Out",
+      "tags": [
+        "Football"
+      ],
+      "volume": 295171
+    },
+    {
+      "series_ticker": "KXAUBCOACH",
+      "series_title": "Auburn Next Coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 286400
+    },
+    {
+      "series_ticker": "KXLEADERNFLPYDS",
+      "series_title": "NFL leader passing yards",
+      "tags": [
+        "Football"
+      ],
+      "volume": 282583
+    },
+    {
+      "series_ticker": "KXNFLWINS-CLE",
+      "series_title": "Pro football wins Cleveland",
+      "tags": [
+        "Football"
+      ],
+      "volume": 271593
+    },
+    {
+      "series_ticker": "KXNEWCOACHNO",
+      "series_title": "New Orleans Saints new coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 266078
+    },
+    {
+      "series_ticker": "KXNFL1YDPASS",
+      "series_title": "Seattle 1 Yard Pass",
+      "tags": [
+        "Football"
+      ],
+      "volume": 264113
+    },
+    {
+      "series_ticker": "KXNFLWINS-DET",
+      "series_title": "Pro football wins Detroit",
+      "tags": [
+        "Football"
+      ],
+      "volume": 260852
+    },
+    {
+      "series_ticker": "KXNFLGAMESACK",
+      "series_title": "Pro Football Sacks",
+      "tags": [
+        "Football"
+      ],
+      "volume": 256176
+    },
+    {
+      "series_ticker": "KXNBABLK",
+      "series_title": "Pro Basketball Player Blocks",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 244535
+    },
+    {
+      "series_ticker": "KXNFLWINS-WAS",
+      "series_title": "Pro football wins Washington",
+      "tags": [
+        "Football"
+      ],
+      "volume": 243842
+    },
+    {
+      "series_ticker": "KXUNRIVALEDGAME",
+      "series_title": "Unrivaled Basketball Game",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 242300
+    },
+    {
+      "series_ticker": "KXGBLGAME",
+      "series_title": "GBL Basketball Game",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 239774
+    },
+    {
+      "series_ticker": "KXNFLWINS-CAR",
+      "series_title": "Pro football wins Carolina",
+      "tags": [
+        "Football"
+      ],
+      "volume": 236342
+    },
+    {
+      "series_ticker": "KXNFLWINS-HOU",
+      "series_title": "Pro football wins Houston",
+      "tags": [
+        "Football"
+      ],
+      "volume": 236230
+    },
+    {
+      "series_ticker": "KXNFLWINS-NO",
+      "series_title": "Pro football wins New Orleans",
+      "tags": [
+        "Football"
+      ],
+      "volume": 235226
+    },
+    {
+      "series_ticker": "KXNFLWINS-GB",
+      "series_title": "Pro football wins Green Bay",
+      "tags": [
+        "Football"
+      ],
+      "volume": 235034
+    },
+    {
+      "series_ticker": "KXNEWCOACHCHIBEARS",
+      "series_title": "Chicago Bears new coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 232630
+    },
+    {
+      "series_ticker": "KXNCAAMBUNDEFEATED",
+      "series_title": "Undefeated in College Basketball Regular Season",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 228479
+    },
+    {
+      "series_ticker": "KXNFLWINS-PHI",
+      "series_title": "Pro football wins Philadelphia",
+      "tags": [
+        "Football"
+      ],
+      "volume": 228298
+    },
+    {
+      "series_ticker": "KXNFLWINS-NYJ",
+      "series_title": "Pro football wins New York J",
+      "tags": [
+        "Football"
+      ],
+      "volume": 227678
+    },
+    {
+      "series_ticker": "KXNFLWINS-MIN",
+      "series_title": "Pro football wins Minnesota",
+      "tags": [
+        "Football"
+      ],
+      "volume": 224177
+    },
+    {
+      "series_ticker": "KXNEWCOACHDAL",
+      "series_title": "Dallas Cowboys new coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 223289
+    },
+    {
+      "series_ticker": "KXBIGEASTREG",
+      "series_title": "Big East Regular Season Champions",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 221685
+    },
+    {
+      "series_ticker": "KXNFLWINS-BUF",
+      "series_title": "Pro football wins Buffalo",
+      "tags": [
+        "Football"
+      ],
+      "volume": 219959
+    },
+    {
+      "series_ticker": "KXNFLWINS-TEN",
+      "series_title": "Pro football wins Tennessee",
+      "tags": [
+        "Football"
+      ],
+      "volume": 217969
+    },
+    {
+      "series_ticker": "KXNCAAFUNDEFEATED",
+      "series_title": "Undefeated in College Football Regular Season",
+      "tags": [
+        "Football"
+      ],
+      "volume": 214676
+    },
+    {
+      "series_ticker": "KXNFLWINS-ATL",
+      "series_title": "Pro football wins Atlanta",
+      "tags": [
+        "Football"
+      ],
+      "volume": 213977
+    },
+    {
+      "series_ticker": "KXNCAAMBIG12",
+      "series_title": "Big 12 MEN'S BASKETBALL TOURNAMENT",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 205991
+    },
+    {
+      "series_ticker": "KXUCLACOACH",
+      "series_title": "UCLA Next Coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 205446
+    },
+    {
+      "series_ticker": "KXNFLWINS-TB",
+      "series_title": "Pro football wins Tampa Bay",
+      "tags": [
+        "Football"
+      ],
+      "volume": 196927
+    },
+    {
+      "series_ticker": "KXRECORDNBABEST",
+      "series_title": "Best Pro Basketball Record",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 196231
+    },
+    {
+      "series_ticker": "KXNCAABACC",
+      "series_title": "ACC Men's Basketball Tournament",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 195642
+    },
+    {
+      "series_ticker": "KXNEXTTEAMMICAH",
+      "series_title": "Micah Parsons next team",
+      "tags": [
+        "Football"
+      ],
+      "volume": 191044
+    },
+    {
+      "series_ticker": "KXTRADEOFFNBA",
+      "series_title": "Pro basketball trades offseason",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 190383
+    },
+    {
+      "series_ticker": "KXLEADERNFLRYDS",
+      "series_title": "NFL leader receiving yards",
+      "tags": [
+        "Football"
+      ],
+      "volume": 186050
+    },
+    {
+      "series_ticker": "KXTATUMRETURN",
+      "series_title": "When Will Jayson Tatum Play His Next Game",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 185128
+    },
+    {
+      "series_ticker": "KXNFLWINS-JAC",
+      "series_title": "Pro football wins Jacksonville",
+      "tags": [
+        "Football"
+      ],
+      "volume": 181354
+    },
+    {
+      "series_ticker": "KXNFL4QSPREAD",
+      "series_title": "Pro Football 4th Quarter Spread",
+      "tags": [
+        "Football"
+      ],
+      "volume": 180564
+    },
+    {
+      "series_ticker": "KXNBADRAFTTOP5",
+      "series_title": "NBA Draft Top 5 Pick",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 180177
+    },
+    {
+      "series_ticker": "KXNCAABBIG12",
+      "series_title": "Big 12 Men's Basketball Tournament",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 171753
+    },
+    {
+      "series_ticker": "KXNFLWINS-LV",
+      "series_title": "Pro football wins Las Vegas",
+      "tags": [
+        "Football"
+      ],
+      "volume": 166941
+    },
+    {
+      "series_ticker": "KXNFLWINS-LAC",
+      "series_title": "Pro football wins Los Angeles C",
+      "tags": [
+        "Football"
+      ],
+      "volume": 161403
+    },
+    {
+      "series_ticker": "KXNBACLUTCH",
+      "series_title": "Pro Basketball Clutch Player of the Year",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 150939
+    },
+    {
+      "series_ticker": "KXNFL2QWINNER",
+      "series_title": "Pro Football 2nd Quarter Winner",
+      "tags": [
+        "Football"
+      ],
+      "volume": 149713
+    },
+    {
+      "series_ticker": "KXNFL2HTOTAL",
+      "series_title": "Pro Football 2nd Half Total",
+      "tags": [
+        "Football"
+      ],
+      "volume": 147601
+    },
+    {
+      "series_ticker": "KXNCAAFD3",
+      "series_title": "D3 College Football Champion",
+      "tags": [
+        "Football"
+      ],
+      "volume": 147522
+    },
+    {
+      "series_ticker": "KXNCAABBIGEAST",
+      "series_title": "Big East Men's Basketball Tournament",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 145938
+    },
+    {
+      "series_ticker": "KXNFLWINS-DEN",
+      "series_title": "Pro football wins Denver",
+      "tags": [
+        "Football"
+      ],
+      "volume": 144022
+    },
+    {
+      "series_ticker": "KXFOOTBALL1001",
+      "series_title": "Football rankings",
+      "tags": [
+        "Football"
+      ],
+      "volume": 143983
+    },
+    {
+      "series_ticker": "KXNBA2HWINNER",
+      "series_title": "Pro Basketball 2nd Half Winner",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 142339
+    },
+    {
+      "series_ticker": "KXNEXTTEAMTYREEK",
+      "series_title": "Tyreek Hill next team",
+      "tags": [
+        "Football"
+      ],
+      "volume": 140766
+    },
+    {
+      "series_ticker": "KXWNBAMVP",
+      "series_title": "Pro Women's Basketball MVP",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 134843
+    },
+    {
+      "series_ticker": "KXMWREG",
+      "series_title": "Mountain West Regular Season Champions",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 134127
+    },
+    {
+      "series_ticker": "KXNBAPACIFIC",
+      "series_title": "NBA Pacific Division Winner",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 130908
+    },
+    {
+      "series_ticker": "KXLEADERNBA3PT",
+      "series_title": "NBA 3PM Leader",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 130381
+    },
+    {
+      "series_ticker": "KXNFLWINS-ARI",
+      "series_title": "Pro football wins Arizona",
+      "tags": [
+        "Football"
+      ],
+      "volume": 130190
+    },
+    {
+      "series_ticker": "KXNFL3QSPREAD",
+      "series_title": "Pro Football 3rd Quarter Spread",
+      "tags": [
+        "Football"
+      ],
+      "volume": 128288
+    },
+    {
+      "series_ticker": "KXMARMAD1SEED",
+      "series_title": "March Madness 1 Seeds",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 124349
+    },
+    {
+      "series_ticker": "KXLEADERNBAREB",
+      "series_title": "NBA RPG Leader",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 122556
+    },
+    {
+      "series_ticker": "KXNEWCOACHNYJ",
+      "series_title": "New York Jets new coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 122047
+    },
+    {
+      "series_ticker": "KXTULNCOACH",
+      "series_title": "Tulane Next Coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 117013
+    },
+    {
+      "series_ticker": "KXNFL3QTOTAL",
+      "series_title": "Pro Football 3rd Quarter Total",
+      "tags": [
+        "Football"
+      ],
+      "volume": 116668
+    },
+    {
+      "series_ticker": "KXWNBASERIES",
+      "series_title": "Professional Women's Basketball Series",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 116343
+    },
+    {
+      "series_ticker": "KXNBAFINMVP",
+      "series_title": "Pro Basketball Finals MVP",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 113154
+    },
+    {
+      "series_ticker": "KXNEWCOACHLV",
+      "series_title": "Las Vegas Raiders New Coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 112247
+    },
+    {
+      "series_ticker": "KXNEWCOACHJAX",
+      "series_title": "JACKSONVILLE JAGUARS new coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 110018
+    },
+    {
+      "series_ticker": "KXNFLWINS-LA",
+      "series_title": "Pro football wins Los Angeles R",
+      "tags": [
+        "Football"
+      ],
+      "volume": 106564
+    },
+    {
+      "series_ticker": "KXTUSHPUSH",
+      "series_title": "Tush Push ban",
+      "tags": [
+        "Football"
+      ],
+      "volume": 104315
+    },
+    {
+      "series_ticker": "KXCOACHOUTNCAAFB",
+      "series_title": "NCAAFB Coaches Out",
+      "tags": [
+        "Football"
+      ],
+      "volume": 103318
+    },
+    {
+      "series_ticker": "KXLEADERNFLRTDS",
+      "series_title": "NFL leader receiving TDs",
+      "tags": [
+        "Football"
+      ],
+      "volume": 101934
+    },
+    {
+      "series_ticker": "KXHEISMANFINALIST",
+      "series_title": "Defensive Heisman Finalist",
+      "tags": [
+        "Football"
+      ],
+      "volume": 100717
+    },
+    {
+      "series_ticker": "KXNFL2HSPREAD",
+      "series_title": "Pro Football 2nd Half Spread",
+      "tags": [
+        "Football"
+      ],
+      "volume": 100123
+    },
+    {
+      "series_ticker": "KXNBADRAFT3",
+      "series_title": "NBA Draft Third Pick",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 97827
+    },
+    {
+      "series_ticker": "KXNCAAMIVYLEAGUE",
+      "series_title": "Ivy League MEN'S BASKETBALL TOURNAMENT",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 96706
+    },
+    {
+      "series_ticker": "KXRANKLISTFFWR",
+      "series_title": "TOP FANTASY FOOTBALL WR",
+      "tags": [
+        "Football"
+      ],
+      "volume": 95574
+    },
+    {
+      "series_ticker": "KXLEADERNBASTL",
+      "series_title": "NBA SPG Leader",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 95329
+    },
+    {
+      "series_ticker": "KXNBACUPMVP",
+      "series_title": "Pro Basketball Cup Tournament MVP",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 95278
+    },
+    {
+      "series_ticker": "KXAACREG",
+      "series_title": "AAC Regular Season Champions",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 94846
+    },
+    {
+      "series_ticker": "KXWCCREG",
+      "series_title": "West Coast Conference Regular Season Champions",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 93231
+    },
+    {
+      "series_ticker": "KXNFLHALLOFFAME",
+      "series_title": "NFL Hall of Fame",
+      "tags": [
+        "Football"
+      ],
+      "volume": 91072
+    },
+    {
+      "series_ticker": "KXNCAAMBIGEAST",
+      "series_title": "Big East Men's basketball tournament",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 90731
+    },
+    {
+      "series_ticker": "KXNBAWINRECORD",
+      "series_title": "OKC NBA Win Record",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 90123
+    },
+    {
+      "series_ticker": "KXNBAWFINMVP",
+      "series_title": "Pro Basketball Western Conference Finals MVP",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 88274
+    },
+    {
+      "series_ticker": "KXRANKLISTFFQB",
+      "series_title": "TOP FANTASY FOOTBALL QB",
+      "tags": [
+        "Football"
+      ],
+      "volume": 82505
+    },
+    {
+      "series_ticker": "KXRELOCATIONCHI",
+      "series_title": "Chicago Football Relocation",
+      "tags": [
+        "Football"
+      ],
+      "volume": 82503
+    },
+    {
+      "series_ticker": "KXNBASOUTHEAST",
+      "series_title": "NBA Southeast Division Winner",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 81112
+    },
+    {
+      "series_ticker": "KXSTARTCLEBROWNS",
+      "series_title": "Cleveland Browns starter",
+      "tags": [
+        "Football"
+      ],
+      "volume": 75940
+    },
+    {
+      "series_ticker": "KXLEADERNFLRUSHTDS",
+      "series_title": "NFL leader rushing TDs",
+      "tags": [
+        "Football"
+      ],
+      "volume": 72964
+    },
+    {
+      "series_ticker": "KXLEADERNBAAST",
+      "series_title": "NBA APG Leader",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 70719
+    },
+    {
+      "series_ticker": "KXWINSTREAKOKC",
+      "series_title": "OKC Win Streak",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 70571
+    },
+    {
+      "series_ticker": "KXNBAEFINMVP",
+      "series_title": "Pro Basketball Eastern Conference Finals MVP",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 70223
+    },
+    {
+      "series_ticker": "KXNBAATLANTIC",
+      "series_title": "NBA Atlantic Division Winner",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 67114
+    },
+    {
+      "series_ticker": "KXNFL4QTOTAL",
+      "series_title": "Pro Football 4th Quarter Total",
+      "tags": [
+        "Football"
+      ],
+      "volume": 66752
+    },
+    {
+      "series_ticker": "KXNFLSACKRECORD",
+      "series_title": "NFL Regular Season Sack Record",
+      "tags": [
+        "Football"
+      ],
+      "volume": 65745
+    },
+    {
+      "series_ticker": "KXKELCERETIRE",
+      "series_title": "Travis Kelce Retire",
+      "tags": [
+        "Football"
+      ],
+      "volume": 65687
+    },
+    {
+      "series_ticker": "KXPERFORMANCEORDERDR",
+      "series_title": "WHAT SONG WILL DIANA ROSS SING  FIRST ON NYE",
+      "tags": [
+        "Football",
+        "Music"
+      ],
+      "volume": 64875
+    },
+    {
+      "series_ticker": "KXARODGRETIRE",
+      "series_title": "Aaron Rodgers Retire",
+      "tags": [
+        "Football"
+      ],
+      "volume": 64067
+    },
+    {
+      "series_ticker": "KXLEADERNBAPTS",
+      "series_title": "NBA PPG Leader",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 63875
+    },
+    {
+      "series_ticker": "KXNBAWEST1SEED",
+      "series_title": "NBA Western Conference 1 Seed",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 61450
+    },
+    {
+      "series_ticker": "KXOKSTCOACH",
+      "series_title": "Oklahoma State Next Coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 60940
+    },
+    {
+      "series_ticker": "KXCCARCOACH",
+      "series_title": "Coastal Carolina Next Coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 60615
+    },
+    {
+      "series_ticker": "KXSTANCOACH",
+      "series_title": "Stanford Next Coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 59422
+    },
+    {
+      "series_ticker": "KXEVENTTIMES",
+      "series_title": "NFL games times",
+      "tags": [
+        "Football"
+      ],
+      "volume": 56457
+    },
+    {
+      "series_ticker": "KXNBADRAFTTOP10",
+      "series_title": "NBA Draft Top 10 Pick",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 55405
+    },
+    {
+      "series_ticker": "KXA10REG",
+      "series_title": "A10 Regular Season Champions",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 54766
+    },
+    {
+      "series_ticker": "KXNBAEAST1SEED",
+      "series_title": "NBA Eastern Conference 1 Seed",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 53982
+    },
+    {
+      "series_ticker": "KXNBADRAFT5",
+      "series_title": "NBA Draft Fifth Pick",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 53787
+    },
+    {
+      "series_ticker": "KXLEADERNBABLK",
+      "series_title": "NBA BPG Leader",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 53217
+    },
+    {
+      "series_ticker": "KXRANKLISTFFRB",
+      "series_title": "TOP FANTASY FOOTBALL RB",
+      "tags": [
+        "Football"
+      ],
+      "volume": 53135
+    },
+    {
+      "series_ticker": "KXLEADERNFLRUSHYDS",
+      "series_title": "NFL leader rushing yards",
+      "tags": [
+        "Football"
+      ],
+      "volume": 52024
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSSEA",
+      "series_title": "Pro football exact wins Seattle",
+      "tags": [
+        "Football"
+      ],
+      "volume": 51577
+    },
+    {
+      "series_ticker": "KXNFL2QSPREAD",
+      "series_title": "Pro Football 2nd Quarter Spread",
+      "tags": [
+        "Football"
+      ],
+      "volume": 51052
+    },
+    {
+      "series_ticker": "KXMEMCOACH",
+      "series_title": "Memphis Next Coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 50870
+    },
+    {
+      "series_ticker": "KXNBADRAFT6",
+      "series_title": "NBA Draft Sixth Pick",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 49240
+    },
+    {
+      "series_ticker": "KXNFLCOMBINE40",
+      "series_title": "Pro Football Combine Fastest 40 Time",
+      "tags": [
+        "Football"
+      ],
+      "volume": 46638
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSBAL",
+      "series_title": "Pro football exact wins Baltimore",
+      "tags": [
+        "Football"
+      ],
+      "volume": 45191
+    },
+    {
+      "series_ticker": "KXNBADRAFT4",
+      "series_title": "NBA Draft Fourth Pick",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 43710
+    },
+    {
+      "series_ticker": "KXRANKLISTFFTE",
+      "series_title": "TOP FANTASY FOOTBALL TE",
+      "tags": [
+        "Football"
+      ],
+      "volume": 43697
+    },
+    {
+      "series_ticker": "KXNEXTTEAMLEBRON",
+      "series_title": "Lebron's Next Team",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 43590
+    },
+    {
+      "series_ticker": "KXNBADRAFTTOP",
+      "series_title": "Pro Basketball Top Draft",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 43195
+    },
+    {
+      "series_ticker": "KXCONNCOACH",
+      "series_title": "UConn Next Coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 42474
+    },
+    {
+      "series_ticker": "KXNFLDRAFTTOP",
+      "series_title": "Pro Football Top Draft",
+      "tags": [
+        "Football"
+      ],
+      "volume": 40371
+    },
+    {
+      "series_ticker": "KXNBADRAFTTOP20",
+      "series_title": "NBA Draft Top 20 Pick",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 39922
+    },
+    {
+      "series_ticker": "KXNFL2QTOTAL",
+      "series_title": "Pro Football 2nd Quarter Total",
+      "tags": [
+        "Football"
+      ],
+      "volume": 38047
+    },
+    {
+      "series_ticker": "KXSTARTNOSAINTS",
+      "series_title": "NEW ORLEANS WEEK 1 QB",
+      "tags": [
+        "Football"
+      ],
+      "volume": 37448
+    },
+    {
+      "series_ticker": "KXKNUEPPEL3PTREC",
+      "series_title": "Kon Knueppel Rookie 3pt Record",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 36389
+    },
+    {
+      "series_ticker": "KXNEWCOACHNE",
+      "series_title": "New England Patriots new coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 36021
+    },
+    {
+      "series_ticker": "KXSTARTIND",
+      "series_title": "iNDIANAPOLIS WEEK 1 QB",
+      "tags": [
+        "Football"
+      ],
+      "volume": 34786
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSPIT",
+      "series_title": "Pro football exact wins Pittsburgh",
+      "tags": [
+        "Football"
+      ],
+      "volume": 34440
+    },
+    {
+      "series_ticker": "KXNFLCOMBO",
+      "series_title": "NFL COMBO",
+      "tags": [
+        "Football"
+      ],
+      "volume": 32980
+    },
+    {
+      "series_ticker": "KXRANKLISTKAITO",
+      "series_title": "Which exchange will have the highest mindshare this week?",
+      "tags": [
+        "Football"
+      ],
+      "volume": 32485
+    },
+    {
+      "series_ticker": "KXUABCOACH",
+      "series_title": "UAB Next Coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 32371
+    },
+    {
+      "series_ticker": "KXNBADRAFT2",
+      "series_title": "NBA Draft Second Pick",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 32267
+    },
+    {
+      "series_ticker": "KXSTARTCIN",
+      "series_title": "Joe Burrow Week 12",
+      "tags": [
+        "Football"
+      ],
+      "volume": 32252
+    },
+    {
+      "series_ticker": "KXNBADRAFTTOP15",
+      "series_title": "NBA Draft Top 15 Pick",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 31083
+    },
+    {
+      "series_ticker": "KXUFLCHAMP",
+      "series_title": "UFL Champion",
+      "tags": [
+        "Football"
+      ],
+      "volume": 30212
+    },
+    {
+      "series_ticker": "KXRANKLISTAPPREALSPORTS",
+      "series_title": "Will 'Real Sports' be a top 10 sports app before Nov 15th, 2025?",
+      "tags": [
+        "Football"
+      ],
+      "volume": 29240
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSLA",
+      "series_title": "Pro football exact wins Los Angeles R",
+      "tags": [
+        "Football"
+      ],
+      "volume": 28956
+    },
+    {
+      "series_ticker": "KXNCAANIT",
+      "series_title": "NIT Champion",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 28901
+    },
+    {
+      "series_ticker": "KXNBAFINALSVIEWERGAME7",
+      "series_title": "NBA finals viewership",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 28577
+    },
+    {
+      "series_ticker": "KXNFLCOMBINE",
+      "series_title": "NFL Combine",
+      "tags": [
+        "Football"
+      ],
+      "volume": 28243
+    },
+    {
+      "series_ticker": "KXNEXTTEAMMCLAURIN",
+      "series_title": "Terry McLaurin next team",
+      "tags": [
+        "Football"
+      ],
+      "volume": 27300
+    },
+    {
+      "series_ticker": "KXNBASOUTHWEST",
+      "series_title": "NBA Southwest Division Winner",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 26755
+    },
+    {
+      "series_ticker": "KXNCAABIVY",
+      "series_title": "Ivy League Men's Basketball Tournament",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 26440
+    },
+    {
+      "series_ticker": "KXCOLLEGEGAMEDAYGUEST",
+      "series_title": "College Gameday Guest",
+      "tags": [
+        "Football"
+      ],
+      "volume": 25690
+    },
+    {
+      "series_ticker": "KXNFLRECYDSRECORD",
+      "series_title": "NFL Regular Season Receiving Yards Record",
+      "tags": [
+        "Football"
+      ],
+      "volume": 25555
+    },
+    {
+      "series_ticker": "KXCALCOACH",
+      "series_title": "California Next Coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 24799
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSBUF",
+      "series_title": "Pro football exact wins Buffalo",
+      "tags": [
+        "Football"
+      ],
+      "volume": 24336
+    },
+    {
+      "series_ticker": "KXNBADRAFT7",
+      "series_title": "NBA Draft Seventh Pick",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 23739
+    },
+    {
+      "series_ticker": "KXNBAPLAYIN",
+      "series_title": "Which Team Will Make the Play-In Tournament",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 23159
+    },
+    {
+      "series_ticker": "KXCOACHOUTUNC",
+      "series_title": "Bill Belichick Out",
+      "tags": [
+        "Football"
+      ],
+      "volume": 23138
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSSF",
+      "series_title": "Pro football exact wins San Francisco",
+      "tags": [
+        "Football"
+      ],
+      "volume": 22511
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSGB",
+      "series_title": "Pro football exact wins Green Bay",
+      "tags": [
+        "Football"
+      ],
+      "volume": 22414
+    },
+    {
+      "series_ticker": "KXNEWCOACHUNC",
+      "series_title": "University of North Carolina new coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 21392
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSMIN",
+      "series_title": "Pro football exact wins Minnesota",
+      "tags": [
+        "Football"
+      ],
+      "volume": 21331
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSDAL",
+      "series_title": "Pro football exact wins Dallas",
+      "tags": [
+        "Football"
+      ],
+      "volume": 21179
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSKC",
+      "series_title": "Pro football exact wins Kansas City",
+      "tags": [
+        "Football"
+      ],
+      "volume": 20987
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSCHI",
+      "series_title": "Pro football exact wins Chicago",
+      "tags": [
+        "Football"
+      ],
+      "volume": 20458
+    },
+    {
+      "series_ticker": "KXNBADRAFT10",
+      "series_title": "NBA Draft Tenth Pick",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 20456
+    },
+    {
+      "series_ticker": "KXPLAYTOGETHERJBJT",
+      "series_title": "Tatum and Brown Celtics",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 19982
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSCAR",
+      "series_title": "Pro football exact wins Carolina",
+      "tags": [
+        "Football"
+      ],
+      "volume": 18519
+    },
+    {
+      "series_ticker": "KXSTARTINGQBWEEK1",
+      "series_title": "NFL Starting QB Week 1",
+      "tags": [
+        "Football"
+      ],
+      "volume": 18474
+    },
+    {
+      "series_ticker": "KXUSFCOACH",
+      "series_title": "USF Next Coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 18116
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSIND",
+      "series_title": "Pro football exact wins Indianapolis",
+      "tags": [
+        "Football"
+      ],
+      "volume": 17852
+    },
+    {
+      "series_ticker": "KXWNBARAISE",
+      "series_title": "WNBA raise",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 16633
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSTB",
+      "series_title": "Pro football exact wins Tampa Bay",
+      "tags": [
+        "Football"
+      ],
+      "volume": 16081
+    },
+    {
+      "series_ticker": "KXNBACENTRAL",
+      "series_title": "NBA Central Division Winner",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 15820
+    },
+    {
+      "series_ticker": "KXNBADRAFT9",
+      "series_title": "NBA Draft Ninth Pick",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 15619
+    },
+    {
+      "series_ticker": "KXNBADRAFTTOP30",
+      "series_title": "NBA Draft Top 30 Pick",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 15441
+    },
+    {
+      "series_ticker": "KXWNBAPLAYOFF",
+      "series_title": "Pro Women's Basketball Playoff Qualifier",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 14701
+    },
+    {
+      "series_ticker": "KXNBASEATTLE",
+      "series_title": "Seattle NBA team",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 14627
+    },
+    {
+      "series_ticker": "KXNBADRAFTTOP25",
+      "series_title": "NBA Draft Top 25 Pick",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 14453
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSNE",
+      "series_title": "Pro football exact wins New England",
+      "tags": [
+        "Football"
+      ],
+      "volume": 13806
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSHOU",
+      "series_title": "Pro football exact wins Houston",
+      "tags": [
+        "Football"
+      ],
+      "volume": 13362
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSPHI",
+      "series_title": "Pro football exact wins Philadephia",
+      "tags": [
+        "Football"
+      ],
+      "volume": 12579
+    },
+    {
+      "series_ticker": "KXNBANORTHWEST",
+      "series_title": "NBA Northwest Division Winner",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 12336
+    },
+    {
+      "series_ticker": "KXNBADRAFT8",
+      "series_title": "NBA Draft Eighth Pick",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 12220
+    },
+    {
+      "series_ticker": "KXLEADERNFLPTDS",
+      "series_title": "NFL leader passing TDs",
+      "tags": [
+        "Football"
+      ],
+      "volume": 11913
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSJAC",
+      "series_title": "Pro football exact wins Jacksonville",
+      "tags": [
+        "Football"
+      ],
+      "volume": 11367
+    },
+    {
+      "series_ticker": "KXSTARTNYG",
+      "series_title": "NEW YORK G WEEK 1 QB",
+      "tags": [
+        "Football"
+      ],
+      "volume": 10731
+    },
+    {
+      "series_ticker": "KXGREYCUP",
+      "series_title": "CFL Grey Cup",
+      "tags": [
+        "Football"
+      ],
+      "volume": 10687
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSMIA",
+      "series_title": "Pro football exact wins Miami",
+      "tags": [
+        "Football"
+      ],
+      "volume": 10212
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSCIN",
+      "series_title": "Pro football exact wins Cincinnati",
+      "tags": [
+        "Football"
+      ],
+      "volume": 10089
+    },
+    {
+      "series_ticker": "KXUNTCOACH",
+      "series_title": "North Texas Next Coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 9548
+    },
+    {
+      "series_ticker": "KXSPORTSIGNAHOR",
+      "series_title": "Al Horford",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 9139
+    },
+    {
+      "series_ticker": "KXLEADERNFLSACKS",
+      "series_title": "NFL Sacks Leader",
+      "tags": [
+        "Football"
+      ],
+      "volume": 9092
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSDEN",
+      "series_title": "Pro football exact wins Denver",
+      "tags": [
+        "Football"
+      ],
+      "volume": 8165
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSNO",
+      "series_title": "Pro football exact wins New Orleans",
+      "tags": [
+        "Football"
+      ],
+      "volume": 7910
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSLAC",
+      "series_title": "Pro football exact wins Los Angeles C",
+      "tags": [
+        "Football"
+      ],
+      "volume": 7621
+    },
+    {
+      "series_ticker": "KXSONICS",
+      "series_title": "Blazers become Sonics",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 7272
+    },
+    {
+      "series_ticker": "KXWNBAGAMESPLAYED",
+      "series_title": "WNBA Games Played in a Season",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 7172
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSNYJ",
+      "series_title": "Pro football exact wins New York J",
+      "tags": [
+        "Football"
+      ],
+      "volume": 7149
+    },
+    {
+      "series_ticker": "KXWNBADELAY",
+      "series_title": "WNBA Season Delay",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 6821
+    },
+    {
+      "series_ticker": "KXSPORTSOWNERLBJ",
+      "series_title": "LBJ owning team",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 6444
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSTEN",
+      "series_title": "Pro football exact wins Tennessee",
+      "tags": [
+        "Football"
+      ],
+      "volume": 6304
+    },
+    {
+      "series_ticker": "KXNBATEAM",
+      "series_title": "NBA team",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 5666
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSLV",
+      "series_title": "Pro football exact wins Las Vegas",
+      "tags": [
+        "Football"
+      ],
+      "volume": 5330
+    },
+    {
+      "series_ticker": "KXNFLDEPTHPOSITIONCLEQB2",
+      "series_title": "QB2 CLE",
+      "tags": [
+        "Football"
+      ],
+      "volume": 5281
+    },
+    {
+      "series_ticker": "KXNCAAMPAC12",
+      "series_title": "PAC-12 MEN'S BASKETBALL TOURNAMENT",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 5134
+    },
+    {
+      "series_ticker": "KXNBATOPPICK",
+      "series_title": "Pro Basketball Draft Lottery Winner",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 4994
+    },
+    {
+      "series_ticker": "KXWNBAROTY",
+      "series_title": "Pro Women's Basketball Rookie of the Year",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 4787
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSATL",
+      "series_title": "Pro football exact wins Atlanta",
+      "tags": [
+        "Football"
+      ],
+      "volume": 4420
+    },
+    {
+      "series_ticker": "KXNCAAFD3GAME",
+      "series_title": "College Football Game",
+      "tags": [
+        "Football"
+      ],
+      "volume": 4154
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSWAS",
+      "series_title": "Pro football exact wins Washington",
+      "tags": [
+        "Football"
+      ],
+      "volume": 3826
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSNYG",
+      "series_title": "Pro football exact wins New York G",
+      "tags": [
+        "Football"
+      ],
+      "volume": 3648
+    },
+    {
+      "series_ticker": "KXNCAAMBAPRANK",
+      "series_title": "College Basketball AP Poll",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 3551
+    },
+    {
+      "series_ticker": "KXDURATIONBEASTWATER",
+      "series_title": "MrBeast water stream duration",
+      "tags": [
+        "Football"
+      ],
+      "volume": 3187
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSDET",
+      "series_title": "Pro football exact wins Detroit",
+      "tags": [
+        "Football"
+      ],
+      "volume": 2973
+    },
+    {
+      "series_ticker": "KXNBADRAFTPICK",
+      "series_title": "Pro Basketball Draft Pick",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 2856
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSCLE",
+      "series_title": "Pro football exact wins Cleveland",
+      "tags": [
+        "Football"
+      ],
+      "volume": 2460
+    },
+    {
+      "series_ticker": "KXWMARMADROUND",
+      "series_title": "Reach March Madness Round",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 2325
+    },
+    {
+      "series_ticker": "KXNFLEXACTWINSARI",
+      "series_title": "Pro football exact wins Arizona",
+      "tags": [
+        "Football"
+      ],
+      "volume": 2176
+    },
+    {
+      "series_ticker": "KXWNBADRAFT1",
+      "series_title": "WNBA Draft 1st Pick",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 2132
+    },
+    {
+      "series_ticker": "KXWNBADRAFTTOP3",
+      "series_title": "WNBA Draft Top 3",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 2088
+    },
+    {
+      "series_ticker": "KXNCAAFCONF",
+      "series_title": "NCAAF Championship Conference",
+      "tags": [
+        "Football"
+      ],
+      "volume": 2027
+    },
+    {
+      "series_ticker": "KXSPORTSIGNLBJ",
+      "series_title": "LeBron James sign",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 1929
+    },
+    {
+      "series_ticker": "KXNBAFINALSVIEWER",
+      "series_title": "NBA finals viewership",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 1253
+    },
+    {
+      "series_ticker": "KXOLEMISSATTENDANCE",
+      "series_title": "Ole Miss Attendance Record",
+      "tags": [
+        "Football"
+      ],
+      "volume": 1240
+    },
+    {
+      "series_ticker": "KXTNCBASKETBALL",
+      "series_title": "TNC Basketball",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 1184
+    },
+    {
+      "series_ticker": "KXNCAAFCOTY",
+      "series_title": "College Football Coach of the Year",
+      "tags": [
+        "Football"
+      ],
+      "volume": 1103
+    },
+    {
+      "series_ticker": "KXSTARTNYJ",
+      "series_title": "new york jets week 1 qb",
+      "tags": [
+        "Football"
+      ],
+      "volume": 1077
+    },
+    {
+      "series_ticker": "KXRANKLISTSUI",
+      "series_title": "Sui top 10",
+      "tags": [
+        "Football"
+      ],
+      "volume": 1073
+    },
+    {
+      "series_ticker": "KXNBADRAFTCAT",
+      "series_title": "Pro Basketball Draft Category",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 958
+    },
+    {
+      "series_ticker": "KXNCAAFAPRANK",
+      "series_title": "College Football AP Rank",
+      "tags": [
+        "Football"
+      ],
+      "volume": 670
+    },
+    {
+      "series_ticker": "KXDONATEMRBEAST",
+      "series_title": "WILL MR BEAST DONATE",
+      "tags": [
+        "Football"
+      ],
+      "volume": 620
+    },
+    {
+      "series_ticker": "KXNBADRAFTCOMP",
+      "series_title": "Pro Basketball Draft Comparison",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 595
+    },
+    {
+      "series_ticker": "KXCITYNBAEXPAND",
+      "series_title": "Cities NBA expand",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 212
+    },
+    {
+      "series_ticker": "KXSORONDO",
+      "series_title": "Rajon Rando Summer Olympics Flag Football",
+      "tags": [
+        "Football"
+      ],
+      "volume": 117
+    },
+    {
+      "series_ticker": "KXNBALOTTERYODDS",
+      "series_title": "NBA Lottery Winner Odds",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 48
+    },
+    {
+      "series_ticker": "KXNBA1QWINNER",
+      "series_title": "NBA 1st Quarter Winner",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXALMVP",
+      "series_title": "NL MVP",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNBADRAFTINT",
+      "series_title": "Pro Basketball International Players Drafted",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNBA3QWINNER",
+      "series_title": "NBA 3rd Quarter Winner",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNLMVP",
+      "series_title": "AL MVP",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNCAAFTEAMTOTAL",
+      "series_title": "College Football Team Total Points",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXCFBDOBRIEN",
+      "series_title": "Davey O'Brien Award",
+      "tags": [
+        "CFB",
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXUFLXFLCONF",
+      "series_title": "UFL XLF Conference Champion",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXTOP3NBADRAFT",
+      "series_title": "NBA Draft Top 3",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNBA1QTOTAL",
+      "series_title": "NBA 1st Quarter Total",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNBAPRA",
+      "series_title": "Pro Basketball Points + Rebounds + Assists",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNFLGAMEFG",
+      "series_title": "Pro Football Field Goals",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNBADRAFTTRADE",
+      "series_title": "NBA Draft Trade",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNCAAWBTOTAL",
+      "series_title": "Women's College Basketball Total Points",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNBATOP3",
+      "series_title": "Pro Basketball Draft Lottery Top 3",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNHLMVP",
+      "series_title": "NHL Hart Memorial Trophy Winner",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNBA2HSPREAD",
+      "series_title": "Pro Basketball 2nd Half Spread",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNCAAWB",
+      "series_title": "Women's March Madness Champion",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXYTDAILYTOPVIDEO",
+      "series_title": "DAILY TOP YOUTUBE VIDEO",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXRANKLISTKG",
+      "series_title": "Will Ken Griffin be the top donator on <date>?",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNCAAFCOTW",
+      "series_title": "College Football Coach of the Week",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXDEFHEISMAN",
+      "series_title": "Defensive Heisman Candidate",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNEXTTEAMCHRISPAUL",
+      "series_title": "Next Team Chris Paul",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNBA2QTOTAL",
+      "series_title": "NBA 1st Quarter Total",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNBA1QSPREAD",
+      "series_title": "Pro Basketball 1st Quarter Spread",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNFLSBMVPQB",
+      "series_title": "Non QB Championship MVP",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXLEADERNFLINT",
+      "series_title": "NFL leader interceptions",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNFL4DOWNCONV",
+      "series_title": "Pro Football 4th Down Conversions",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXPERFORMSUPERBOWL",
+      "series_title": "Who will headline the Super Bowl halftime show?",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXUFLUSFLCONF",
+      "series_title": "UFL USFL Conference Champion",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNFLREBOOT",
+      "series_title": "Reboot Rules",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNCAABBSPREAD",
+      "series_title": "College Baseball Spread",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXRANKLISTFFDST",
+      "series_title": "TOP FANTASY FOOTBALL D ST",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNFLFIRSTPICK",
+      "series_title": "First Pick in NFL Draft",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNFLSAFETY",
+      "series_title": "Pro Football Safeties",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNEWCOACHLAL",
+      "series_title": "New Lakers coach",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNBA2HTOTAL",
+      "series_title": "NBA 2nd Half Total Points",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXWNBAASGAME",
+      "series_title": "WNBA All Star Game",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNCAAWBSPREAD",
+      "series_title": "Women's College Basketball Spread",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNBA2QWINNER",
+      "series_title": "NBA 2nd Quarter Winner",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXSTARTNOTREDAME",
+      "series_title": "NOTREDAME WEEK 1 QB",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNCAAPLAYOFF",
+      "series_title": "College Football Playoff Qualifiers",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXFIRSTPICKNBA",
+      "series_title": "NBA first pick",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNFLGAMETO",
+      "series_title": "Pro Football Turnovers",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNBADRAFTCONF",
+      "series_title": "Pro Basketball Players Drafted by Conference",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNFLLONGESTTD",
+      "series_title": "Pro Football Longest Touchdown",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNBAPA",
+      "series_title": "Pro Basketball Points + Assists",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNCAABGAME",
+      "series_title": "College Basketball Game",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXATLCOACH",
+      "series_title": "Next Atlanta Coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXTENCOACH",
+      "series_title": "Tennessee Next Coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNFLSHORTESTTD",
+      "series_title": "Pro Football Shortest Touchdown",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNBARA",
+      "series_title": "Pro Basketball Rebounds + Assists",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXCOACHOUTNFLFIRST",
+      "series_title": "First NFL Coach Out",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXRANKLISTBONK",
+      "series_title": "Bonk top 100 currencies by end of year",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNBA3QTOTAL",
+      "series_title": "NBA 3rd Quarter Total",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KX1HOMEGAME",
+      "series_title": "First Home Game Opponent",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNBA4QTOTAL",
+      "series_title": "NBA 4th Quarter Total",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNCAAFWINS",
+      "series_title": "College football wins?",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXRANKLISTFFK",
+      "series_title": "TOP FANTASY FOOTBALL K",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNCAABBIG10",
+      "series_title": "Big Ten Men's Basketball Tournament",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNBA4QSPREAD",
+      "series_title": "Pro Basketball 4th Quarter Spread",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNFLLARGESTLEAD",
+      "series_title": "Pro Football Largest Lead",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXEPLPOY",
+      "series_title": "EPL Player Of The Year ",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNBA3QSPREAD",
+      "series_title": "Pro Basketball 3rd Quarter Spread",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNBAPR",
+      "series_title": "Pro Basketball Points + Rebounds",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNFLCONTRACTSIZE",
+      "series_title": "Pro Football Next Contract Size",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXSBOPENINGCEREMONY",
+      "series_title": "WHAT SONG WILL GREENDAY OPEN UP WITH AT THE SUPER BOWL OPENING CEREMONY",
+      "tags": [
+        "Football",
+        "Music"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXCFBCOTY",
+      "series_title": "College Football Coach of the Year",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNBA4QWINNER",
+      "series_title": "NBA 4th Quarter Winner",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNFLTEAMFIRSTTD",
+      "series_title": "Pro Football First Touchdown",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXSTARTNO",
+      "series_title": "NEW ORLEANS WEEK 1 QB",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNFLGPICKENSCONTRACT",
+      "series_title": "Pro Football George Picken's Next Contract Size",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNFLSBMVPDEF",
+      "series_title": "Defensive Player Championship MVP",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXRANKLISTREALSPORTS",
+      "series_title": "Real Sports Top 10 App",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNEXTEAMTYREEK",
+      "series_title": "Tyreek Hill next team",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXLEBRONPLAY",
+      "series_title": "LeBron Next Play",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNBA2QSPREAD",
+      "series_title": "Pro Basketball 2nd Quarter Spread",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXNBALASVEGAS",
+      "series_title": "Las Vegas NBA team",
+      "tags": [
+        "Basketball"
+      ],
+      "volume": 0
+    },
+    {
+      "series_ticker": "KXUKCOACH",
+      "series_title": "Kentucky Next Coach",
+      "tags": [
+        "Football"
+      ],
+      "volume": 0
+    }
+  ]
+}
