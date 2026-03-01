@@ -1,5 +1,5 @@
 import type { KalshiMarket } from "../api/kalshi";
-import type { PredictionOutput, ResearchBrief } from "../api/prediction";
+import type { PredictionOutput, ResearchBrief, SourceRef } from "../api/prediction";
 import type { EdgeResult } from "../api/edge";
 // Re-use the same parsing logic from toMarketRow
 import { toMarketRow } from "./toMarketRow";
@@ -38,8 +38,10 @@ export interface MarketDetail {
     source: string;
     sourceIcon: string;
     sourceColor: string;
+    sourceUrl?: string;
     time: string;
   }[];
+  sources?: SourceRef[];
 }
 
 function toAbbr(name: string): string {
@@ -84,6 +86,48 @@ function classifyDriver(text: string): { tag: string; color: string } {
   return { tag: "INSIGHT", color: "#64748b" };
 }
 
+const TAG_TO_SOURCE_TYPE: Record<string, string[]> = {
+  INJURY: ["espn_injury"],
+  REST: ["espn_schedule"],
+  FORM: ["espn_stats"],
+  VENUE: ["espn_schedule", "espn_stats"],
+  H2H: ["espn_h2h"],
+  NEWS: ["tavily"],
+  INSIGHT: ["tavily", "espn_stats"],
+};
+
+function matchSourceUrl(
+  tag: string,
+  driverText: string,
+  sourceUrls: SourceRef[],
+): SourceRef | undefined {
+  if (!sourceUrls.length) return undefined;
+
+  const preferredTypes = TAG_TO_SOURCE_TYPE[tag] ?? [];
+
+  // First: try matching by source_type
+  for (const st of preferredTypes) {
+    const match = sourceUrls.find((s) => s.source_type === st);
+    if (match) return match;
+  }
+
+  // Fallback: keyword overlap between driver text and source title
+  const driverWords = driverText.toLowerCase().split(/\s+/);
+  let bestMatch: SourceRef | undefined;
+  let bestOverlap = 0;
+  for (const src of sourceUrls) {
+    const srcWords = src.title.toLowerCase().split(/\s+/);
+    const overlap = driverWords.filter(
+      (w) => w.length > 3 && srcWords.some((sw) => sw.includes(w))
+    ).length;
+    if (overlap > bestOverlap) {
+      bestOverlap = overlap;
+      bestMatch = src;
+    }
+  }
+  return bestOverlap > 0 ? bestMatch : undefined;
+}
+
 function buildDrivers(
   prediction?: PredictionOutput,
   research?: ResearchBrief,
@@ -91,6 +135,7 @@ function buildDrivers(
   if (!prediction?.key_drivers?.length) return [];
 
   const now = new Date().toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" });
+  const sourceUrls = research?.source_urls ?? [];
 
   return prediction.key_drivers.map((driver) => {
     const { tag, color } = classifyDriver(driver);
@@ -99,14 +144,17 @@ function buildDrivers(
     const title = dotIdx > 0 && dotIdx < 80 ? driver.slice(0, dotIdx) : driver.slice(0, 60);
     const description = driver;
 
+    const matched = matchSourceUrl(tag, driver, sourceUrls);
+
     return {
       tag,
       tagColor: color,
       title: title.length < driver.length ? title : driver,
       description,
-      source: "AI Research Agent",
-      sourceIcon: "⚡",
-      sourceColor: "#3b82f6",
+      source: matched?.title ?? "AI Research Agent",
+      sourceIcon: matched ? "🔗" : "⚡",
+      sourceColor: matched ? "#10b981" : "#3b82f6",
+      sourceUrl: matched?.url,
       time: now,
     };
   });
@@ -161,5 +209,6 @@ export function toMarketDetail(
     signal,
     reasoning: prediction?.reasoning ?? "",
     drivers: buildDrivers(prediction, research),
+    sources: research?.source_urls ?? [],
   };
 }

@@ -37,8 +37,10 @@ export interface MarketDetail {
     source: string;
     sourceIcon: string;
     sourceColor: string;
+    sourceUrl?: string;
     time: string;
   }[];
+  sources?: { title: string; url: string; source_type: string }[];
 }
 
 export interface AgentStep {
@@ -268,12 +270,55 @@ export default function MarketDetailPanel({ market, onClose, isOpen, loading, ag
                         >
                           {driver.sourceIcon}
                         </span>
-                        <span className="text-[#94a3b8] text-[11px]">{driver.source}</span>
+                        {driver.sourceUrl ? (
+                          <a
+                            href={driver.sourceUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#60a5fa] text-[11px] hover:underline transition-colors"
+                          >
+                            {driver.source} ↗
+                          </a>
+                        ) : (
+                          <span className="text-[#94a3b8] text-[11px]">{driver.source}</span>
+                        )}
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
+
+              {/* Sources */}
+              {market.sources && market.sources.length > 0 && (
+                <div className="px-5 pt-2 pb-6">
+                  <div className="flex items-center gap-2 mb-3">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#64748b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                    </svg>
+                    <span className="text-[#64748b] text-[10px] font-bold tracking-[0.5px] uppercase">Sources</span>
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    {market.sources.map((src, idx) => (
+                      <a
+                        key={idx}
+                        href={src.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-[11px] text-[#94a3b8] hover:text-[#60a5fa] transition-colors"
+                      >
+                        <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${
+                          src.source_type === "tavily" ? "bg-[#10b981]" : "bg-[#3b82f6]"
+                        }`} />
+                        <span className="truncate">{src.title}</span>
+                        <svg className="w-3 h-3 shrink-0 opacity-50" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
+                        </svg>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Bottom Actions */}

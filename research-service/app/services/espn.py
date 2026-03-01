@@ -1,4 +1,4 @@
-"""ESPN API integration for NBA team stats, injuries, schedules, and head-to-head."""
+"""ESPN API integration for multi-sport team stats, injuries, schedules, and head-to-head."""
 
 from __future__ import annotations
 
@@ -6,11 +6,30 @@ from datetime import datetime, timedelta, timezone
 
 import httpx
 
-ESPN_BASE = "https://site.api.espn.com/apis/site/v2/sports/basketball/nba"
+ESPN_API_BASE = "https://site.api.espn.com/apis/site/v2/sports"
 _TIMEOUT = 10.0
 
-# ESPN team IDs for all 30 NBA teams.
-# Keys are lowercase nicknames for fuzzy lookup.
+# ── Sport configuration ───────────────────────────────────────────────────────
+
+SPORT_CONFIG: dict[str, dict] = {
+    "nba":   {"path": "basketball/nba"},
+    "nfl":   {"path": "football/nfl"},
+    "nhl":   {"path": "hockey/nhl"},
+    "mlb":   {"path": "baseball/mlb"},
+    "ncaab": {"path": "basketball/mens-college-basketball"},
+    "ncaaf": {"path": "football/college-football"},
+}
+
+
+def _espn_base(sport: str) -> str:
+    config = SPORT_CONFIG.get(sport.lower())
+    if not config:
+        return f"{ESPN_API_BASE}/basketball/nba"
+    return f"{ESPN_API_BASE}/{config['path']}"
+
+
+# ── Team maps (verified ESPN IDs) ─────────────────────────────────────────────
+
 NBA_TEAM_MAP: dict[str, dict] = {
     "hawks":          {"id": "1",  "full": "Atlanta Hawks",              "abbr": "ATL"},
     "celtics":        {"id": "2",  "full": "Boston Celtics",             "abbr": "BOS"},
@@ -49,32 +68,176 @@ NBA_TEAM_MAP: dict[str, dict] = {
     "wizards":        {"id": "27", "full": "Washington Wizards",         "abbr": "WAS"},
 }
 
+NFL_TEAM_MAP: dict[str, dict] = {
+    "cardinals":      {"id": "22", "full": "Arizona Cardinals",          "abbr": "ARI"},
+    "falcons":        {"id": "1",  "full": "Atlanta Falcons",            "abbr": "ATL"},
+    "ravens":         {"id": "33", "full": "Baltimore Ravens",           "abbr": "BAL"},
+    "bills":          {"id": "2",  "full": "Buffalo Bills",              "abbr": "BUF"},
+    "panthers":       {"id": "29", "full": "Carolina Panthers",          "abbr": "CAR"},
+    "bears":          {"id": "3",  "full": "Chicago Bears",              "abbr": "CHI"},
+    "bengals":        {"id": "4",  "full": "Cincinnati Bengals",         "abbr": "CIN"},
+    "browns":         {"id": "5",  "full": "Cleveland Browns",           "abbr": "CLE"},
+    "cowboys":        {"id": "6",  "full": "Dallas Cowboys",             "abbr": "DAL"},
+    "broncos":        {"id": "7",  "full": "Denver Broncos",             "abbr": "DEN"},
+    "lions":          {"id": "8",  "full": "Detroit Lions",              "abbr": "DET"},
+    "packers":        {"id": "9",  "full": "Green Bay Packers",          "abbr": "GB"},
+    "texans":         {"id": "34", "full": "Houston Texans",             "abbr": "HOU"},
+    "colts":          {"id": "11", "full": "Indianapolis Colts",         "abbr": "IND"},
+    "jaguars":        {"id": "30", "full": "Jacksonville Jaguars",       "abbr": "JAX"},
+    "chiefs":         {"id": "12", "full": "Kansas City Chiefs",         "abbr": "KC"},
+    "raiders":        {"id": "13", "full": "Las Vegas Raiders",          "abbr": "LV"},
+    "chargers":       {"id": "24", "full": "Los Angeles Chargers",       "abbr": "LAC"},
+    "rams":           {"id": "14", "full": "Los Angeles Rams",           "abbr": "LAR"},
+    "dolphins":       {"id": "15", "full": "Miami Dolphins",             "abbr": "MIA"},
+    "vikings":        {"id": "16", "full": "Minnesota Vikings",          "abbr": "MIN"},
+    "patriots":       {"id": "17", "full": "New England Patriots",       "abbr": "NE"},
+    "saints":         {"id": "18", "full": "New Orleans Saints",         "abbr": "NO"},
+    "giants":         {"id": "19", "full": "New York Giants",            "abbr": "NYG"},
+    "jets":           {"id": "20", "full": "New York Jets",              "abbr": "NYJ"},
+    "eagles":         {"id": "21", "full": "Philadelphia Eagles",        "abbr": "PHI"},
+    "steelers":       {"id": "23", "full": "Pittsburgh Steelers",        "abbr": "PIT"},
+    "49ers":          {"id": "25", "full": "San Francisco 49ers",        "abbr": "SF"},
+    "seahawks":       {"id": "26", "full": "Seattle Seahawks",           "abbr": "SEA"},
+    "buccaneers":     {"id": "27", "full": "Tampa Bay Buccaneers",       "abbr": "TB"},
+    "bucs":           {"id": "27", "full": "Tampa Bay Buccaneers",       "abbr": "TB"},
+    "titans":         {"id": "10", "full": "Tennessee Titans",           "abbr": "TEN"},
+    "commanders":     {"id": "28", "full": "Washington Commanders",      "abbr": "WSH"},
+}
 
-def resolve_team(name: str) -> dict | None:
+NHL_TEAM_MAP: dict[str, dict] = {
+    "ducks":          {"id": "25",     "full": "Anaheim Ducks",            "abbr": "ANA"},
+    "bruins":         {"id": "1",      "full": "Boston Bruins",            "abbr": "BOS"},
+    "sabres":         {"id": "2",      "full": "Buffalo Sabres",           "abbr": "BUF"},
+    "flames":         {"id": "3",      "full": "Calgary Flames",           "abbr": "CGY"},
+    "hurricanes":     {"id": "7",      "full": "Carolina Hurricanes",      "abbr": "CAR"},
+    "blackhawks":     {"id": "4",      "full": "Chicago Blackhawks",       "abbr": "CHI"},
+    "avalanche":      {"id": "17",     "full": "Colorado Avalanche",       "abbr": "COL"},
+    "blue jackets":   {"id": "29",     "full": "Columbus Blue Jackets",    "abbr": "CBJ"},
+    "stars":          {"id": "9",      "full": "Dallas Stars",             "abbr": "DAL"},
+    "red wings":      {"id": "5",      "full": "Detroit Red Wings",        "abbr": "DET"},
+    "oilers":         {"id": "6",      "full": "Edmonton Oilers",          "abbr": "EDM"},
+    "panthers":       {"id": "26",     "full": "Florida Panthers",         "abbr": "FLA"},
+    "kings":          {"id": "8",      "full": "Los Angeles Kings",        "abbr": "LA"},
+    "wild":           {"id": "30",     "full": "Minnesota Wild",           "abbr": "MIN"},
+    "canadiens":      {"id": "10",     "full": "Montreal Canadiens",       "abbr": "MTL"},
+    "predators":      {"id": "27",     "full": "Nashville Predators",      "abbr": "NSH"},
+    "devils":         {"id": "11",     "full": "New Jersey Devils",        "abbr": "NJ"},
+    "islanders":      {"id": "12",     "full": "New York Islanders",       "abbr": "NYI"},
+    "rangers":        {"id": "13",     "full": "New York Rangers",         "abbr": "NYR"},
+    "senators":       {"id": "14",     "full": "Ottawa Senators",          "abbr": "OTT"},
+    "flyers":         {"id": "15",     "full": "Philadelphia Flyers",      "abbr": "PHI"},
+    "penguins":       {"id": "16",     "full": "Pittsburgh Penguins",      "abbr": "PIT"},
+    "sharks":         {"id": "18",     "full": "San Jose Sharks",          "abbr": "SJ"},
+    "kraken":         {"id": "124292", "full": "Seattle Kraken",           "abbr": "SEA"},
+    "blues":          {"id": "19",     "full": "St. Louis Blues",          "abbr": "STL"},
+    "lightning":      {"id": "20",     "full": "Tampa Bay Lightning",      "abbr": "TB"},
+    "maple leafs":    {"id": "21",     "full": "Toronto Maple Leafs",      "abbr": "TOR"},
+    "canucks":        {"id": "22",     "full": "Vancouver Canucks",        "abbr": "VAN"},
+    "mammoth":        {"id": "129764", "full": "Utah Mammoth",             "abbr": "UTAH"},
+    "golden knights": {"id": "37",     "full": "Vegas Golden Knights",     "abbr": "VGK"},
+    "capitals":       {"id": "23",     "full": "Washington Capitals",      "abbr": "WSH"},
+    "jets":           {"id": "28",     "full": "Winnipeg Jets",            "abbr": "WPG"},
+}
+
+MLB_TEAM_MAP: dict[str, dict] = {
+    "diamondbacks":   {"id": "29", "full": "Arizona Diamondbacks",       "abbr": "ARI"},
+    "braves":         {"id": "15", "full": "Atlanta Braves",             "abbr": "ATL"},
+    "orioles":        {"id": "1",  "full": "Baltimore Orioles",          "abbr": "BAL"},
+    "red sox":        {"id": "2",  "full": "Boston Red Sox",             "abbr": "BOS"},
+    "cubs":           {"id": "16", "full": "Chicago Cubs",               "abbr": "CHC"},
+    "white sox":      {"id": "4",  "full": "Chicago White Sox",          "abbr": "CHW"},
+    "reds":           {"id": "17", "full": "Cincinnati Reds",            "abbr": "CIN"},
+    "guardians":      {"id": "5",  "full": "Cleveland Guardians",        "abbr": "CLE"},
+    "rockies":        {"id": "27", "full": "Colorado Rockies",           "abbr": "COL"},
+    "tigers":         {"id": "6",  "full": "Detroit Tigers",             "abbr": "DET"},
+    "astros":         {"id": "18", "full": "Houston Astros",             "abbr": "HOU"},
+    "royals":         {"id": "7",  "full": "Kansas City Royals",         "abbr": "KC"},
+    "angels":         {"id": "3",  "full": "Los Angeles Angels",         "abbr": "LAA"},
+    "dodgers":        {"id": "19", "full": "Los Angeles Dodgers",        "abbr": "LAD"},
+    "marlins":        {"id": "28", "full": "Miami Marlins",              "abbr": "MIA"},
+    "brewers":        {"id": "8",  "full": "Milwaukee Brewers",          "abbr": "MIL"},
+    "twins":          {"id": "9",  "full": "Minnesota Twins",            "abbr": "MIN"},
+    "mets":           {"id": "21", "full": "New York Mets",              "abbr": "NYM"},
+    "yankees":        {"id": "10", "full": "New York Yankees",           "abbr": "NYY"},
+    "athletics":      {"id": "11", "full": "Athletics",                  "abbr": "ATH"},
+    "phillies":       {"id": "22", "full": "Philadelphia Phillies",      "abbr": "PHI"},
+    "pirates":        {"id": "23", "full": "Pittsburgh Pirates",         "abbr": "PIT"},
+    "padres":         {"id": "25", "full": "San Diego Padres",           "abbr": "SD"},
+    "giants":         {"id": "26", "full": "San Francisco Giants",       "abbr": "SF"},
+    "mariners":       {"id": "12", "full": "Seattle Mariners",           "abbr": "SEA"},
+    "cardinals":      {"id": "24", "full": "St. Louis Cardinals",        "abbr": "STL"},
+    "rays":           {"id": "30", "full": "Tampa Bay Rays",             "abbr": "TB"},
+    "rangers":        {"id": "13", "full": "Texas Rangers",              "abbr": "TEX"},
+    "blue jays":      {"id": "14", "full": "Toronto Blue Jays",          "abbr": "TOR"},
+    "nationals":      {"id": "20", "full": "Washington Nationals",       "abbr": "WSH"},
+}
+
+SPORT_TEAM_MAPS: dict[str, dict[str, dict]] = {
+    "nba": NBA_TEAM_MAP,
+    "nfl": NFL_TEAM_MAP,
+    "nhl": NHL_TEAM_MAP,
+    "mlb": MLB_TEAM_MAP,
+}
+
+# ── ESPN web URLs (for user-facing links) ─────────────────────────────────────
+
+_ESPN_WEB_SPORT = {"nba": "nba", "nfl": "nfl", "nhl": "nhl", "mlb": "mlb"}
+
+_ESPN_WEB_TEMPLATES: dict[str, str] = {
+    "injury_report": "https://www.espn.com/{sport}/team/injuries/_/name/{abbr}",
+    "team_stats":    "https://www.espn.com/{sport}/team/stats/_/name/{abbr}",
+    "schedule":      "https://www.espn.com/{sport}/team/schedule/_/name/{abbr}",
+    "head_to_head":  "https://www.espn.com/{sport}/team/schedule/_/name/{abbr}",
+}
+
+
+def get_espn_web_url(fn_name: str, team_name: str, sport: str = "nba") -> str | None:
+    """Build a clickable ESPN web URL for a given tool call and team."""
+    sport_key = sport.lower()
+    web_sport = _ESPN_WEB_SPORT.get(sport_key)
+    if not web_sport:
+        return None
+    info = resolve_team(team_name, sport_key)
+    if not info:
+        return None
+    fn_key = fn_name.replace("get_", "")
+    template = _ESPN_WEB_TEMPLATES.get(fn_key)
+    if not template:
+        return None
+    return template.format(sport=web_sport, abbr=info["abbr"].lower())
+
+
+# ── Team resolution ───────────────────────────────────────────────────────────
+
+def resolve_team(name: str, sport: str = "nba") -> dict | None:
     """Resolve a team name/nickname to its ESPN mapping entry."""
+    team_map = SPORT_TEAM_MAPS.get(sport.lower(), NBA_TEAM_MAP)
     key = name.lower().strip()
-    if key in NBA_TEAM_MAP:
-        return NBA_TEAM_MAP[key]
+    if key in team_map:
+        return team_map[key]
     # Try last word (handles "Los Angeles Lakers" → "lakers")
     last_word = key.rsplit(" ", 1)[-1]
-    if last_word in NBA_TEAM_MAP:
-        return NBA_TEAM_MAP[last_word]
+    if last_word in team_map:
+        return team_map[last_word]
     # Try matching against full names
-    for entry in NBA_TEAM_MAP.values():
+    for entry in team_map.values():
         if key in entry["full"].lower():
             return entry
     return None
 
 
-async def get_team_stats(team: str, stat_types: list[str] | None = None) -> str:
-    """Get current season stats for an NBA team."""
-    info = resolve_team(team)
-    if not info:
-        return f"Error: Unknown team '{team}'"
+# ── ESPN API functions ────────────────────────────────────────────────────────
 
+async def get_team_stats(team: str, stat_types: list[str] | None = None, sport: str = "nba") -> str:
+    """Get current season stats for a team."""
+    info = resolve_team(team, sport)
+    if not info:
+        return f"Error: Unknown team '{team}' for sport '{sport}'"
+
+    base = _espn_base(sport)
     try:
         async with httpx.AsyncClient(timeout=_TIMEOUT) as client:
-            resp = await client.get(f"{ESPN_BASE}/teams/{info['id']}")
+            resp = await client.get(f"{base}/teams/{info['id']}")
             resp.raise_for_status()
             data = resp.json()
     except Exception as exc:
@@ -110,15 +273,16 @@ async def get_team_stats(team: str, stat_types: list[str] | None = None) -> str:
     return "\n".join(lines)
 
 
-async def get_injury_report(team: str) -> str:
-    """Get the current injury report for an NBA team."""
-    info = resolve_team(team)
+async def get_injury_report(team: str, sport: str = "nba") -> str:
+    """Get the current injury report for a team."""
+    info = resolve_team(team, sport)
     if not info:
-        return f"Error: Unknown team '{team}'"
+        return f"Error: Unknown team '{team}' for sport '{sport}'"
 
+    base = _espn_base(sport)
     try:
         async with httpx.AsyncClient(timeout=_TIMEOUT) as client:
-            resp = await client.get(f"{ESPN_BASE}/injuries")
+            resp = await client.get(f"{base}/injuries")
             resp.raise_for_status()
             data = resp.json()
     except Exception as exc:
@@ -128,7 +292,6 @@ async def get_injury_report(team: str) -> str:
     full_name = info["full"]
 
     for team_entry in data.get("injuries", []):
-        # ESPN uses top-level id/displayName, not a nested "team" object
         entry_id = str(team_entry.get("id", ""))
         if entry_id == target_id:
             injuries = team_entry.get("injuries", [])
@@ -151,19 +314,20 @@ async def get_injury_report(team: str) -> str:
 
 
 async def get_head_to_head(
-    team_a: str, team_b: str, num_games: int = 5
+    team_a: str, team_b: str, num_games: int = 5, sport: str = "nba",
 ) -> str:
-    """Get recent head-to-head results between two NBA teams."""
-    info_a = resolve_team(team_a)
-    info_b = resolve_team(team_b)
+    """Get recent head-to-head results between two teams."""
+    info_a = resolve_team(team_a, sport)
+    info_b = resolve_team(team_b, sport)
     if not info_a:
-        return f"Error: Unknown team '{team_a}'"
+        return f"Error: Unknown team '{team_a}' for sport '{sport}'"
     if not info_b:
-        return f"Error: Unknown team '{team_b}'"
+        return f"Error: Unknown team '{team_b}' for sport '{sport}'"
 
+    base = _espn_base(sport)
     try:
         async with httpx.AsyncClient(timeout=_TIMEOUT) as client:
-            resp = await client.get(f"{ESPN_BASE}/teams/{info_a['id']}/schedule")
+            resp = await client.get(f"{base}/teams/{info_a['id']}/schedule")
             resp.raise_for_status()
             data = resp.json()
     except Exception as exc:
@@ -231,16 +395,17 @@ async def get_head_to_head(
 
 
 async def get_schedule(
-    team: str, days_back: int = 7, days_forward: int = 3
+    team: str, days_back: int = 7, days_forward: int = 3, sport: str = "nba",
 ) -> str:
     """Get recent and upcoming schedule, detecting back-to-backs."""
-    info = resolve_team(team)
+    info = resolve_team(team, sport)
     if not info:
-        return f"Error: Unknown team '{team}'"
+        return f"Error: Unknown team '{team}' for sport '{sport}'"
 
+    base = _espn_base(sport)
     try:
         async with httpx.AsyncClient(timeout=_TIMEOUT) as client:
-            resp = await client.get(f"{ESPN_BASE}/teams/{info['id']}/schedule")
+            resp = await client.get(f"{base}/teams/{info['id']}/schedule")
             resp.raise_for_status()
             data = resp.json()
     except Exception as exc:

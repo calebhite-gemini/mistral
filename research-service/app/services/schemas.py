@@ -3,6 +3,12 @@ from __future__ import annotations
 from pydantic import BaseModel
 
 
+class SourceRef(BaseModel):
+    title: str
+    url: str
+    source_type: str  # "tavily" | "espn_injury" | "espn_stats" | "espn_schedule" | "espn_h2h"
+
+
 class ResearchRequest(BaseModel):
     market_id: str
     question: str
@@ -18,3 +24,4 @@ class ResearchBriefOutput(BaseModel):
     rest_advantage: str
     recent_form: str
     sources: list[str]
+    source_urls: list[SourceRef] = []

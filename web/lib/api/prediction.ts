@@ -1,5 +1,11 @@
 import { predictionFetch, researchFetch } from "./clients";
 
+export interface SourceRef {
+  title: string;
+  url: string;
+  source_type: string;
+}
+
 export interface ResearchBrief {
   market_id: string;
   key_factors: string[];
@@ -7,6 +13,7 @@ export interface ResearchBrief {
   rest_advantage: string;
   recent_form: string;
   sources: string[];
+  source_urls?: SourceRef[];
 }
 
 export interface PredictionOutput {

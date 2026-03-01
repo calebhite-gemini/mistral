@@ -43,15 +43,20 @@ TOOL_DEFINITIONS = [
         "function": {
             "name": "get_team_stats",
             "description": (
-                "Get current season statistics for an NBA team: win-loss record, "
-                "points per game, defensive rating, home/away splits."
+                "Get current season statistics for a sports team: win-loss record, "
+                "scoring averages, home/away splits. Supports NBA, NFL, NHL, MLB."
             ),
             "parameters": {
                 "type": "object",
                 "properties": {
                     "team": {
                         "type": "string",
-                        "description": "Team nickname, e.g. 'Lakers', 'Warriors', '76ers'",
+                        "description": "Team nickname, e.g. 'Lakers', 'Chiefs', 'Maple Leafs'",
+                    },
+                    "sport": {
+                        "type": "string",
+                        "enum": ["nba", "nfl", "nhl", "mlb"],
+                        "description": "The sport league",
                     },
                     "stat_types": {
                         "type": "array",
@@ -62,7 +67,7 @@ TOOL_DEFINITIONS = [
                         ),
                     },
                 },
-                "required": ["team"],
+                "required": ["team", "sport"],
             },
         },
     },
@@ -71,19 +76,24 @@ TOOL_DEFINITIONS = [
         "function": {
             "name": "get_injury_report",
             "description": (
-                "Get the current injury report for an NBA team. Returns player "
+                "Get the current injury report for a sports team. Returns player "
                 "names, injury status (Out/Doubtful/Questionable/Day-to-Day), "
-                "and injury description."
+                "and injury description. Supports NBA, NFL, NHL, MLB."
             ),
             "parameters": {
                 "type": "object",
                 "properties": {
                     "team": {
                         "type": "string",
-                        "description": "Team nickname, e.g. 'Lakers', 'Warriors'",
+                        "description": "Team nickname, e.g. 'Lakers', 'Chiefs'",
+                    },
+                    "sport": {
+                        "type": "string",
+                        "enum": ["nba", "nfl", "nhl", "mlb"],
+                        "description": "The sport league",
                     },
                 },
-                "required": ["team"],
+                "required": ["team", "sport"],
             },
         },
     },
@@ -92,8 +102,9 @@ TOOL_DEFINITIONS = [
         "function": {
             "name": "get_head_to_head",
             "description": (
-                "Get historical head-to-head results between two NBA teams. "
-                "Returns recent matchup outcomes, scores, and series record."
+                "Get historical head-to-head results between two sports teams. "
+                "Returns recent matchup outcomes, scores, and series record. "
+                "Supports NBA, NFL, NHL, MLB."
             ),
             "parameters": {
                 "type": "object",
@@ -106,12 +117,17 @@ TOOL_DEFINITIONS = [
                         "type": "string",
                         "description": "Second team nickname",
                     },
+                    "sport": {
+                        "type": "string",
+                        "enum": ["nba", "nfl", "nhl", "mlb"],
+                        "description": "The sport league",
+                    },
                     "num_games": {
                         "type": "integer",
                         "description": "Number of recent matchups to retrieve (default 5, max 10)",
                     },
                 },
-                "required": ["team_a", "team_b"],
+                "required": ["team_a", "team_b", "sport"],
             },
         },
     },
@@ -120,9 +136,9 @@ TOOL_DEFINITIONS = [
         "function": {
             "name": "get_schedule",
             "description": (
-                "Get recent and upcoming schedule for an NBA team. Detects "
+                "Get recent and upcoming schedule for a sports team. Detects "
                 "back-to-back games and rest days. Use to assess fatigue and "
-                "rest advantages."
+                "rest advantages. Supports NBA, NFL, NHL, MLB."
             ),
             "parameters": {
                 "type": "object",
@@ -130,6 +146,11 @@ TOOL_DEFINITIONS = [
                     "team": {
                         "type": "string",
                         "description": "Team nickname",
+                    },
+                    "sport": {
+                        "type": "string",
+                        "enum": ["nba", "nfl", "nhl", "mlb"],
+                        "description": "The sport league",
                     },
                     "days_back": {
                         "type": "integer",
@@ -140,7 +161,7 @@ TOOL_DEFINITIONS = [
                         "description": "Days of future schedule to include (default 3)",
                     },
                 },
-                "required": ["team"],
+                "required": ["team", "sport"],
             },
         },
     },
