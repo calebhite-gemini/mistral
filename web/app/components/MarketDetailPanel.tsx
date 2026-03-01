@@ -1,8 +1,11 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import PlaceBetModal from "./PlaceBetModal";
 
 export interface MarketDetail {
+  ticker: string;
+  lastPrice: number;
   team1: string;
   team2: string;
   team1Abbr: string;
@@ -41,6 +44,7 @@ interface MarketDetailPanelProps {
 
 export default function MarketDetailPanel({ market, onClose, isOpen, loading }: MarketDetailPanelProps) {
   const open = isOpen ?? !!market;
+  const [betOpen, setBetOpen] = useState(false);
 
   useEffect(() => {
     function handleEsc(e: KeyboardEvent) {
@@ -214,7 +218,10 @@ export default function MarketDetailPanel({ market, onClose, isOpen, loading }: 
 
             {/* Bottom Actions */}
             <div className="px-5 py-4 border-t border-[#27272a] shrink-0 flex flex-col gap-2.5">
-              <button className="w-full bg-white text-[#09090b] text-xs font-bold tracking-[0.5px] uppercase py-3 rounded-sm hover:bg-[#e2e8f0] transition-colors">
+              <button
+                onClick={() => setBetOpen(true)}
+                className="w-full bg-white text-[#09090b] text-xs font-bold tracking-[0.5px] uppercase py-3 rounded-sm hover:bg-[#e2e8f0] transition-colors"
+              >
                 Place Bet
               </button>
               <button className="w-full border border-[#27272a] text-white text-xs font-bold tracking-[0.5px] uppercase py-3 rounded-sm hover:bg-[#27272a]/50 transition-colors">
@@ -224,6 +231,15 @@ export default function MarketDetailPanel({ market, onClose, isOpen, loading }: 
           </>
         )}
       </div>
+
+      {betOpen && market && (
+        <PlaceBetModal
+          ticker={market.ticker}
+          title={market.title}
+          lastPrice={market.lastPrice}
+          onClose={() => setBetOpen(false)}
+        />
+      )}
     </>
   );
 }

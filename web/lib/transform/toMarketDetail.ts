@@ -3,6 +3,8 @@ import type { KalshiMarket } from "../api/kalshi";
 import { toMarketRow } from "./toMarketRow";
 
 export interface MarketDetail {
+  ticker: string;
+  lastPrice: number;
   team1: string;
   team2: string;
   team1Abbr: string;
@@ -62,6 +64,8 @@ export function toMarketDetail(market: KalshiMarket): MarketDetail {
   const [volume, volumeTag] = formatVolume(market.volume_24h ?? 0);
 
   return {
+    ticker: market.ticker,
+    lastPrice: market.last_price,
     team1: row.team1,
     team2: row.team2,
     team1Abbr: toAbbr(row.team1),

@@ -27,6 +27,9 @@ interface MarketsTableProps {
   error?: string;
   selectedTicker?: string | null;
   onSelect?: (ticker: string) => void;
+  page?: number;
+  totalCount?: number;
+  onPageChange?: (page: number) => void;
 }
 
 function ClockIcon() {
@@ -49,9 +52,15 @@ function SkeletonRow({ idx }: { idx: number }) {
   );
 }
 
-export default function MarketsTable({ markets, loading, error, selectedTicker, onSelect }: MarketsTableProps) {
+const PAGE_SIZE = 10;
+
+export default function MarketsTable({ markets, loading, error, selectedTicker, onSelect, page = 1, totalCount, onPageChange }: MarketsTableProps) {
+  const total = totalCount ?? markets.length;
+  const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+  const start = (page - 1) * PAGE_SIZE + 1;
+  const end = Math.min(page * PAGE_SIZE, total);
   return (
-    <div className="bg-[#18181b] border border-[#27272a] rounded-sm overflow-hidden">
+    <div className="bg-[#18181b] border border-[#27272a] rounded-sm flex flex-col min-h-0 flex-1 overflow-hidden">
       {/* Header */}
       <div className="bg-[#09090b] border-b border-[#27272a] grid grid-cols-[180px_140px_100px_100px_100px_100px_100px_1fr_50px] items-center">
         <div className="px-6 py-[18px]">
@@ -81,7 +90,8 @@ export default function MarketsTable({ markets, loading, error, selectedTicker, 
         <div />
       </div>
 
-      {/* Body */}
+      {/* Body — scrollable */}
+      <div className="flex-1 overflow-y-auto">
       {error ? (
         <div className="px-6 py-8 text-center text-[#ef4444] text-xs font-mono">{error}</div>
       ) : loading ? (
@@ -196,20 +206,55 @@ export default function MarketsTable({ markets, loading, error, selectedTicker, 
         ))
       )}
 
+      </div>
+
       {/* Pagination */}
-      <div className="border-t border-[#27272a] flex items-center justify-between px-6 py-3 bg-[#18181b]">
-        <span className="text-[#64748b] text-[10px] font-mono uppercase">1-{markets.length} / {markets.length} ENTRIES</span>
-        <div className="flex items-center gap-2">
-          <button className="bg-[#09090b] border border-[#27272a] text-[#94a3b8] text-[10px] font-bold tracking-[0.25px] uppercase px-2.5 py-1 rounded-sm hover:bg-[#27272a] transition-colors">
-            Prev
-          </button>
-          <button className="bg-[#f1f5f9] border border-[#f1f5f9] text-[#09090b] text-[10px] font-mono font-bold px-2.5 py-1 rounded-sm">
-            1
-          </button>
-          <button className="bg-[#09090b] border border-[#27272a] text-[#94a3b8] text-[10px] font-bold tracking-[0.25px] uppercase px-2.5 py-1 rounded-sm hover:bg-[#27272a] transition-colors">
-            Next
-          </button>
-        </div>
+      <div className="border-t border-[#27272a] flex items-center justify-between px-6 py-3 bg-[#18181b] shrink-0">
+        <span className="text-[#64748b] text-[10px] font-mono uppercase">
+          {total === 0 ? "0 ENTRIES" : `${start}-${end} / ${total} ENTRIES`}
+        </span>
+        {onPageChange && totalPages > 1 && (
+          <div className="flex items-center gap-1.5">
+            <button
+              onClick={() => onPageChange(page - 1)}
+              disabled={page <= 1}
+              className="bg-[#09090b] border border-[#27272a] text-[#94a3b8] text-[10px] font-bold tracking-[0.25px] uppercase px-2.5 py-1 rounded-sm hover:bg-[#27272a] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              Prev
+            </button>
+            {Array.from({ length: totalPages }, (_, i) => i + 1)
+              .filter((p) => p === 1 || p === totalPages || Math.abs(p - page) <= 1)
+              .reduce<(number | "…")[]>((acc, p, i, arr) => {
+                if (i > 0 && p - (arr[i - 1] as number) > 1) acc.push("…");
+                acc.push(p);
+                return acc;
+              }, [])
+              .map((p, i) =>
+                p === "…" ? (
+                  <span key={`ellipsis-${i}`} className="text-[#64748b] text-[10px] px-1">…</span>
+                ) : (
+                  <button
+                    key={p}
+                    onClick={() => onPageChange(p as number)}
+                    className={`text-[10px] font-mono font-bold px-2.5 py-1 rounded-sm border transition-colors ${
+                      page === p
+                        ? "bg-[#f1f5f9] border-[#f1f5f9] text-[#09090b]"
+                        : "bg-[#09090b] border-[#27272a] text-[#94a3b8] hover:bg-[#27272a]"
+                    }`}
+                  >
+                    {p}
+                  </button>
+                )
+              )}
+            <button
+              onClick={() => onPageChange(page + 1)}
+              disabled={page >= totalPages}
+              className="bg-[#09090b] border border-[#27272a] text-[#94a3b8] text-[10px] font-bold tracking-[0.25px] uppercase px-2.5 py-1 rounded-sm hover:bg-[#27272a] transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              Next
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

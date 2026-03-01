@@ -5,9 +5,11 @@ const sports = ["All Sports", "Football", "Basketball", "Soccer", "UFC"];
 interface SportFiltersProps {
   active: string;
   onSelect: (sport: string) => void;
+  searchQuery: string;
+  onSearch: (q: string) => void;
 }
 
-export default function SportFilters({ active, onSelect }: SportFiltersProps) {
+export default function SportFilters({ active, onSelect, searchQuery, onSearch }: SportFiltersProps) {
   return (
     <div className="flex items-center gap-2">
       {sports.map((sport) => (
@@ -24,12 +26,18 @@ export default function SportFilters({ active, onSelect }: SportFiltersProps) {
         </button>
       ))}
       <div className="flex-1" />
-      <button className="flex items-center gap-1 px-3 py-[7px] rounded-sm border border-[#27272a] text-[#64748b] hover:bg-[#27272a]/50 transition-colors">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <line x1="4" y1="21" x2="4" y2="14" /><line x1="4" y1="10" x2="4" y2="3" /><line x1="12" y1="21" x2="12" y2="12" /><line x1="12" y1="8" x2="12" y2="3" /><line x1="20" y1="21" x2="20" y2="16" /><line x1="20" y1="12" x2="20" y2="3" /><line x1="1" y1="14" x2="7" y2="14" /><line x1="9" y1="8" x2="15" y2="8" /><line x1="17" y1="16" x2="23" y2="16" />
+      <div className="bg-[#18181b] border border-[#27272a] rounded-sm flex items-center px-3 py-[7px] w-56">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#64748b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+          <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
         </svg>
-        <span className="text-xs font-medium tracking-[0.3px] uppercase">Filter</span>
-      </button>
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => onSearch(e.target.value)}
+          placeholder="SEARCH TICKER/EVENT..."
+          className="bg-transparent border-none outline-none text-[#475569] text-xs font-mono w-full ml-2 placeholder:text-[#475569]"
+        />
+      </div>
     </div>
   );
 }
