@@ -11,6 +11,7 @@ from app.jobs.sync_open_markets import (
     upsert_markets,
     sync_once,
     SERIES_TICKERS,
+    TOP_N_PER_SERIES,
 )
 
 
@@ -18,18 +19,16 @@ from app.jobs.sync_open_markets import (
 
 
 def test_top_by_volume(sample_markets):
-    result = top_by_volume(sample_markets, n=20)
-    assert len(result) == 20
+    result = top_by_volume(sample_markets)
+    assert len(result) == TOP_N_PER_SERIES
     volumes = [m["volume"] for m in result]
     assert volumes == sorted(volumes, reverse=True)
-    # highest volume should be 25, lowest in top-20 should be 6
     assert volumes[0] == 25
-    assert volumes[-1] == 6
 
 
 def test_top_by_volume_fewer_than_n():
     markets = [{"ticker": f"M-{i}", "volume": i} for i in range(5)]
-    result = top_by_volume(markets, n=20)
+    result = top_by_volume(markets)
     assert len(result) == 5
 
 
@@ -130,14 +129,16 @@ def test_upsert_markets_empty(mock_supabase):
 
 @pytest.mark.asyncio
 async def test_fetch_open_markets_calls_all_series():
-    fake_markets = [{"ticker": "MKT-1", "volume": 10}]
+    # 15 markets per series, should be trimmed to TOP_N_PER_SERIES each
+    fake_markets = [{"ticker": f"MKT-{i}", "volume": i} for i in range(15)]
     mock_list = AsyncMock(return_value={"markets": fake_markets})
 
     with patch("app.jobs.sync_open_markets.list_markets", mock_list):
         result = await fetch_open_markets()
 
-    assert len(result) == len(SERIES_TICKERS)  # 1 market per series
     assert mock_list.call_count == len(SERIES_TICKERS)
+    # Each series returns top TOP_N_PER_SERIES
+    assert len(result) == TOP_N_PER_SERIES * len(SERIES_TICKERS)
 
     # First run: no min_created_ts
     for call in mock_list.call_args_list:
@@ -162,7 +163,7 @@ async def test_fetch_open_markets_with_min_created_ts():
 
 @pytest.mark.asyncio
 async def test_sync_once_first_run(mock_supabase, sample_markets):
-    """First run: last_updated is empty, should fetch all, upsert top 20, update last_updated."""
+    """First run: last_updated is empty, should fetch all, upsert top 10 per series, update last_updated."""
     # last_updated returns empty
     mock_supabase.table.return_value.select.return_value.eq.return_value.order.return_value.limit.return_value.execute.return_value = MagicMock(data=[])
 

@@ -18,7 +18,7 @@ SERIES_TICKERS = [
 ]
 
 SYNC_INTERVAL_SECONDS = 60 * 60 * 4  # 4 hours
-TOP_N = 20
+TOP_N_PER_SERIES = 10
 
 
 def get_supabase():
@@ -55,8 +55,8 @@ def set_last_updated(supabase):
 
 
 async def fetch_open_markets(min_created_ts: int | None = None):
-    """Fetch open markets for our target series, optionally filtering by creation time."""
-    all_markets = []
+    """Fetch top markets per series, optionally filtering by creation time."""
+    all_top_markets = []
     for series in SERIES_TICKERS:
         print(f"[sync-markets] fetching open markets for {series} (min_created_ts={min_created_ts})...")
         result = await list_markets(
@@ -68,12 +68,13 @@ async def fetch_open_markets(min_created_ts: int | None = None):
         # Tag each market with the series_ticker we queried
         for m in markets:
             m["series_ticker"] = series
-        all_markets.extend(markets)
-        print(f"[sync-markets] {series}: {len(markets)} open markets")
-    return all_markets
+        top = top_by_volume(markets)
+        all_top_markets.extend(top)
+        print(f"[sync-markets] {series}: {len(markets)} open markets, kept top {len(top)}")
+    return all_top_markets
 
 
-def top_by_volume(markets, n=TOP_N):
+def top_by_volume(markets, n=TOP_N_PER_SERIES):
     """Return the top N markets sorted by volume descending."""
     sorted_markets = sorted(markets, key=lambda m: m.get("volume", 0) or 0, reverse=True)
     return sorted_markets[:n]
@@ -137,10 +138,9 @@ async def sync_once():
         print(f"[sync-markets] last sync at {last_ts}, fetching markets created since then")
 
     markets = await fetch_open_markets(min_created_ts=last_ts)
-    top = top_by_volume(markets)
-    print(f"[sync-markets] {len(markets)} total open markets, upserting top {len(top)} by volume")
+    print(f"[sync-markets] {len(markets)} markets to upsert (top {TOP_N_PER_SERIES} per series)")
 
-    upsert_markets(supabase, top)
+    upsert_markets(supabase, markets)
     set_last_updated(supabase)
 
     print(f"[sync-markets] cycle complete at {datetime.now(timezone.utc).isoformat()}")
