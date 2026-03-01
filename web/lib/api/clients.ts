@@ -1,6 +1,7 @@
 const KALSHI_URL = process.env.KALSHI_URL ?? "http://localhost:8003";
 const EDGE_URL = process.env.EDGE_URL ?? "http://localhost:8002";
 const PREDICTION_URL = process.env.PREDICTION_URL ?? "http://localhost:8001";
+const RESEARCH_URL = process.env.RESEARCH_URL ?? "http://localhost:8004";
 
 export async function kalshiFetch(path: string, init?: RequestInit) {
   const res = await fetch(`${KALSHI_URL}${path}`, {
@@ -26,5 +27,14 @@ export async function predictionFetch(path: string, init?: RequestInit) {
     next: { revalidate: 0 },
   });
   if (!res.ok) throw new Error(`Prediction ${path} → ${res.status}: ${await res.text()}`);
+  return res.json();
+}
+
+export async function researchFetch(path: string, init?: RequestInit) {
+  const res = await fetch(`${RESEARCH_URL}${path}`, {
+    ...init,
+    next: { revalidate: 0 },
+  });
+  if (!res.ok) throw new Error(`Research ${path} → ${res.status}: ${await res.text()}`);
   return res.json();
 }

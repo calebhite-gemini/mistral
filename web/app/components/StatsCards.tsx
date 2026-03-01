@@ -40,18 +40,12 @@ interface StatsCardsProps {
 }
 
 function formatMoney(n: number): string {
-  if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(2)}M`;
+  if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(1)}M`;
   if (n >= 1_000) return `$${(n / 1_000).toFixed(1)}K`;
   return `$${n.toLocaleString()}`;
 }
 
-function sentimentConfig(s?: "BULLISH" | "BEARISH" | "NEUTRAL") {
-  if (s === "BULLISH") return { label: "Bullish", progress: 75 };
-  if (s === "BEARISH") return { label: "Bearish", progress: 25 };
-  return { label: "Neutral", progress: 50 };
-}
-
-export default function StatsCards({ volume24h, activeMarkets, openInterest, sentiment, loading }: StatsCardsProps) {
+export default function StatsCards({ volume24h, activeMarkets, loading }: StatsCardsProps) {
   return (
     <div className="flex gap-4">
       <StatCard
@@ -65,7 +59,7 @@ export default function StatsCards({ volume24h, activeMarkets, openInterest, sen
         }
       />
       <StatCard
-        label="Active Markets"
+        label="Games Today"
         value={activeMarkets !== undefined ? activeMarkets.toLocaleString() : "--"}
         loading={loading}
         icon={
@@ -73,27 +67,6 @@ export default function StatsCards({ volume24h, activeMarkets, openInterest, sen
             <rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="14" y="14" width="7" height="7" /><rect x="3" y="14" width="7" height="7" />
           </svg>
         }
-      />
-      <StatCard
-        label="Open Interest"
-        value={openInterest !== undefined ? formatMoney(openInterest) : "--"}
-        loading={loading}
-        icon={
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="2" y="7" width="20" height="14" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-          </svg>
-        }
-      />
-      <StatCard
-        label="Sentiment"
-        value=""
-        loading={loading}
-        icon={
-          <svg width="14" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-          </svg>
-        }
-        sentiment={loading ? undefined : sentimentConfig(sentiment)}
       />
     </div>
   );

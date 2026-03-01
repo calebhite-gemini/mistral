@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+from typing import AsyncGenerator
 
 from mistralai import Mistral
 
@@ -166,3 +167,131 @@ def _strip_fences(text: str) -> str:
         inner = lines[1:-1] if lines[-1].strip() == "```" else lines[1:]
         return "\n".join(inner).strip()
     return text
+
+
+_TOOL_LABELS: dict[str, str] = {
+    "get_injury_report": "Checking {team} injury report...",
+    "get_team_stats": "Getting {team} team stats...",
+    "get_schedule": "Fetching {team} schedule...",
+    "get_head_to_head": "Looking up head-to-head history...",
+    "search_news": "Searching recent news...",
+}
+
+
+async def run_research_agent_stream(
+    request: ResearchRequest,
+) -> AsyncGenerator[dict, None]:
+    """Run the Mistral research agent loop, yielding SSE events for each tool call."""
+    api_key = os.environ.get("MISTRAL_API_KEY")
+    if not api_key:
+        raise EnvironmentError("MISTRAL_API_KEY is not set")
+
+    client = Mistral(api_key=api_key)
+
+    user_message = (
+        f"Research this market for a prediction:\n"
+        f"Question: {request.question}\n"
+        f"Sport: {request.sport}\n"
+        f"Teams: {', '.join(request.teams)}\n"
+        f"Game Date: {request.game_date}\n"
+        f"Market ID: {request.market_id}"
+    )
+
+    messages: list[dict] = [
+        {"role": "system", "content": _SYSTEM_PROMPT},
+        {"role": "user", "content": user_message},
+    ]
+
+    tool_call_count = 0
+    sources_used: set[str] = set()
+    final_content = ""
+
+    while tool_call_count < _MAX_TOOL_CALLS:
+        response = await client.chat.complete_async(
+            model=_MODEL,
+            messages=messages,
+            tools=TOOL_DEFINITIONS,
+            tool_choice="auto",
+            temperature=_TEMPERATURE,
+        )
+
+        message = response.choices[0].message
+        messages.append(message)
+
+        if not message.tool_calls:
+            final_content = message.content or ""
+            break
+
+        for tool_call in message.tool_calls:
+            tool_call_count += 1
+            fn_name = tool_call.function.name
+            fn_args = tool_call.function.arguments
+
+            # Parse args to extract team name for the label
+            try:
+                parsed_args = json.loads(fn_args) if isinstance(fn_args, str) else fn_args
+            except json.JSONDecodeError:
+                parsed_args = {}
+
+            team_hint = parsed_args.get(
+                "team",
+                parsed_args.get("team_a", parsed_args.get("query", "")),
+            )
+            label_template = _TOOL_LABELS.get(fn_name, f"Running {fn_name}...")
+            label = (
+                label_template.format(team=team_hint)
+                if "{team}" in label_template
+                else label_template
+            )
+
+            # Emit step event BEFORE executing the tool
+            yield {
+                "event": "step",
+                "data": {
+                    "phase": "research",
+                    "tool": fn_name,
+                    "label": label,
+                    "index": tool_call_count,
+                },
+            }
+
+            # Track sources
+            if fn_name == "search_news":
+                sources_used.add("Tavily news search")
+            elif fn_name.startswith("get_"):
+                sources_used.add(f"ESPN {fn_name.replace('get_', '').replace('_', ' ')}")
+
+            result = await execute_tool(fn_name, fn_args)
+
+            messages.append({
+                "role": "tool",
+                "name": fn_name,
+                "content": result,
+                "tool_call_id": tool_call.id,
+            })
+    else:
+        # Hit max tool calls — force a final response
+        yield {
+            "event": "step",
+            "data": {"phase": "research", "tool": None, "label": "Compiling research brief..."},
+        }
+
+        messages.append({
+            "role": "user",
+            "content": (
+                "You have used all available tool calls. Provide your final "
+                "research brief JSON now based on the data gathered so far."
+            ),
+        })
+        response = await client.chat.complete_async(
+            model=_MODEL,
+            messages=messages,
+            temperature=_TEMPERATURE,
+        )
+        final_content = response.choices[0].message.content or ""
+
+    brief = _parse_agent_response(final_content, request.market_id, sources_used)
+    yield {
+        "event": "research_complete",
+        "data": brief.model_dump(),
+    }

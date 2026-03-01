@@ -86,20 +86,26 @@ export default function Sidebar() {
 
         {/* Main Nav */}
         <nav className="flex flex-col gap-0.5">
-          {navItems.map((item) => (
-            <button
-              key={item.label}
-              onClick={() => setActiveNav(item.label)}
-              className={`flex items-center gap-3 px-3 py-2 rounded-sm w-full text-left transition-colors ${
-                activeNav === item.label
-                  ? "bg-[#27272a] border-l-2 border-white text-white font-bold pl-3.5"
-                  : "text-[#94a3b8] hover:bg-[#27272a]/50"
-              }`}
-            >
-              <NavIcon name={item.icon} />
-              <span className="text-xs tracking-[0.3px] uppercase">{item.label}</span>
-            </button>
-          ))}
+          {navItems.map((item) => {
+            const isDisabled = item.label !== "Live Markets";
+            return (
+              <button
+                key={item.label}
+                disabled={isDisabled}
+                onClick={() => !isDisabled && setActiveNav(item.label)}
+                className={`flex items-center gap-3 px-3 py-2 rounded-sm w-full text-left transition-colors ${
+                  isDisabled
+                    ? "opacity-30 cursor-not-allowed text-[#94a3b8]"
+                    : activeNav === item.label
+                      ? "bg-[#27272a] border-l-2 border-white text-white font-bold pl-3.5"
+                      : "text-[#94a3b8] hover:bg-[#27272a]/50"
+                }`}
+              >
+                <NavIcon name={item.icon} />
+                <span className="text-xs tracking-[0.3px] uppercase">{item.label}</span>
+              </button>
+            );
+          })}
         </nav>
 
         {/* Divider */}
@@ -115,7 +121,8 @@ export default function Sidebar() {
           {utilityItems.map((item) => (
             <button
               key={item.label}
-              className="flex items-center gap-3 px-3 py-2 rounded-sm w-full text-left text-[#94a3b8] hover:bg-[#27272a]/50 transition-colors"
+              disabled
+              className="flex items-center gap-3 px-3 py-2 rounded-sm w-full text-left text-[#94a3b8] opacity-30 cursor-not-allowed transition-colors"
             >
               <NavIcon name={item.icon} />
               <span className="text-xs font-medium tracking-[0.3px] uppercase">{item.label}</span>
@@ -126,7 +133,7 @@ export default function Sidebar() {
 
       {/* Bottom section */}
       <div className="flex flex-col gap-1">
-        <button className="flex items-center gap-3 px-3 py-2 rounded-sm w-full text-left text-[#94a3b8] hover:bg-[#27272a]/50 transition-colors">
+        <button disabled className="flex items-center gap-3 px-3 py-2 rounded-sm w-full text-left text-[#94a3b8] opacity-30 cursor-not-allowed transition-colors">
           <NavIcon name="cog" />
           <span className="text-xs font-medium tracking-[0.3px] uppercase">Settings</span>
         </button>

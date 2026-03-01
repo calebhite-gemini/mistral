@@ -1,5 +1,14 @@
-// Prediction service is not yet implemented.
-// Returns a stub until LLM research pipeline is built out.
+import { predictionFetch, researchFetch } from "./clients";
+
+export interface ResearchBrief {
+  market_id: string;
+  key_factors: string[];
+  injury_flags: string[];
+  rest_advantage: string;
+  recent_form: string;
+  sources: string[];
+}
+
 export interface PredictionOutput {
   probability: number;
   confidence: "low" | "medium" | "high";
@@ -7,11 +16,41 @@ export interface PredictionOutput {
   reasoning: string;
 }
 
-export async function getPrediction(): Promise<PredictionOutput> {
-  return {
-    probability: 50,
-    confidence: "low",
-    key_drivers: [],
-    reasoning: "LLM research pipeline not yet implemented.",
+export interface ResearchRequest {
+  market_id: string;
+  question: string;
+  sport: string;
+  teams: string[];
+  game_date: string;
+}
+
+export interface PredictRequest {
+  market: {
+    market_id: string;
+    question: string;
+    yes_price: number;
+    no_price: number;
+    closes_at: string;
+    sport: string;
+    teams: string[];
+    game_date: string;
+    volume: number;
   };
+  research_brief: ResearchBrief;
+}
+
+export async function getResearchBrief(req: ResearchRequest): Promise<ResearchBrief> {
+  return researchFetch("/research", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(req),
+  });
+}
+
+export async function getPrediction(req: PredictRequest): Promise<PredictionOutput> {
+  return predictionFetch("/predict", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(req),
+  });
 }

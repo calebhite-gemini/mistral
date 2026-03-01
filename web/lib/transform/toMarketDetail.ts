@@ -1,4 +1,6 @@
 import type { KalshiMarket } from "../api/kalshi";
+import type { PredictionOutput, ResearchBrief } from "../api/prediction";
+import type { EdgeResult } from "../api/edge";
 // Re-use the same parsing logic from toMarketRow
 import { toMarketRow } from "./toMarketRow";
 
@@ -22,6 +24,12 @@ export interface MarketDetail {
   volumePublic: string;
   sharpMoney: string;
   sharpOn: string;
+  modelProb: string;
+  confidence: string;
+  edge: string;
+  ev: string;
+  signal: string;
+  reasoning: string;
   drivers: {
     tag: string;
     tagColor: string;
@@ -58,10 +66,73 @@ function lastPriceToAmericanOdds(lastPrice: number): string {
   return `+${Math.round((1 - p) / p * 100)}`;
 }
 
-export function toMarketDetail(market: KalshiMarket): MarketDetail {
+// ── Driver tag classification ─────────────────────────────────────────────────
+
+const TAG_CONFIG: { pattern: RegExp; tag: string; color: string }[] = [
+  { pattern: /injur|out|questionable|day-to-day|doubtful|surgery|soreness/i, tag: "INJURY", color: "#ef4444" },
+  { pattern: /back-to-back|rest|fatigue|schedule|b2b/i, tag: "REST", color: "#f59e0b" },
+  { pattern: /record|win|loss|form|streak|last \d/i, tag: "FORM", color: "#3b82f6" },
+  { pattern: /home|away|road|venue|court/i, tag: "VENUE", color: "#8b5cf6" },
+  { pattern: /head-to-head|matchup|h2h|series/i, tag: "H2H", color: "#06b6d4" },
+  { pattern: /trade|news|coach|roster|signing/i, tag: "NEWS", color: "#10b981" },
+];
+
+function classifyDriver(text: string): { tag: string; color: string } {
+  for (const { pattern, tag, color } of TAG_CONFIG) {
+    if (pattern.test(text)) return { tag, color };
+  }
+  return { tag: "INSIGHT", color: "#64748b" };
+}
+
+function buildDrivers(
+  prediction?: PredictionOutput,
+  research?: ResearchBrief,
+): MarketDetail["drivers"] {
+  if (!prediction?.key_drivers?.length) return [];
+
+  const now = new Date().toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" });
+
+  return prediction.key_drivers.map((driver) => {
+    const { tag, color } = classifyDriver(driver);
+    // Use first sentence or first 60 chars as title
+    const dotIdx = driver.indexOf(".");
+    const title = dotIdx > 0 && dotIdx < 80 ? driver.slice(0, dotIdx) : driver.slice(0, 60);
+    const description = driver;
+
+    return {
+      tag,
+      tagColor: color,
+      title: title.length < driver.length ? title : driver,
+      description,
+      source: "AI Research Agent",
+      sourceIcon: "⚡",
+      sourceColor: "#3b82f6",
+      time: now,
+    };
+  });
+}
+
+// ── Main transform ────────────────────────────────────────────────────────────
+
+export function toMarketDetail(
+  market: KalshiMarket,
+  prediction?: PredictionOutput,
+  edgeResult?: EdgeResult,
+  research?: ResearchBrief,
+): MarketDetail {
   // Reuse toMarketRow just to get parsed team1/team2/league/type
-  const row = toMarketRow(market, { signal: "NO EDGE", edge: 0, ev: 0, kelly_fraction: 0 });
+  const row = toMarketRow(market, edgeResult ?? { signal: "NO EDGE", edge: 0, ev: 0, kelly_fraction: 0 });
   const [volume, volumeTag] = formatVolume(market.volume_24h ?? 0);
+
+  const modelProb = prediction ? `${prediction.probability}%` : "—";
+  const confidence = prediction
+    ? prediction.confidence === "high" ? "High" : prediction.confidence === "medium" ? "Med" : "Low"
+    : "—";
+  const edge = edgeResult ? `${(edgeResult.edge * 100).toFixed(1)}%` : "—";
+  const ev = edgeResult ? `${edgeResult.ev >= 0 ? "+" : ""}${(edgeResult.ev * 100).toFixed(1)}%` : "—";
+  const signal = edgeResult
+    ? edgeResult.signal === "BUY YES" ? "BUY YES" : edgeResult.signal === "BUY NO" ? "BUY NO" : "NO EDGE"
+    : "—";
 
   return {
     ticker: market.ticker,
@@ -72,7 +143,7 @@ export function toMarketDetail(market: KalshiMarket): MarketDetail {
     team2Abbr: toAbbr(row.team2),
     league: row.league,
     type: row.type,
-    gameDate: formatGameDate(market.close_time),
+    gameDate: formatGameDate(market.expected_expiration_time ?? market.close_time),
     title: `${row.team1} ${row.type === "MONEYLINE" ? "Moneyline" : row.type === "SPREAD" ? "Spread" : "Total"}`,
     impliedProb: `${market.last_price.toFixed(1)}%`,
     probChange: "+0.0%",
@@ -83,6 +154,12 @@ export function toMarketDetail(market: KalshiMarket): MarketDetail {
     volumePublic: "~50% Public",
     sharpMoney: "50%",
     sharpOn: `On ${row.team1}`,
-    drivers: [],
+    modelProb,
+    confidence,
+    edge,
+    ev,
+    signal,
+    reasoning: prediction?.reasoning ?? "",
+    drivers: buildDrivers(prediction, research),
   };
 }

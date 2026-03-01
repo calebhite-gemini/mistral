@@ -16,6 +16,7 @@ export interface KalshiMarket {
   volume_24h: number;
   open_interest?: number;
   close_time: string;
+  expected_expiration_time?: string;
   result?: string;
 }
 
@@ -37,6 +38,7 @@ export async function getKalshiMarkets(params?: {
   series_ticker?: string;
   cursor?: string;
   min_close_ts?: number;
+  max_close_ts?: number;
 }): Promise<KalshiMarketsResponse> {
   const qs = new URLSearchParams();
   if (params?.status) qs.set("status", params.status);
@@ -44,6 +46,7 @@ export async function getKalshiMarkets(params?: {
   if (params?.series_ticker) qs.set("series_ticker", params.series_ticker);
   if (params?.cursor) qs.set("cursor", params.cursor);
   if (params?.min_close_ts) qs.set("min_close_ts", String(params.min_close_ts));
+  if (params?.max_close_ts) qs.set("max_close_ts", String(params.max_close_ts));
   const query = qs.toString() ? `?${qs}` : "";
   return kalshiFetch(`/markets${query}`);
 }

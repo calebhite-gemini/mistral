@@ -10,17 +10,19 @@ const SPORTS_SERIES = [
   "KXNFLGAME", "KXNFLSPREAD", "KXNFLTOTAL",
   "KXNHLGAME", "KXMLBGAME",
   "KXNCAABGAME", "KXNCAAFGAME",
-  "KXEPLGAME", "KXUFC",
+  "KXEPLGAME", "KXMLSGAME", "KXUFC",
 ];
 
 async function fetchAllSportsMarkets(seriesTicker?: string): Promise<KalshiMarket[]> {
   if (seriesTicker) {
-    const data = await getKalshiMarkets({ status: "open", limit: 50, series_ticker: seriesTicker });
-    return data.markets ?? [];
+    const data = await getKalshiMarkets({ status: "open", limit: 100, series_ticker: seriesTicker });
+    return filterToUpcoming(data.markets ?? []);
   }
 
   const results = await Promise.allSettled(
-    SPORTS_SERIES.map((s) => getKalshiMarkets({ status: "open", limit: 20, series_ticker: s }))
+    SPORTS_SERIES.map((s) =>
+      getKalshiMarkets({ status: "open", limit: 100, series_ticker: s })
+    )
   );
 
   const all: KalshiMarket[] = [];
@@ -31,13 +33,33 @@ async function fetchAllSportsMarkets(seriesTicker?: string): Promise<KalshiMarke
   // Sort by volume descending so highest-volume markets appear first
   all.sort((a, b) => (b.volume_24h ?? 0) - (a.volume_24h ?? 0));
 
-  // Deduplicate by event_ticker — keep first occurrence per game
+  // Deduplicate by game (strip series prefix from event_ticker).
+  // e.g. KXNBAGAME-26MAR01CLEBKN, KXNBASPREAD-26MAR01CLEBKN, KXNBATOTAL-26MAR01CLEBKN
+  // all become "26MAR01CLEBKN" — keeping the first (highest-volume) per game.
   const seen = new Set<string>();
-  return all.filter((m) => {
-    const key = m.event_ticker ?? m.ticker;
-    if (seen.has(key)) return false;
-    seen.add(key);
+  const deduped = all.filter((m) => {
+    const eventTicker = m.event_ticker ?? m.ticker;
+    const dashIdx = eventTicker.indexOf("-");
+    const gameKey = dashIdx >= 0 ? eventTicker.slice(dashIdx + 1) : eventTicker;
+    if (seen.has(gameKey)) return false;
+    seen.add(gameKey);
     return true;
+  });
+
+  return filterToUpcoming(deduped);
+}
+
+/** Keep only markets whose game/event expires within 7 days.
+ *  Uses `expected_expiration_time` (actual game resolution) rather than
+ *  `close_time` (market settlement, often 2 weeks later).
+ *  Client-side filtering narrows to Today/Tomorrow/Week. */
+function filterToUpcoming(markets: KalshiMarket[]): KalshiMarket[] {
+  const now = Date.now();
+  const in7d = now + 7 * 24 * 3_600_000;
+  return markets.filter((m) => {
+    const expiry = m.expected_expiration_time ?? m.close_time;
+    const t = new Date(expiry).getTime();
+    return t > now && t < in7d;
   });
 }
 

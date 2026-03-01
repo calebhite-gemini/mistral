@@ -12,6 +12,7 @@ export interface MarketRow {
   type: string;
   closesIn: string;
   closingUrgent: boolean;
+  expiresAt: string; // ISO timestamp of game/event expiration
   marketPrice: string;
   modelProb: string;
   edge: string;
@@ -148,11 +149,12 @@ const NHL_CODES: Record<string, string> = {
   NJD: "New Jersey Devils",    NYI: "New York Islanders",
   NYR: "New York Rangers",     OTT: "Ottawa Senators",
   PHI: "Philadelphia Flyers",  PIT: "Pittsburgh Penguins",
-  SJS: "San Jose Sharks",      SEA: "Seattle Kraken",
+  SJ:  "San Jose Sharks",       SJS: "San Jose Sharks",
+  SEA: "Seattle Kraken",
   STL: "St. Louis Blues",      TBL: "Tampa Bay Lightning",
   TOR: "Toronto Maple Leafs",  VAN: "Vancouver Canucks",
-  VGK: "Vegas Golden Knights", WSH: "Washington Capitals",
-  WPG: "Winnipeg Jets",
+  UTA: "Utah Hockey Club",     VGK: "Vegas Golden Knights",
+  WSH: "Washington Capitals",  WPG: "Winnipeg Jets",
 };
 
 const LEAGUE_CODES: Record<string, Record<string, string>> = {
@@ -283,16 +285,17 @@ export function toMarketRow(market: KalshiMarket, edgeResult: EdgeResult): Marke
     team2Color: getTeamColor(team2, league),
     league,
     type,
-    closesIn: formatClosesIn(market.close_time),
-    closingUrgent: isUrgent(market.close_time),
+    expiresAt: market.expected_expiration_time ?? market.close_time,
+    closesIn: formatClosesIn(market.expected_expiration_time ?? market.close_time),
+    closingUrgent: isUrgent(market.expected_expiration_time ?? market.close_time),
     marketPrice: `${market.last_price.toFixed(1)}%`,
-    modelProb: "50.0%",
+    modelProb: "—",
     edge,
     edgePositive,
     ev,
     evPositive,
     signal,
     confidence: "Low",
-    confidencePercent: 50,
+    confidencePercent: 0,
   };
 }

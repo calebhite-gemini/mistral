@@ -25,6 +25,7 @@ async def list_markets(
     status: str | None = Query(None, description="open, closed, or settled"),
     series_ticker: str | None = Query(None, description="Filter by series ticker"),
     min_close_ts: int | None = Query(None, description="Markets closing after this Unix timestamp"),
+    max_close_ts: int | None = Query(None, description="Markets closing before this Unix timestamp"),
 ):
     try:
         return await kalshi_get("/markets", {
@@ -33,6 +34,7 @@ async def list_markets(
             "status": status,
             "series_ticker": series_ticker,
             "min_close_ts": min_close_ts,
+            "max_close_ts": max_close_ts,
         })
     except httpx.HTTPStatusError as exc:
         raise HTTPException(status_code=exc.response.status_code, detail=exc.response.text)
