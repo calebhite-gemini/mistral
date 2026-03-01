@@ -13,6 +13,7 @@ export interface MarketRow {
   closesIn: string;
   closingUrgent: boolean;
   expiresAt: string; // ISO timestamp of game/event expiration
+  volume: number;
   marketPrice: string;
   modelProb: string;
   edge: string;
@@ -288,6 +289,7 @@ export function toMarketRow(market: KalshiMarket, edgeResult: EdgeResult): Marke
     expiresAt: market.expected_expiration_time ?? market.close_time,
     closesIn: formatClosesIn(market.expected_expiration_time ?? market.close_time),
     closingUrgent: isUrgent(market.expected_expiration_time ?? market.close_time),
+    volume: market.volume_24h ?? market.volume ?? 0,
     marketPrice: `${market.last_price.toFixed(1)}%`,
     modelProb: "—",
     edge,

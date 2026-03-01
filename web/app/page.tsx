@@ -1,5 +1,4 @@
 import Sidebar from "./components/Sidebar";
-import StatsCardsLoader from "./components/StatsCardsLoader";
 import MarketsView from "./MarketsView";
 
 export default function Home() {
@@ -24,11 +23,6 @@ export default function Home() {
             </button>
           </div>
         </header>
-
-        {/* Stats cards — fixed, doesn't scroll */}
-        <div className="px-6 pt-6 pb-0 shrink-0">
-          <StatsCardsLoader />
-        </div>
 
         {/* Markets — takes remaining height and scrolls internally */}
         <div className="flex-1 flex flex-col min-h-0 px-6 pb-6 pt-6">

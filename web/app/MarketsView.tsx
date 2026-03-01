@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo, useRef } from "react";
 import SportFilters, { TIME_RANGES } from "./components/SportFilters";
+import StatsCards from "./components/StatsCards";
 import MarketsTable from "./components/MarketsTable";
 import MarketDetailPanel from "./components/MarketDetailPanel";
 import type { AgentStep } from "./components/MarketDetailPanel";
@@ -202,6 +203,11 @@ export default function MarketsView() {
     [filteredMarkets, page]
   );
 
+  const filteredVolume = useMemo(
+    () => filteredMarkets.reduce((sum, m) => sum + (m.volume ?? 0), 0),
+    [filteredMarkets]
+  );
+
   function handleSelect(ticker: string) {
     setSelectedTicker((prev) => (prev === ticker ? null : ticker));
   }
@@ -213,6 +219,7 @@ export default function MarketsView() {
 
   return (
     <div className="flex flex-col min-h-0 h-full gap-4">
+      <StatsCards volume={filteredVolume} activeMarkets={filteredMarkets.length} loading={marketsLoading} />
       <SportFilters active={activeSport} onSelect={setActiveSport} searchQuery={searchQuery} onSearch={setSearchQuery} activeTimeRange={activeTimeRange} onTimeRangeSelect={setActiveTimeRange} />
       <MarketsTable
         markets={pagedMarkets}

@@ -32,10 +32,8 @@ function StatCard({ label, value, icon, sentiment, loading }: StatCardProps) {
 }
 
 interface StatsCardsProps {
-  volume24h?: number;
+  volume?: number;
   activeMarkets?: number;
-  openInterest?: number;
-  sentiment?: "BULLISH" | "BEARISH" | "NEUTRAL";
   loading?: boolean;
 }
 
@@ -45,12 +43,12 @@ function formatMoney(n: number): string {
   return `$${n.toLocaleString()}`;
 }
 
-export default function StatsCards({ volume24h, activeMarkets, loading }: StatsCardsProps) {
+export default function StatsCards({ volume, activeMarkets, loading }: StatsCardsProps) {
   return (
     <div className="flex gap-4">
       <StatCard
-        label="Volume (24h)"
-        value={volume24h !== undefined ? formatMoney(volume24h) : "--"}
+        label="Volume"
+        value={volume !== undefined ? formatMoney(volume) : "--"}
         loading={loading}
         icon={
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
