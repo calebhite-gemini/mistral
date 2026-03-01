@@ -8,7 +8,9 @@ load_dotenv()
 
 from supabase import create_client  # noqa: E402
 
+from app.routers.events import get_event  # noqa: E402
 from app.routers.markets import list_markets  # noqa: E402
+from app.jobs.sync_open_events import build_event_row, upsert_events  # noqa: E402
 
 SERIES_TICKERS = [
     "KXNBAGAME",
@@ -18,7 +20,7 @@ SERIES_TICKERS = [
 ]
 
 SYNC_INTERVAL_SECONDS = 60 * 60 * 4  # 4 hours
-TOP_N_PER_SERIES = 10
+TOP_N_PER_SERIES = 9999  # temporarily disabled
 
 
 def get_supabase():
@@ -141,6 +143,20 @@ async def sync_once():
     print(f"[sync-markets] {len(markets)} markets to upsert (top {TOP_N_PER_SERIES} per series)")
 
     upsert_markets(supabase, markets)
+
+    # Sync events for unique event_tickers in this batch
+    event_tickers = list({m["event_ticker"] for m in markets if m.get("event_ticker")})
+    print(f"[sync-markets] syncing {len(event_tickers)} unique events...")
+    event_rows = []
+    for ticker in event_tickers:
+        try:
+            data = await get_event(ticker, with_nested_markets=True)
+            event = data.get("event", data)
+            event_rows.append(build_event_row(event))
+        except Exception as e:
+            print(f"[sync-markets] error fetching event {ticker}: {e}")
+    upsert_events(supabase, event_rows)
+
     set_last_updated(supabase)
 
     print(f"[sync-markets] cycle complete at {datetime.now(timezone.utc).isoformat()}")
