@@ -1,0 +1,13 @@
+[project]
+name = "kalshi-service"
+version = "0.1.0"
+description = "Authenticated Kalshi trading service"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "cryptography>=43.0.0",
+    "fastapi>=0.134.0",
+    "httpx>=0.28.1",
+    "python-dotenv>=1.2.1",
+    "uvicorn[standard]>=0.41.0",
+]
