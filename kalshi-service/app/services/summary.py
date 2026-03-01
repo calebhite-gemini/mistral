@@ -17,14 +17,13 @@ class MarketSummary(BaseModel):
 
 
 def compute_summary(markets: list[dict]) -> MarketSummary:
-    open_markets = [m for m in markets if m.get("status") == "open"]
+    # Callers already filter by status=open at the API level; trust that.
+    volume_24h = sum(m.get("volume_24h", 0) for m in markets)
+    active_markets = len(markets)
+    open_interest = sum(m.get("open_interest", 0) for m in markets)
 
-    volume_24h = sum(m.get("volume_24h", 0) for m in open_markets)
-    active_markets = len(open_markets)
-    open_interest = sum(m.get("open_interest", 0) for m in open_markets)
-
-    if open_markets:
-        avg_price = sum(m.get("last_price", 50) for m in open_markets) / len(open_markets)
+    if markets:
+        avg_price = sum(m.get("last_price", 50) for m in markets) / len(markets)
     else:
         avg_price = 50
 

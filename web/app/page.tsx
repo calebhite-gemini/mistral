@@ -1,20 +1,8 @@
 import Sidebar from "./components/Sidebar";
-import StatsCards from "./components/StatsCards";
+import StatsCardsLoader from "./components/StatsCardsLoader";
 import MarketsView from "./MarketsView";
-import { getKalshiSummary } from "@/lib/api/kalshi";
-import type { MarketSummary } from "@/lib/api/kalshi";
 
-async function fetchStats(): Promise<MarketSummary | null> {
-  try {
-    return await getKalshiSummary();
-  } catch {
-    return null;
-  }
-}
-
-export default async function Home() {
-  const stats = await fetchStats();
-
+export default function Home() {
   return (
     <div className="flex h-screen bg-[#09090b] overflow-hidden">
       <Sidebar />
@@ -24,7 +12,7 @@ export default async function Home() {
           <div className="flex items-center gap-4">
             <h1 className="text-white text-lg font-bold tracking-[-0.45px] uppercase">Live Markets</h1>
             <span className="bg-[rgba(16,185,129,0.1)] border border-[rgba(16,185,129,0.2)] text-[#10b981] text-[10px] font-mono px-2.5 py-0.5 rounded-sm">
-              {stats ? "CONNECTED" : "OFFLINE"}
+              CONNECTED
             </span>
           </div>
           <div className="flex items-center gap-4">
@@ -39,13 +27,7 @@ export default async function Home() {
 
         {/* Stats cards — fixed, doesn't scroll */}
         <div className="px-6 pt-6 pb-0 shrink-0">
-          <StatsCards
-            volume24h={stats?.volume_24h}
-            activeMarkets={stats?.active_markets}
-            openInterest={stats?.open_interest}
-            sentiment={stats?.sentiment}
-            loading={!stats}
-          />
+          <StatsCardsLoader />
         </div>
 
         {/* Markets — takes remaining height and scrolls internally */}

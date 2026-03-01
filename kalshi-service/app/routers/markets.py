@@ -1,3 +1,5 @@
+import asyncio
+
 import httpx
 from fastapi import APIRouter, HTTPException, Query
 
@@ -5,6 +7,15 @@ from app.services.kalshi_client import kalshi_get
 from app.services.summary import compute_summary
 
 router = APIRouter(prefix="/markets", tags=["markets"])
+
+# Same series the frontend table displays
+_SPORTS_SERIES = [
+    "KXNBAGAME", "KXNBASPREAD", "KXNBATOTAL",
+    "KXNFLGAME", "KXNFLSPREAD", "KXNFLTOTAL",
+    "KXNHLGAME", "KXMLBGAME",
+    "KXNCAABGAME", "KXNCAAFGAME",
+    "KXEPLGAME", "KXUFC",
+]
 
 
 @router.get("")
@@ -31,19 +42,31 @@ async def list_markets(
 @router.get("/summary")
 async def market_summary(
     series_ticker: str | None = Query(None, description="Filter by series ticker"),
-    limit: int = Query(200, ge=1, le=1000, description="Max markets to aggregate"),
 ):
     """Aggregated stats for the UI header cards."""
     try:
-        data = await kalshi_get("/markets", {
-            "status": "open",
-            "series_ticker": series_ticker,
-            "limit": limit,
-        })
+        if series_ticker:
+            series_list = [series_ticker]
+        else:
+            series_list = _SPORTS_SERIES
+
+        results = await asyncio.gather(
+            *[
+                kalshi_get("/markets", {"status": "open", "limit": 20, "series_ticker": s})
+                for s in series_list
+            ],
+            return_exceptions=True,
+        )
     except httpx.HTTPStatusError as exc:
         raise HTTPException(status_code=exc.response.status_code, detail=exc.response.text)
 
-    return compute_summary(data.get("markets", []))
+    all_markets: list[dict] = []
+    for r in results:
+        if isinstance(r, Exception):
+            continue
+        all_markets.extend(r.get("markets", []))
+
+    return compute_summary(all_markets)
 
 
 @router.get("/{ticker}")
