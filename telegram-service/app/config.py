@@ -1,4 +1,5 @@
 """Configuration management for the Telegram service."""
+from functools import lru_cache
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -15,11 +16,18 @@ class Settings(BaseSettings):
     telegram_bot_token: str
 
     # Kalshi WebSocket configuration
-    kalshi_websocket_url: str = "wss://api.elections.kalshi.com/trade-api/ws/v2"
+    kalshi_websocket_url: str = "wss://api.elections.kalshi.com/market_lifecycle_v2"
     kalshi_api_key: str
 
     # Optional settings
     log_level: str = "INFO"
 
 
-settings = Settings()
+@lru_cache
+def get_settings() -> Settings:
+    """Get cached settings instance."""
+    return Settings()
+
+
+# For backwards compatibility
+settings = get_settings()

@@ -14,15 +14,15 @@ logger = logging.getLogger(__name__)
 class KalshiWebSocketClient:
     """WebSocket client for Kalshi market lifecycle events."""
 
-    def __init__(self, on_market_activated: Callable[[dict], None]):
+    def __init__(self, on_market_created: Callable[[dict], None]):
         """Initialize the Kalshi WebSocket client.
 
         Args:
-            on_market_activated: Async callback for market activation events
+            on_market_created: Async callback for market creation events
         """
         self.url = settings.kalshi_websocket_url
         self.api_key = settings.kalshi_api_key
-        self.on_market_activated = on_market_activated
+        self.on_market_created = on_market_created
         self.websocket: WebSocketClientProtocol | None = None
         self.is_running = False
         self.message_id = 0
@@ -115,9 +115,9 @@ class KalshiWebSocketClient:
 
                 logger.info(f"Market lifecycle event: {event_type} for {msg.get('market_ticker')}")
 
-                # Handle market activation events
-                if event_type == "activated":
-                    await self.on_market_activated(msg)
+                # Handle market creation events
+                if event_type == "created":
+                    await self.on_market_created(msg)
 
             # Log subscription confirmations
             elif "id" in data and "type" in data:

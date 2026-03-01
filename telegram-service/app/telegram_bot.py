@@ -1,5 +1,6 @@
 """Telegram bot for sending notifications."""
 import logging
+from datetime import datetime, timezone
 from typing import Any
 from telegram import Bot, Update
 from telegram.ext import Application, CommandHandler, ContextTypes
@@ -74,21 +75,57 @@ class TelegramNotifier:
         """Format event data into a notification message.
 
         Args:
-            event_data: Event data from Kalshi market activation
+            event_data: Event data from Kalshi market creation
 
         Returns:
             Formatted notification message
         """
         market_ticker = event_data.get("market_ticker", "Unknown")
+        metadata = event_data.get("additional_metadata", {})
 
-        # Create a clickable link to the market
+        title = metadata.get("title", market_ticker)
+        name = metadata.get("name", "")
+        yes_sub = metadata.get("yes_sub_title", "")
+        no_sub = metadata.get("no_sub_title", "")
+
         market_url = f"https://kalshi.com/markets/{market_ticker}"
 
-        return (
-            f"🎯 *New Market Activated!*\n\n"
-            f"Market: `{market_ticker}`\n\n"
-            f"[View on Kalshi]({market_url})"
-        )
+        lines = [f"🎯 *New Market Created!*\n"]
+
+        if name:
+            lines.append(f"*{name}*")
+        lines.append(f"_{title}_\n")
+
+        if yes_sub or no_sub:
+            lines.append(f"✅ Yes: {yes_sub}")
+            lines.append(f"❌ No: {no_sub}\n")
+
+        # Strike info
+        strike_type = metadata.get("strike_type")
+        floor_strike = metadata.get("floor_strike")
+        cap_strike = metadata.get("cap_strike")
+        if strike_type:
+            strike_parts = [f"Strike: {strike_type}"]
+            if floor_strike is not None:
+                strike_parts.append(f"floor={floor_strike}")
+            if cap_strike is not None:
+                strike_parts.append(f"cap={cap_strike}")
+            lines.append(" | ".join(strike_parts))
+
+        # Timestamps
+        open_ts = event_data.get("open_ts")
+        close_ts = event_data.get("close_ts")
+        if open_ts:
+            open_dt = datetime.fromtimestamp(open_ts, tz=timezone.utc).strftime("%b %d, %Y %H:%M UTC")
+            lines.append(f"Opens: {open_dt}")
+        if close_ts:
+            close_dt = datetime.fromtimestamp(close_ts, tz=timezone.utc).strftime("%b %d, %Y %H:%M UTC")
+            lines.append(f"Closes: {close_dt}")
+
+        lines.append(f"\n`{market_ticker}`")
+        lines.append(f"[View on Kalshi]({market_url})")
+
+        return "\n".join(lines)
 
     async def _start_command(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         """Handle /start command - subscribe user to notifications.

@@ -17,20 +17,23 @@ class TelegramService:
     def __init__(self):
         """Initialize the service."""
         self.telegram_notifier = TelegramNotifier()
-        self.kalshi_client = KalshiWebSocketClient(on_market_activated=self._handle_market_activation)
+        self.kalshi_client = KalshiWebSocketClient(on_market_created=self._handle_market_created)
         self.is_running = False
 
-    async def _handle_market_activation(self, event_data: dict[str, Any]) -> None:
-        """Handle market activation events from Kalshi.
+    async def _handle_market_created(self, event_data: dict[str, Any]) -> None:
+        """Handle market creation events from Kalshi.
 
         Args:
-            event_data: Market activation event data
+            event_data: Market creation event data
         """
         market_ticker = event_data.get("market_ticker", "Unknown")
-        logger.info(f"Market activated: {market_ticker}")
+        logger.info(f"Market created: {market_ticker}")
 
         # Send notification via Telegram
-        await self.telegram_notifier.send_notification(event_data)
+        try:
+            await self.telegram_notifier.send_notification(event_data)
+        except Exception as e:
+            logger.error(f"Failed to send notification for {market_ticker}: {e}", exc_info=True)
 
     async def start(self) -> None:
         """Start the service."""
