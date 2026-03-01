@@ -1,0 +1,12 @@
+[project]
+name = "backtesting"
+version = "0.1.0"
+description = "Backtesting script for sports prediction pipeline"
+requires-python = ">=3.14"
+dependencies = [
+    "httpx>=0.28",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+chart = ["matplotlib>=3.9"]

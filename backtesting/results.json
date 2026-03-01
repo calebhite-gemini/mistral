@@ -1,0 +1,22 @@
+[
+  {
+    "ticker": "KXMLBGAME-25OCT31LADTOR-TOR",
+    "title": "Los Angeles D vs Toronto (Game 6) Winner?",
+    "sport": "MLB",
+    "game_date": "2025-11-01",
+    "market_price": 0.01,
+    "outcome": 0,
+    "model_prob": null,
+    "edge": null
+  },
+  {
+    "ticker": "KXMLBGAME-25OCT31LADTOR-LAD",
+    "title": "Los Angeles D vs Toronto (Game 6) Winner?",
+    "sport": "MLB",
+    "game_date": "2025-11-01",
+    "market_price": 0.99,
+    "outcome": 1,
+    "model_prob": null,
+    "edge": null
+  }
+]
