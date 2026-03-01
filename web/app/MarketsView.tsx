@@ -17,6 +17,10 @@ const SPORT_LEAGUE_MAP: Record<string, string[]> = {
 
 export default function MarketsView() {
   const [activeSport, setActiveSport] = useState("All Sports");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [page, setPage] = useState(1);
+
+  const PAGE_SIZE = 10;
   const [markets, setMarkets] = useState<MarketRow[]>([]);
   const [marketsLoading, setMarketsLoading] = useState(true);
   const [marketsError, setMarketsError] = useState<string | undefined>();
@@ -73,9 +77,26 @@ export default function MarketsView() {
 
   const filteredMarkets = useMemo(() => {
     const leagues = SPORT_LEAGUE_MAP[activeSport] ?? [];
-    if (leagues.length === 0) return markets;
-    return markets.filter((m) => leagues.includes(m.league));
-  }, [markets, activeSport]);
+    const q = searchQuery.trim().toLowerCase();
+    return markets.filter((m) => {
+      if (leagues.length > 0 && !leagues.includes(m.league)) return false;
+      if (!q) return true;
+      return (
+        m.ticker.toLowerCase().includes(q) ||
+        m.team1.toLowerCase().includes(q) ||
+        m.team2.toLowerCase().includes(q) ||
+        m.league.toLowerCase().includes(q)
+      );
+    });
+  }, [markets, activeSport, searchQuery]);
+
+  // Reset to page 1 whenever filters change
+  useEffect(() => { setPage(1); }, [activeSport, searchQuery]);
+
+  const pagedMarkets = useMemo(
+    () => filteredMarkets.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE),
+    [filteredMarkets, page]
+  );
 
   function handleSelect(ticker: string) {
     setSelectedTicker((prev) => (prev === ticker ? null : ticker));
@@ -87,14 +108,17 @@ export default function MarketsView() {
   }
 
   return (
-    <>
-      <SportFilters active={activeSport} onSelect={setActiveSport} />
+    <div className="flex flex-col min-h-0 h-full gap-4">
+      <SportFilters active={activeSport} onSelect={setActiveSport} searchQuery={searchQuery} onSearch={setSearchQuery} />
       <MarketsTable
-        markets={filteredMarkets}
+        markets={pagedMarkets}
         loading={marketsLoading}
         error={marketsError}
         selectedTicker={selectedTicker}
         onSelect={handleSelect}
+        page={page}
+        totalCount={filteredMarkets.length}
+        onPageChange={setPage}
       />
       <MarketDetailPanel
         market={selectedDetail}
@@ -102,6 +126,6 @@ export default function MarketsView() {
         isOpen={selectedTicker !== null}
         onClose={handleClose}
       />
-    </>
+    </div>
   );
 }
