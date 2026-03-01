@@ -11,14 +11,11 @@ export interface MarketRow {
   closesIn: string;
   closingUrgent: boolean;
   marketPrice: string;
-  modelProb: string;
   edge: string;
   edgePositive: boolean;
   ev: string;
   evPositive: boolean;
   signal: "YES" | "NO";
-  confidence: "High" | "Med" | "Low";
-  confidencePercent: number;
 }
 
 interface MarketsTableProps {
@@ -42,8 +39,8 @@ function ClockIcon() {
 
 function SkeletonRow({ idx }: { idx: number }) {
   return (
-    <div className={`grid grid-cols-[16%_14%_9%_9%_11%_10%_11%_15%_5%] items-center py-4 ${idx > 0 ? "border-t border-[#27272a]" : ""}`}>
-      {Array.from({ length: 9 }).map((_, i) => (
+    <div className={`grid grid-cols-[20%_16%_12%_13%_12%_22%_5%] items-center py-4 ${idx > 0 ? "border-t border-[#27272a]" : ""}`}>
+      {Array.from({ length: 7 }).map((_, i) => (
         <div key={i} className="px-6">
           <div className="h-4 bg-[#27272a] rounded animate-pulse" />
         </div>
@@ -62,7 +59,7 @@ export default function MarketsTable({ markets, loading, error, selectedTicker, 
   return (
     <div className="bg-[#18181b] border border-[#27272a] rounded-sm flex flex-col min-h-0 flex-1 overflow-hidden">
       {/* Header */}
-      <div className="bg-[#09090b] border-b border-[#27272a] grid grid-cols-[16%_14%_9%_9%_11%_10%_11%_15%_5%] items-center">
+      <div className="bg-[#09090b] border-b border-[#27272a] grid grid-cols-[20%_16%_12%_13%_12%_22%_5%] items-center">
         <div className="pl-6 pr-3 py-[18px]">
           <span className="text-[#64748b] text-[10px] font-mono font-bold tracking-[1px] uppercase">Matchup</span>
         </div>
@@ -72,9 +69,6 @@ export default function MarketsTable({ markets, loading, error, selectedTicker, 
         <div className="px-3 py-3 text-right">
           <span className="text-[#64748b] text-[10px] font-mono font-bold tracking-[1px] uppercase leading-[13px]">Market<br />Price</span>
         </div>
-        <div className="px-3 py-3 text-right">
-          <span className="text-[#64748b] text-[10px] font-mono font-bold tracking-[1px] uppercase leading-[13px]">Model<br />Prob</span>
-        </div>
         <div className="px-3 py-[18px] text-right">
           <span className="text-[#64748b] text-[10px] font-mono font-bold tracking-[1px] uppercase">Edge</span>
         </div>
@@ -83,9 +77,6 @@ export default function MarketsTable({ markets, loading, error, selectedTicker, 
         </div>
         <div className="px-3 py-[18px] text-center">
           <span className="text-[#64748b] text-[10px] font-mono font-bold tracking-[1px] uppercase">Signal</span>
-        </div>
-        <div className="px-3 py-[18px] text-right">
-          <span className="text-[#64748b] text-[10px] font-mono font-bold tracking-[1px] uppercase">Confidence</span>
         </div>
         <div />
       </div>
@@ -103,7 +94,7 @@ export default function MarketsTable({ markets, loading, error, selectedTicker, 
           <div
             key={market.ticker}
             onClick={() => onSelect?.(market.ticker)}
-            className={`grid grid-cols-[16%_14%_9%_9%_11%_10%_11%_15%_5%] items-center py-4 transition-colors cursor-pointer ${
+            className={`grid grid-cols-[20%_16%_12%_13%_12%_22%_5%] items-center py-4 transition-colors cursor-pointer ${
               idx > 0 ? "border-t border-[#27272a]" : ""
             } ${selectedTicker === market.ticker ? "bg-[#27272a]/50" : "hover:bg-[#27272a]/30"}`}
           >
@@ -142,11 +133,6 @@ export default function MarketsTable({ markets, loading, error, selectedTicker, 
               <span className="text-[#94a3b8] text-sm font-mono">{market.marketPrice}</span>
             </div>
 
-            {/* Model Prob */}
-            <div className="px-3 text-right">
-              <span className="text-white text-sm font-mono font-bold">{market.modelProb}</span>
-            </div>
-
             {/* Edge */}
             <div className="px-3 flex items-center justify-end gap-1">
               <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
@@ -179,17 +165,6 @@ export default function MarketsTable({ markets, loading, error, selectedTicker, 
                   No
                 </span>
               )}
-            </div>
-
-            {/* Confidence */}
-            <div className="px-3 flex flex-col items-end gap-1">
-              <div className="w-24 h-1.5 bg-[#27272a] rounded-full overflow-hidden">
-                <div
-                  className={`h-full ${market.confidence === "High" ? "bg-[#10b981]" : "bg-[#f59e0b]"}`}
-                  style={{ width: `${market.confidencePercent}%` }}
-                />
-              </div>
-              <span className="text-[#64748b] text-[9px] font-mono uppercase">{market.confidence}</span>
             </div>
 
             {/* More */}

@@ -37,7 +37,7 @@ export default function StatsCardsLoader() {
 
   return (
     <StatsCards
-      volume24h={stats?.volume24h}
+      volume={stats?.volume24h}
       activeMarkets={stats?.gameCount}
       loading={!stats}
     />

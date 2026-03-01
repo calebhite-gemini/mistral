@@ -15,14 +15,11 @@ export interface MarketRow {
   expiresAt: string; // ISO timestamp of game/event expiration
   volume: number;
   marketPrice: string;
-  modelProb: string;
   edge: string;
   edgePositive: boolean;
   ev: string;
   evPositive: boolean;
   signal: "YES" | "NO";
-  confidence: "High" | "Med" | "Low";
-  confidencePercent: number;
 }
 
 // ── League + bet-type from series prefix ──────────────────────────────────────
@@ -291,13 +288,10 @@ export function toMarketRow(market: KalshiMarket, edgeResult: EdgeResult): Marke
     closingUrgent: isUrgent(market.expected_expiration_time ?? market.close_time),
     volume: market.volume_24h ?? market.volume ?? 0,
     marketPrice: `${market.last_price.toFixed(1)}%`,
-    modelProb: "—",
     edge,
     edgePositive,
     ev,
     evPositive,
     signal,
-    confidence: "Low",
-    confidencePercent: 0,
   };
 }

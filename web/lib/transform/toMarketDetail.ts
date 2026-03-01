@@ -16,7 +16,6 @@ export interface MarketDetail {
   gameDate: string;
   title: string;
   impliedProb: string;
-  probChange: string;
   marketOdds: string;
   oddsBest: string;
   volume: string;
@@ -194,7 +193,6 @@ export function toMarketDetail(
     gameDate: formatGameDate(market.expected_expiration_time ?? market.close_time),
     title: `${row.team1} ${row.type === "MONEYLINE" ? "Moneyline" : row.type === "SPREAD" ? "Spread" : "Total"}`,
     impliedProb: `${market.last_price.toFixed(1)}%`,
-    probChange: "+0.0%",
     marketOdds: lastPriceToAmericanOdds(market.last_price),
     oddsBest: "Kalshi",
     volume,

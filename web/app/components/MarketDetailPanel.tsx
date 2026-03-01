@@ -15,7 +15,6 @@ export interface MarketDetail {
   gameDate: string;
   title: string;
   impliedProb: string;
-  probChange: string;
   marketOdds: string;
   oddsBest: string;
   volume: string;
@@ -179,11 +178,7 @@ export default function MarketDetailPanel({ market, onClose, isOpen, loading, ag
                 {/* Implied Probability */}
                 <div className="bg-[#18181b]/50 border border-[#27272a] rounded-sm p-4">
                   <p className="text-[#64748b] text-[10px] font-mono font-bold tracking-[0.5px] uppercase mb-2">Implied Probability</p>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-white text-2xl font-mono font-bold">{market.impliedProb}</span>
-                    <span className="text-[#10b981] text-xs font-mono font-medium">{market.probChange}</span>
-                  </div>
-                  <p className="text-[#64748b] text-[10px] font-mono mt-1">vs Opening Line</p>
+                  <span className="text-white text-2xl font-mono font-bold">{market.impliedProb}</span>
                 </div>
 
                 {/* Volume */}
@@ -199,7 +194,7 @@ export default function MarketDetailPanel({ market, onClose, isOpen, loading, ag
               </div>
 
               {/* AI Prediction */}
-              {market.modelProb && market.modelProb !== "—" && (
+              {market.signal && market.signal !== "—" && (
                 <div className="px-5 pt-6 pb-2">
                   <div className="flex items-center gap-2 mb-4">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -207,15 +202,7 @@ export default function MarketDetailPanel({ market, onClose, isOpen, loading, ag
                     </svg>
                     <span className="text-white text-xs font-bold tracking-[0.5px] uppercase">AI Prediction</span>
                   </div>
-                  <div className="grid grid-cols-3 gap-3 mb-4">
-                    <div className="bg-[#18181b]/50 border border-[#27272a] rounded-sm p-3 text-center">
-                      <p className="text-[#64748b] text-[9px] font-mono font-bold tracking-[0.5px] uppercase mb-1">Model Prob</p>
-                      <span className="text-white text-lg font-mono font-bold">{market.modelProb}</span>
-                    </div>
-                    <div className="bg-[#18181b]/50 border border-[#27272a] rounded-sm p-3 text-center">
-                      <p className="text-[#64748b] text-[9px] font-mono font-bold tracking-[0.5px] uppercase mb-1">Confidence</p>
-                      <span className="text-white text-lg font-mono font-bold">{market.confidence}</span>
-                    </div>
+                  <div className="mb-4">
                     <div className="bg-[#18181b]/50 border border-[#27272a] rounded-sm p-3 text-center">
                       <p className="text-[#64748b] text-[9px] font-mono font-bold tracking-[0.5px] uppercase mb-1">Signal</p>
                       <span className={`text-lg font-mono font-bold ${
