@@ -2,9 +2,10 @@
 import asyncio
 import json
 import logging
+import ssl
 from typing import Callable, Any
+import certifi
 import websockets
-from websockets.client import WebSocketClientProtocol
 
 from app.config import settings
 
@@ -23,7 +24,7 @@ class KalshiWebSocketClient:
         self.url = settings.kalshi_websocket_url
         self.api_key = settings.kalshi_api_key
         self.on_market_created = on_market_created
-        self.websocket: WebSocketClientProtocol | None = None
+        self.websocket: websockets.ClientConnection | None = None
         self.is_running = False
         self.message_id = 0
 
@@ -46,9 +47,11 @@ class KalshiWebSocketClient:
                 logger.info(f"Connecting to Kalshi WebSocket: {self.url}")
 
                 # Connect with authentication headers
+                ssl_context = ssl.create_default_context(cafile=certifi.where())
                 async with websockets.connect(
                     self.url,
-                    extra_headers=self._get_auth_headers()
+                    additional_headers=self._get_auth_headers(),
+                    ssl=ssl_context,
                 ) as websocket:
                     self.websocket = websocket
                     logger.info("Kalshi WebSocket connected successfully")
