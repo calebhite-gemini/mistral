@@ -1,5 +1,8 @@
 "use client";
 
+import { useState } from "react";
+import MarketDetailPanel, { type MarketDetail } from "./MarketDetailPanel";
+
 interface MarketRow {
   team1: string;
   team2: string;
@@ -18,6 +21,7 @@ interface MarketRow {
   signal: "YES" | "NO";
   confidence: "High" | "Med" | "Low";
   confidencePercent: number;
+  detail: MarketDetail;
 }
 
 const markets: MarketRow[] = [
@@ -39,6 +43,67 @@ const markets: MarketRow[] = [
     signal: "YES",
     confidence: "High",
     confidencePercent: 80,
+    detail: {
+      team1: "Lakers",
+      team2: "Warriors",
+      team1Abbr: "LAL",
+      team2Abbr: "GSW",
+      league: "NBA",
+      type: "MONEYLINE",
+      gameDate: "Oct 24, 20:00 EST",
+      title: "Lakers Moneyline",
+      impliedProb: "42.5%",
+      probChange: "+2.1%",
+      marketOdds: "+135",
+      oddsBest: "FanDuel",
+      volume: "$2.4M",
+      volumeTag: "HIGH",
+      volumePublic: "~85% Public",
+      sharpMoney: "65%",
+      sharpOn: "On Lakers",
+      drivers: [
+        {
+          tag: "KEY DRIVER",
+          tagColor: "#10b981",
+          title: "LeBron James listed as Probable",
+          description: "Upgraded from Questionable. Historical data shows Lakers cover spread 62% of time when LBJ upgrades status on game day.",
+          source: "ESPN Stats & Info",
+          sourceIcon: "E",
+          sourceColor: "#d32f2f",
+          time: "20m ago",
+        },
+        {
+          tag: "TEAM FORM",
+          tagColor: "#94a3b8",
+          title: "Warriors Road Struggles",
+          description: "Golden State is 2-8 ATS in their last 10 road games. Defensive efficiency drops by 12% away from home.",
+          source: "Basketball Reference",
+          sourceIcon: "B",
+          sourceColor: "#1565c0",
+          time: "2h ago",
+        },
+        {
+          tag: "MARKET MOVEMENT",
+          tagColor: "#8b5cf6",
+          title: "Sharp Money Inflow",
+          description: "Large block trades detected on Lakers ML at +140, pushing line to current +135. Volume spike correlated with LBJ news.",
+          source: "Internal Ticker",
+          sourceIcon: "T",
+          sourceColor: "#7c3aed",
+          time: "4h ago",
+        },
+        {
+          tag: "CONTEXT",
+          tagColor: "#64748b",
+          title: "Rest Advantage",
+          description: "Lakers on 2 days rest vs Warriors on back-to-back. Fatigue factor estimated at ~3.5pts.",
+          source: "Stat Muse",
+          sourceIcon: "S",
+          sourceColor: "#475569",
+          time: "6h ago",
+        },
+      ],
+    },
   },
   {
     team1: "Chiefs",
@@ -58,6 +123,47 @@ const markets: MarketRow[] = [
     signal: "NO",
     confidence: "Med",
     confidencePercent: 40,
+    detail: {
+      team1: "Chiefs",
+      team2: "Bills",
+      team1Abbr: "KC",
+      team2Abbr: "BUF",
+      league: "NFL",
+      type: "SPREAD",
+      gameDate: "Oct 26, 16:25 EST",
+      title: "Chiefs Spread -3.5",
+      impliedProb: "52.0%",
+      probChange: "-1.5%",
+      marketOdds: "-110",
+      oddsBest: "DraftKings",
+      volume: "$1.8M",
+      volumeTag: "MED",
+      volumePublic: "~72% Public",
+      sharpMoney: "48%",
+      sharpOn: "On Bills",
+      drivers: [
+        {
+          tag: "INJURY",
+          tagColor: "#ef4444",
+          title: "Mahomes Ankle Questionable",
+          description: "Limited in Thursday practice. Historically Chiefs are 3-5 ATS when Mahomes is listed questionable.",
+          source: "NFL Insider",
+          sourceIcon: "N",
+          sourceColor: "#013369",
+          time: "1h ago",
+        },
+        {
+          tag: "TEAM FORM",
+          tagColor: "#94a3b8",
+          title: "Bills Strong ATS at Home",
+          description: "Buffalo is 7-2 ATS in their last 9 home games. Josh Allen averaging 310 passing yards at home.",
+          source: "Pro Football Ref",
+          sourceIcon: "P",
+          sourceColor: "#1565c0",
+          time: "3h ago",
+        },
+      ],
+    },
   },
   {
     team1: "Man City",
@@ -77,6 +183,47 @@ const markets: MarketRow[] = [
     signal: "YES",
     confidence: "High",
     confidencePercent: 100,
+    detail: {
+      team1: "Man City",
+      team2: "Arsenal",
+      team1Abbr: "MCI",
+      team2Abbr: "ARS",
+      league: "PL",
+      type: "TOTAL GOALS",
+      gameDate: "Oct 27, 11:30 GMT",
+      title: "Over 2.5 Goals",
+      impliedProb: "30.0%",
+      probChange: "+4.2%",
+      marketOdds: "+233",
+      oddsBest: "Bet365",
+      volume: "$890K",
+      volumeTag: "HIGH",
+      volumePublic: "~60% Public",
+      sharpMoney: "72%",
+      sharpOn: "On Over",
+      drivers: [
+        {
+          tag: "KEY DRIVER",
+          tagColor: "#10b981",
+          title: "Haaland Confirmed Fit",
+          description: "City\u2019s top scorer cleared to play after missing midweek. Over has hit in 8 of 10 games when Haaland starts.",
+          source: "Sky Sports",
+          sourceIcon: "S",
+          sourceColor: "#c62828",
+          time: "45m ago",
+        },
+        {
+          tag: "HISTORICAL",
+          tagColor: "#f59e0b",
+          title: "H2H Over Trend",
+          description: "Last 6 meetings between these sides have averaged 3.2 goals per game. Over 2.5 hit in 5 of 6.",
+          source: "WhoScored",
+          sourceIcon: "W",
+          sourceColor: "#2e7d32",
+          time: "5h ago",
+        },
+      ],
+    },
   },
   {
     team1: "Celtics",
@@ -96,6 +243,47 @@ const markets: MarketRow[] = [
     signal: "NO",
     confidence: "Med",
     confidencePercent: 60,
+    detail: {
+      team1: "Celtics",
+      team2: "Heat",
+      team1Abbr: "BOS",
+      team2Abbr: "MIA",
+      league: "NBA",
+      type: "SPREAD",
+      gameDate: "Oct 25, 19:30 EST",
+      title: "Celtics Spread -6.5",
+      impliedProb: "55.0%",
+      probChange: "-0.8%",
+      marketOdds: "-120",
+      oddsBest: "FanDuel",
+      volume: "$1.1M",
+      volumeTag: "MED",
+      volumePublic: "~78% Public",
+      sharpMoney: "41%",
+      sharpOn: "On Heat",
+      drivers: [
+        {
+          tag: "CONTEXT",
+          tagColor: "#64748b",
+          title: "Heat Playoff Mode",
+          description: "Miami historically performs well as underdogs against top seeds. Butler averages 28pts in these matchups.",
+          source: "ESPN Stats",
+          sourceIcon: "E",
+          sourceColor: "#d32f2f",
+          time: "2h ago",
+        },
+        {
+          tag: "MARKET MOVEMENT",
+          tagColor: "#8b5cf6",
+          title: "Line Movement Toward Heat",
+          description: "Spread opened at -8 and has moved to -6.5. Sharp action on Heat side detected.",
+          source: "Internal Ticker",
+          sourceIcon: "T",
+          sourceColor: "#7c3aed",
+          time: "4h ago",
+        },
+      ],
+    },
   },
 ];
 
@@ -108,7 +296,10 @@ function ClockIcon() {
 }
 
 export default function MarketsTable() {
+  const [selectedMarket, setSelectedMarket] = useState<MarketDetail | null>(null);
+
   return (
+    <>
     <div className="bg-[#18181b] border border-[#27272a] rounded-sm overflow-hidden">
       {/* Header */}
       <div className="bg-[#09090b] border-b border-[#27272a] grid grid-cols-[180px_140px_100px_100px_100px_100px_100px_1fr_50px] items-center">
@@ -234,9 +425,12 @@ export default function MarketsTable() {
             <span className="text-[#64748b] text-[9px] font-mono uppercase">{market.confidence}</span>
           </div>
 
-          {/* More */}
+          {/* More - triggers detail panel */}
           <div className="flex justify-center">
-            <button className="text-[#64748b] hover:text-white transition-colors p-1">
+            <button
+              onClick={() => setSelectedMarket(market.detail)}
+              className="text-[#64748b] hover:text-white transition-colors p-1"
+            >
               <svg width="3" height="12" viewBox="0 0 3 12" fill="currentColor">
                 <circle cx="1.5" cy="1.5" r="1.5" />
                 <circle cx="1.5" cy="6" r="1.5" />
@@ -270,5 +464,11 @@ export default function MarketsTable() {
         </div>
       </div>
     </div>
+
+    <MarketDetailPanel
+      market={selectedMarket}
+      onClose={() => setSelectedMarket(null)}
+    />
+    </>
   );
 }

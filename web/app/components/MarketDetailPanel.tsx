@@ -95,8 +95,10 @@ export default function MarketDetailPanel({ market, onClose }: MarketDetailPanel
                     <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" /><path d="M13.73 21a2 2 0 0 1-3.46 0" />
                   </svg>
                 </button>
-                <button className="bg-white text-[#09090b] text-[10px] font-bold tracking-[0.5px] uppercase px-3 py-1.5 rounded-sm hover:bg-[#e2e8f0] transition-colors ml-1">
-                  Place<br />Bet
+                <button className="bg-white text-[#09090b] p-2 rounded-sm hover:bg-[#e2e8f0] transition-colors ml-1">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
+                  </svg>
                 </button>
               </div>
             </div>
@@ -202,13 +204,10 @@ export default function MarketDetailPanel({ market, onClose }: MarketDetailPanel
             {/* Bottom Actions */}
             <div className="px-5 py-4 border-t border-[#27272a] shrink-0 flex flex-col gap-2.5">
               <button className="w-full bg-white text-[#09090b] text-xs font-bold tracking-[0.5px] uppercase py-3 rounded-sm hover:bg-[#e2e8f0] transition-colors">
-                Add to Watchlist
+                Place Bet
               </button>
-              <button className="w-full border border-[#27272a] text-white text-xs font-bold tracking-[0.5px] uppercase py-3 rounded-sm hover:bg-[#27272a]/50 transition-colors flex items-center justify-center gap-2">
-                Analyze Next Market
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
-                </svg>
+              <button className="w-full border border-[#27272a] text-white text-xs font-bold tracking-[0.5px] uppercase py-3 rounded-sm hover:bg-[#27272a]/50 transition-colors">
+                Add to Watchlist
               </button>
             </div>
           </>
